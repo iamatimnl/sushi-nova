@@ -1062,16 +1062,7 @@
     }
   }
 
-  .scroll-fix-home {
-  position: relative;
-  top: -110px; /* 例如 navbar 80px + 再往上偏移 30px */
-  height: 0;
-  visibility: hidden;
-}
 
-.scroll-fix-waarom {
-  scroll-margin-top: 80px; /* 正常 navbar 高度 */
-}
 
   
 
@@ -1083,14 +1074,16 @@
 
   <div class="navbar" id="navbar">
   <div class="navbar-left">
-   
   </div>
   <div class="navbar-logo-mobile">
     <img src="https://i.postimg.cc/05fLqS5M/o.png" alt="Sushi Nova Logo" />
   </div>
     <ul class="nav-links">
-       <li><a href="#homeAnchor">Home</a></li>
+      <li class="desktop-only"><a href="#logoAnchor" id="homeButton">Home</a></li>
+      
+      
       <li><a href="#waarom">Waarom Sushi Nova</a></li>
+      
 
       <li><a href="#aanraders">Menu</a>
         <ul class="dropdown-menu">
@@ -1155,13 +1148,7 @@
 
   <div class="bg-badge"></div>
   <div class="wrapper" id="mainWrapper">
-    <div id="homeAnchor" class="scroll-fix-home"></div>
-
-    <!-- Waarom 区块：正常锚点 -->
-    <section id="waarom" class="scroll-fix-waarom">
-      <h2>Waarom Sushi Nova</h2>
-      <!-- 内容 -->
-    </section>
+    
     <div class="planet-scroll">
       
     <div class="logo">
