@@ -990,6 +990,20 @@
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.2s ease;
  }
+ @media (min-width: 769px) {
+  #homeButtonFloating {
+    top: 20px;
+    left: auto;
+    right: 100px; /* 你可以调这个值，让它离右边远一点 */
+    bottom: auto;
+  }
+
+  #smartActionBtn {
+    top: 20px;
+    right: 30px;
+    bottom: auto;
+  }
+}
 
  #smartActionBtn.show {
   opacity: 1;
