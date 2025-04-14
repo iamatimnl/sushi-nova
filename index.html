@@ -1061,21 +1061,23 @@
       display: none;
     }
   }
- .fading-dots {
-  text-align: center;
-  font-size: 30px;
-  color: #ccc;
-  opacity: 0.4;
-  margin: 0;
-  letter-spacing: 8px;
+/* 默认隐藏 */
+.dots-divider {
+  display: none;
 }
 
-/* 手机端隐藏 */
-@media (max-width: 768px) {
-  .fading-dots {
-    display: none !important;
+/* 桌面版才显示 */
+@media (min-width: 768px) {
+  .dots-divider {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    color: #999;
+    margin: 40px 0;
+    letter-spacing: 10px;
   }
 }
+
 
 
 
