@@ -1061,10 +1061,7 @@
       display: none;
     }
   }
-   #topLogo {
-    position: relative;
-    top: -65px; /* 举例：navbar 高度 70px + 向下 5px */
-  }
+ 
   
   
   
@@ -1083,7 +1080,7 @@
     <img src="https://i.postimg.cc/05fLqS5M/o.png" alt="Sushi Nova Logo" />
   </div>
     <ul class="nav-links">
-      <li><a href="#topLogo" id="homeButton">Home</a></li>
+     <li><a href="#" id="homeButton">Home</a></li>
 
 
       
@@ -1158,7 +1155,7 @@
     <div class="logo">
        <img src="https://i.postimg.cc/k56gmK3S/888.png.png" alt="Sushi Nova Logo" />
     </div>
-    <div id="topLogo"></div>
+
 
     <div class="readable-content">
     <div class="title-with-windmill">
@@ -1934,7 +1931,26 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
 </script>
 
 
+<script>
+  document.getElementById('homeButton').addEventListener('click', function (e) {
+    e.preventDefault();
 
+    const navbar = document.querySelector('.navbar'); // 请确保你的 navbar 有这个类名
+    const wrapper = document.getElementById('mainWrapper');
+
+    if (navbar && wrapper) {
+      const navbarHeight = navbar.offsetHeight;
+      const offset = 10; // 想要 wrapper 离 navbar 底部 10px
+
+      const targetY = wrapper.getBoundingClientRect().top + window.scrollY - navbarHeight - offset;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+      });
+    }
+  });
+</script>
 
   
  
