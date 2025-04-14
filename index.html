@@ -1080,7 +1080,7 @@
     <img src="https://i.postimg.cc/05fLqS5M/o.png" alt="Sushi Nova Logo" />
   </div>
     <ul class="nav-links">
-      <li><a href="#" id="homeButton">Home</a></li>
+      <li><a href="#topLogo" id="homeButton">Home</a></li>
 
       
       
@@ -1154,7 +1154,7 @@
     <div class="logo">
        <img src="https://i.postimg.cc/k56gmK3S/888.png.png" alt="Sushi Nova Logo" />
     </div>
-    <div style="height: 10PX;" id="topLogo"></div>
+    <div style="height: 20PX;" id="topLogo"></div>
 
     <div class="readable-content">
     <div class="title-with-windmill">
@@ -1929,18 +1929,7 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
   showHomeBtn();
 </script>
 
-<script>
-  document.getElementById('homeButton').addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.getElementById('mainWrapper');
-    const offset = 15;
 
-    if (target) {
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
-</script>
 
 
   
