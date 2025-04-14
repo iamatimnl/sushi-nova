@@ -992,15 +992,17 @@
  }
  @media (min-width: 769px) {
   #homeButtonFloating {
-    top: 80px;
+    animation-delay: 0s;
+    top: 20px;
     left: auto;
     right: 800px; /* 你可以调这个值，让它离右边远一点 */
     bottom: auto;
   }
 
   #smartActionBtn {
-    top: 60px;
-    right: 600px;
+    animation-delay: 1.8s; 
+    top: 350px;
+    right: 1000px;
     bottom: auto;
   }
 }
@@ -1016,17 +1018,19 @@
     backdrop-filter: blur(10px);
   }
 
-  @keyframes distantStarGlow {
-    0%, 100% {
-      transform: translateY(0px) scale(1);
-      opacity: 0.95;
-    }
-    50% {
-      transform: translateY(-2px) scale(1.03);
-      opacity: 1;
-    }
+ @keyframes distantStarGlow {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.95;
+    filter: hue-rotate(0deg); /* 起始白光/暖白 */
+  }
+  50% {
+    transform: translateY(-2px) scale(1.03);
+    opacity: 1;
+    filter: hue-rotate(20deg); /* 过渡出一点橘金色 */
   }
 }
+
 
 
  #smartActionBtn.show {
