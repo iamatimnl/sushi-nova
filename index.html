@@ -1081,6 +1081,7 @@
   </div>
     <ul class="nav-links">
       <li><a href="#" id="homeButton">Home</a></li>
+
       
       
       <li><a href="#waarom">Waarom Sushi Nova</a></li>
@@ -1103,7 +1104,7 @@
       <li><a href="#bezorggebied">Bezorggebied</a></li>
       <li><a href="#faq">FAQ</a></li>
 
-      <li><a href="https://www.sushinieuw.nl" target="_blank">Bestellen</a></li>
+      <li><a href="https://www.sushinova.nl" target="_blank">Bestellen</a></li>
 
     </ul>
     <div class="navbar-lang-switch" id="langSwitch">
@@ -1134,7 +1135,7 @@
       <li><a href="#bezorggebied">Bezorggebied</a></li>
       <li><a href="#faq">FAQ</a></li>
 
-      <li><a href="https://www.sushinieuw.nl" target="_blank">Bestellen</a></li>
+      <li><a href="https://www.sushinova.nl" target="_blank">Bestellen</a></li>
       <li class="lang-switch-mobile">
         <a href="0.html">EN</a>
       </li>
@@ -1928,6 +1929,18 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
   showHomeBtn();
 </script>
 
+<script>
+  document.getElementById('homeButton').addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.getElementById('mainWrapper');
+    const offset = 15;
+
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+</script>
 
 
   
