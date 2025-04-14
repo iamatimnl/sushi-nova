@@ -2011,7 +2011,31 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
   });
 </script>
 
-  
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const homeBtn = document.getElementById("homeButtonFloating");
+
+    // 桌面端监听滚动显示按钮
+    if (window.innerWidth > 768) {
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+          homeBtn.classList.add("show");
+        } else {
+          homeBtn.classList.remove("show");
+        }
+      });
+    }
+
+    // 平滑滚动到顶部功能
+    homeBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
+ 
  
   
  
