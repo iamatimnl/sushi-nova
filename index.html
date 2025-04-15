@@ -15,107 +15,94 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #10131a;
-
+      font-family: 'Playfair Display', serif;
+      background-color: #f3e7dc;
       background-image:
-  radial-gradient(circle at 45% 30%, rgba(255, 153, 85, 0.18), transparent 60%),
-  radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03), transparent 60%),
-  radial-gradient(circle at 20% 70%, rgba(90, 170, 255, 0.06), transparent 50%);
-
-          background-repeat: no-repeat;
-       background-size: cover;
-       background-position: center;
-
+        radial-gradient(circle at 55% 20%, rgba(255, 255, 255, 0.4), transparent 70%),
+        radial-gradient(circle at 30% 80%, rgba(244, 124, 32, 0.08), transparent 65%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
       -webkit-text-size-adjust: 100%;
       overflow-x: hidden;
       overflow-y: auto;
-     -webkit-overflow-scrolling: touch;
-     box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
       scroll-behavior: smooth;
-      color: #eae6e2;
-      
-    
-     
+      color: #3e2c1a;
     }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: #3e2c1a;
+    }
+    
     h2 {
       font-size: 24px;
       font-weight: 600;
       margin: 24px 0 16px;
-      color: #eae6e2; /* 或保持 eae6e2 */
     }
     
-
     .wrapper {
-  width: 185vmin;
-  height: 185vmin;
-  margin: 60px auto;
-  padding: 20px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  text-align: center;
-  line-height: 1.8;
-  letter-spacing: 0.3px;
-  font-size: clamp(14px, 2.2vmin, 18px);
-
-  background:
-    radial-gradient(circle at 85% 10%, rgba(255, 180, 110, 0.48), transparent 65%),
-    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.14) 0%, rgba(44, 72, 116, 0.23) 35%, rgba(20, 30, 45, 0.15) 100%);
-  
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 50%;
-
-  box-shadow:
-    0 0 120px rgba(102, 252, 241, 0.20),
-    0 0 88px rgba(180, 136, 255, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 -8px 40px rgba(255, 180, 110, 0.011),  /* 上方光壳 */
-    inset -20px 30px 40px rgba(255, 180, 110, 0.49);  /* 阴影方向更斜 */
-
-  color: #eae6e2;
-  position: relative;
-}
-
-
-
+      width: 185vmin;
+      height: 185vmin;
+      margin: 60px auto;
+      padding: 20px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      text-align: center;
+      line-height: 1.8;
+      letter-spacing: 0.3px;
+      font-size: clamp(14px, 2.2vmin, 18px);
+    
+      background: radial-gradient(circle at 50% 35%, #f5d4b6 0%, #f3e7dc 100%);
+      border-radius: 50%;
+      box-shadow:
+        0 0 80px rgba(244, 124, 32, 0.06),
+        inset -20px 20px 50px rgba(244, 124, 32, 0.22),
+        inset 0 0 10px rgba(255, 255, 255, 0.4);
+    
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    
+      color: #3e2c1a;
+      position: relative;
+    }
     
     .wrapper::-webkit-scrollbar {
-      display: none; }
+      display: none;
+    }
     
-      @media (max-width: 768px) {
-        .wrapper {
-          width: 100% !important;
-          height: auto !important;
-          max-height: none !important;
-          padding: 0 !important;
-          margin: 0 auto !important;
-      
-          /* 去除视觉样式 */
-          background-color: #10131a;
-
-         background-image:
-         radial-gradient(circle at 45% 30%, rgba(255, 153, 85, 0.18), transparent 60%),
-         radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03), transparent 60%),
-         radial-gradient(circle at 20% 70%, rgba(90, 170, 255, 0.06), transparent 50%);
-
-         backdrop-filter: blur(16px);
-          box-shadow: none !important;
-          border-radius: 0 !important;
-          backdrop-filter: none !important;
-          -webkit-backdrop-filter: none !important;
-      
-          overflow: visible !important;
-        }
+    @media (max-width: 768px) {
+      body {
+        background-color: #f3e7dc;
+        background-image:
+          radial-gradient(circle at 25% 25%, rgba(255, 153, 85, 0.12), transparent 60%),
+          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05), transparent 60%);
       }
-      
     
-
+      .wrapper {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        background: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        overflow: visible !important;
+      }
+    }
     
-    *, *::before, *::after { box-sizing: inherit; }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    
 
     .navbar {
       display: flex;
@@ -162,7 +149,7 @@
       position: relative;
     }
     .nav-links a {
-      color: #eae6e2;
+      color: #3b2b1c;
       text-decoration: none;
       font-weight: 500;
       transition: 0.3s;
@@ -203,7 +190,7 @@
     .hamburger span {
       width: 100%;
       height: 3px;
-      background-color: #eae6e2;
+      background-color: #3e2c1a;
       margin-bottom: 5px;
       border-radius: 2px;
     }
@@ -249,44 +236,7 @@
      }
     }
     
-    @media (max-width: 768px) {
-    .navbar-left {
-     position: absolute;
-     left: 50%;
-     transform: translateX(-50%);
-     text-align: center;
-     }
-    }
-    /* ✅ 通用欢迎语样式：初始隐藏，滑动显示 */
-    .navbar-welcome {
-     visibility: hidden;
-     opacity: 0;
-     pointer-events: none;
-      
-     
-     position: sticky;
-    top: 0;
-    background-color: transparent;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    color: #eae6e2;
-    z-index: 999;
-    transition: background-color 0.4s ease, color 0.4s ease
     
-    }
-
-    /* ✅ 滚动后触发显示 */
-    .navbar-welcome.show-on-scroll {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    @media (max-width: 768px) {
-     .navbar-welcome {
-      display: none !important;
-     }
-    }
 
     
 
@@ -313,34 +263,55 @@
       font-size: 15px;
       font-weight: 600;
       margin-bottom: 20px;
-      color: #eae6e2;
+      color: #5e4533;
     }
     p.subtitle {
       font-size: 16px;
-      color: #eae6e2;
+      color: #5e4533;
       margin-bottom: 30px;
     }
-    .orange-button, .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 14px 32px;
-      background: #f47c20;
-      color: #eae6e2;
-      font-size: 16px;
-      font-weight: 500;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      margin: 30px auto 0;
-      max-width: 300px;
-    }
-    .orange-button:hover, .button:hover {
-      background-color: #e6860d;
-    }
-    .orange-button:active {
-      transform: scale(0.618);
-    }
+    
+.orange-button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700; /* ✅ 更加粗壮有力 */
+  letter-spacing: 0.5px; /* ✅ 稍微拉开字体间距，更清晰 */
+  text-transform: uppercase; 
+  color: #3b2b1c;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15), rgba(244, 124, 32, 0.05));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 20px rgba(244, 124, 32, 0.2),
+    0 0 40px rgba(244, 124, 32, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  border: none;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  max-width: 280px;
+  margin: 30px auto 0;
+  cursor: pointer;
+}
+
+.orange-button:hover, .button:hover {
+  transform: scale(1.5);
+  background-color: rgba(244, 124, 32, 0.12);
+  box-shadow:
+    0 0 32px rgba(244, 124, 32, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.orange-button:active {
+  transform: scale(0.95);
+}
+
+
+
+
     @media (max-width: 768px) {
      .orange-button,
      .button {
@@ -361,7 +332,7 @@
       backdrop-filter: blur(10px);
        -webkit-backdrop-filter: blur(10px);
        box-shadow: 0 8px 24px rgba(244, 124, 32, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
-      color: #eae6e2; /* 确保文字对比清晰 */
+      color: #3b2b1c; /* 确保文字对比清晰 */
       }
     }
 
@@ -381,7 +352,7 @@
     .sushi-title {
       font-size: 28px;
       font-weight: 600;
-      color: #eae6e2;
+      color: #3b2b1c;
       margin: 0;
       white-space: nowrap;
       transform: translateX(45px);
@@ -497,18 +468,22 @@
     }
     
     .navbar {
-      height: 50px; /* ⬅️ 跟 logo 高度协调 */
+      height: 50px;
       padding: 0 20px;
-      backdrop-filter: blur(10px);
-      background: rgba(31, 40, 51, 0.3);
-      backdrop-filter: blur(12px);
-   
-
+    
+      background: rgba(243, 231, 220, 0.6); /* 半透明奶油底 */
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    
       box-shadow:
-      0 0 80px rgba(102, 252, 241, 0.15),   /* 蓝光晕 */
-      0 0 120px rgba(243, 156, 18, 0.05);   /* 橙散光 */
-      }
-    }
+        0 6px 16px rgba(244, 124, 32, 0.08),
+        inset -12px 12px 28px rgba(244, 124, 32, 0.24),
+        inset 0 0 8px rgba(255, 255, 255, 0.4);
+    
+     
+      transition: background 0.3s ease;
+    }}
+    
 
 
     @keyframes spin {
@@ -630,42 +605,45 @@
     
 
     #smartActionBtn {
-     display: flex;
-     position: fixed;
-     bottom: 20px;
-     right: 30px;
-      width: 60px;
-     height: 60px;
-   
-      background:transparent; /* 比主背景稍浅或更透明 */
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      box-shadow: 0 8px 24px rgba(244, 124, 32, 0.058), 0 0 0 1px rgba(255, 255, 255, 0.013);
-     border-radius: 16px;
+      display: flex;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      width: 64px;
+      height: 64px;
     
-     align-items: center;
-     justify-content: center;
-     border: none;
-     cursor: pointer;
-     z-index: 9999;
-     opacity: 0;
-     pointer-events: none;
-     transition: opacity 0.4s ease, transform 0.2s ease;
+      background: rgba(255, 255, 255, 0.3); /* 淡奶油透明背景 */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    
+      border-radius: 50%;
+      box-shadow:
+        0 4px 12px rgba(244, 124, 32, 0.1),
+        inset 0 0 4px rgba(255, 255, 255, 0.4);
+    
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.2s ease;
     }
-
+    
     #smartActionBtn.show {
-     opacity: 1;
-     pointer-events: auto;
+      opacity: 1;
+      pointer-events: auto;
     }
-
+    
     #smartActionBtn:active {
-     transform: scale(0.95);
+      transform: scale(0.95);
     }
-
+    
     #smartActionIcon path {
-     fill: #f47c20;
-     transition: all 0.3s ease;
-     }
+      fill: #3b2b1c;
+      transition: all 0.3s ease;
+    }
     
 
 
@@ -702,7 +680,7 @@
      transition: color 0.3s ease;
     }
     #postcode-title.highlight {
-     color: #f47c20 !important;
+     color: #3e2c1a !important;
     }
     
     #splash-screen {
@@ -733,7 +711,7 @@
      position: absolute;
      right: 40px;
      font-size: 16px;
-     color: #eae6e2;
+     color: #5e4533;
   
      font-weight: 600;
      cursor: pointer;
@@ -778,7 +756,7 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 8px;
-      color: #eae6e2;
+      color: #5e4533;
       transition: color 0.3s ease; /* ✅ 统一过渡动画 */
     }
     
@@ -807,7 +785,7 @@
     .tagline {
      font-size: 18px;
      font-weight: 500;
-     color: #eae6e2;
+     color: #3b2b1c;
      margin-bottom: 8px;
      text-align: center;
      letter-spacing: 0.5px;
@@ -823,23 +801,25 @@
         max-width: 100%;
         margin: 32px auto;
         padding: 20px 24px;
-        
-        backdrop-filter: blur(10px);
-        background: rgba(31, 40, 51, 0.3);
-        backdrop-filter: blur(12px);
+      
+        background: rgba(243, 231, 220, 0.6); /* 半透明奶油底 */
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      
         border-radius: 16px;
-
+      
         box-shadow:
-        0 0 80px rgba(102, 252, 241, 0.15),   /* 蓝光晕 */
-        0 0 120px rgba(243, 156, 18, 0.05);   /* 橙散光 */
-       color: #eae6e2;
+          0 6px 18px rgba(244, 124, 32, 0.1),
+          inset -12px 12px 28px rgba(244, 124, 32, 0.2),
+          inset 0 0 8px rgba(255, 255, 255, 0.4);
+      
+        color: #3e2c1a;
         position: relative;
         overflow: hidden;
       }
-    
-      
-    
-      .readable-content p, .readable-content h2, .readable-content li {
+      .readable-content p,
+      .readable-content h2,
+      .readable-content li {
         position: relative;
         z-index: 1;
       }
@@ -849,14 +829,6 @@
         50% { transform: scale(1.2); opacity: 0.3; }
       }
     }
-    
-
-  .readable-content p {
-    padding-left: 4vw;
-    padding-right: 4vw;
-    margin-bottom: 16px;
-    text-align: center; /* ✅ 段落内容左对齐 */
-  }
   @media (max-width: 768px) {
     .readable-content {
     
@@ -921,11 +893,13 @@
   width: 50px;
   height: 40px;
   vertical-align: middle;
-  margin-right: -7.3px;
-  margin-left: -4.8px;
+  margin-right: -7.5px;
+  margin-left: -5px;
   margin-top: -31px;
   margin-bottom: -16px;
+  filter: brightness(0) saturate(100%) invert(16%) sepia(28%) saturate(927%) hue-rotate(358deg) brightness(95%) contrast(90%);
 }
+
 
 #homeButtonFloating {
   display: flex;
@@ -961,7 +935,7 @@
 
 /* 图标颜色一致 */
 #homeButtonIcon path {
-  fill: #f47c20;
+  fill: #3b2b1c;
   transition: all 0.3s ease;
 }
 
@@ -1001,7 +975,7 @@
       0 0 40px rgba(244, 124, 32, 0.1),
       0 0 60px rgba(244, 124, 32, 0.05);
     backdrop-filter: blur(10px);
-  }
+  }}
 
  
 
@@ -1016,7 +990,7 @@
  }
 
  #smartActionIcon path {
-  fill: #f47c20;
+  fill: #3b2b1c;
   transition: all 0.3s ease;
   }
   @media (hover: hover) and (pointer: fine) {
@@ -1052,30 +1026,13 @@
     }
   
     #over.scroll-offset {
-      scroll-margin-top: 330px;
+      scroll-margin-top: 540px;
     }
    #waarom.scroll-offset {
       scroll-margin-top: 500px;
     }
   }
-  
-  @media (min-width: 768px) {
-    .section-divider {
-      height: 2px;
-  max-width: 640px;
-  margin: 60px auto;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 80%);
-  border-radius: 999px;
-  filter: blur(0.8px);
-  opacity: 0.7;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .section-divider {
-      display: none;
-    }
-  }
+ 
 /* 默认隐藏 */
 .dots-divider {
   display: none;
@@ -1086,12 +1043,13 @@
   .dots-divider {
     display: block;
     text-align: center;
-    font-size: 24px;
-    color: #999;
-    margin: 40px 0;
-    letter-spacing: 10px;
+    font-size: 18px;
+    color: #61443a;
+    margin: 0px 0;
+    letter-spacing: 6px;
   }
 }
+
 
 
 
@@ -1210,7 +1168,8 @@
 
     <p class="tagline">Jouw smaak. Jouw stijl. Onze sushi – ambachtelijk en dagvers, voor afhalen of bezorging in Oegstgeest en omstreken.</p></div>
 
-    <div class="section-divider"></div>
+    <div class="dots-divider">• • •</div>
+
 
       <div class="readable-content">
         
@@ -1234,7 +1193,7 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
       </div>
       
       <div class="spacer"></div>
-      <div class="section-divider"></div>
+      <div class="dots-divider">• • •</div>
 
       <div class="readable-content">
         <h2 id="aanraders" class="scroll-offset">Onze Aanraders</h2>
@@ -1264,7 +1223,7 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
     <a href="https://www.sushinova.nl" target="_blank" class="orange-button">Bestel Nu</a></div>
     
     <div class="spacer"></div>
-    <div class="section-divider"></div>
+    <div class="dots-divider">• • •</div>
 
     <div class="readable-content">
       <h2 id="bubbletea" class="scroll-offset section-title">Bubble Tea🧋</h2>
@@ -1303,14 +1262,14 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
     
     
     <div class="spacer"></div>
-    <div class="section-divider"></div>
+    <div class="dots-divider">• • •</div>
 
     <div class="readable-content">
       <h2 id="over" class="scroll-offset">
      Over Sushi Nova
       </h2>
       
-      <p class="about" style="color: #eae6e2; opacity: 0.8;">
+      <p class="about" style="opacity: 0.8;">
         Sushi Nova is een familiezaak – klein, toegewijd en met oog voor detail.  
         Al meer dan 15 jaar creëren we met de hand verfijnde sushi, bereid met dagverse ingrediënten en een geheimzinnige huisstijl die je niet overal proeft.  
         Elke rol vertelt iets over ons: zorg, precisie, smaak – en iets wat je pas bij de eerste hap begrijpt.  
@@ -1324,14 +1283,14 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
     
     
     <div class="spacer"></div>
-    <div class="section-divider"></div>
+    <div class="dots-divider">• • •</div>
 
     <div class="readable-content">
     <h2 id="tijden" class="scroll-offset">Openingstijden</h2>
     <p class="about">
       Maandag t/m zondag: 12:00 - 20:00
     </p></div>
-    <div class="section-divider"></div>
+    <div class="dots-divider">• • •</div>
     <div class="readable-content">
     <h2 id="contact" class="scroll-offset">Contact </h2>
 
@@ -1406,7 +1365,7 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
 
 
     
-    <div class="section-divider"></div>
+    <div class="dots-divider">• • •</div>
 
   
   <div class="readable-content">
@@ -1416,18 +1375,18 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
   
     <!-- 🔍 Postcode Check -->
     <div id="postcode-checker" class="scroll-offset" style="margin-bottom: 30px; z-index: 2; position: relative;">
-      <p id="postcode-title" style="color: white; font-size: 20px; margin-bottom: 16px;">
+      <p id="postcode-title" style="margin-bottom: 16px;font-size: 15px;">
         Voer uw postcode in om te controleren of we bij u bezorgen:
       </p>
       <input type="text" id="postcodeInput" placeholder="Bijv. 2341"
              style="padding: 10px; font-size: 16px; border-radius: 8px; border: none; max-width: 120px; text-align: center;" />
       <button onclick="checkPostcode()"
-              style="padding: 10px 20px; margin-left: 10px; font-size: 16px; background-color: #f47c20; color: white; border: none; border-radius: 8px; cursor: pointer;">
+              style="padding: 10px 20px; margin-left: 10px; font-size: 16px; background-color: #3e2c1a; color: white; border: none; border-radius: 8px; cursor: pointer;">
         Controleer
       </button>
       
       
-      <p id="postcodeResult" style="margin-top: 15px; font-size: 16px;"></p>
+      <p id="postcodeResult" style="margin-top: 15px; font-size: 18px;"></p>
     </div>
   
     <!-- 🖼️ 配送地图图像（替代 iframe） -->
@@ -1437,57 +1396,57 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
     </div>
   
     <!-- 📍 Postcode list -->
-    <p style="margin-top: 20px; color: #ccc; font-size: 16px; z-index: 2; position: relative;">
+    <p style="margin-top: 20px; color: black; font-size: 16px; z-index: 2; position: relative;">
       Wij bezorgen in de volgende postcodegebieden:<br>
       <strong>2341, 2342, 2343, 2333, 2334, 2231, 2232, 2361, 2235</strong>
     </p>
   </section></div>
   <div class="spacer"></div>
-  <div class="section-divider"></div>
+  <div class="dots-divider">• • •</div>
 
   <div class="readable-content">
     <h2 id="faq" class="scroll-offset section-title">Veelgestelde Vragen</h2>
   
     <p>
-      <strong style="color: #eae6e2;">1. Zijn jullie sushi glutenvrij?</strong><br>
-      <span style="color: #eae6e2; opacity: 0.8;">
+      <strong >1. Zijn jullie sushi glutenvrij?</strong><br>
+      <span style="opacity: 0.8;">
         Nee, onze sushi is niet volledig glutenvrij. Sommige ingrediënten zoals sojasaus bevatten gluten.
       </span>
     </p>
   
     <p>
-      <strong style="color: #eae6e2;">2. Hebben jullie vegetarische of veganistische opties?</strong><br>
-      <span style="color: #eae6e2; opacity: 0.8;">
+      <strong >2. Hebben jullie vegetarische of veganistische opties?</strong><br>
+      <span style="opacity: 0.8;">
         Onze vegetarische opties bevatten soms <strong style="color: #f47c20;">ei (tamago)</strong> en zijn dus niet volledig vegan. 
         Voor speciale wensen, neem gerust contact met ons op.
       </span>
     </p>
   
     <p>
-      <strong style="color: #eae6e2;">3. Waar komt jullie vis vandaan?</strong><br>
-      <span style="color: #eae6e2; opacity: 0.8;">
+      <strong >3. Waar komt jullie vis vandaan?</strong><br>
+      <span style=" opacity: 0.8;">
         Onze vis komt dagelijks vers van <strong style="color: #f47c20;">Fix Fisch</strong> in Rijnsburg.
       </span>
     </p>
   
     <p>
-      <strong style="color: #eae6e2;">4. Hoe kan ik bestellen?</strong><br>
-      <span style="color: #eae6e2; opacity: 0.8;">
+      <strong >4. Hoe kan ik bestellen?</strong><br>
+      <span style=" opacity: 0.8;">
         Bestellen gaat makkelijk via onze website: 
         <a href="https://www.sushinova.nl" target="_blank" style="color: #f47c20;">sushinova.nl</a>.
       </span>
     </p>
   
     <p>
-      <strong style="color: #eae6e2;">5. Kan ik mijn bestelling aanpassen?</strong><br>
-      <span style="color: #eae6e2; opacity: 0.8;">
+      <strong >5. Kan ik mijn bestelling aanpassen?</strong><br>
+      <span >
         Bel ons zo snel mogelijk via 
         <a href="tel:0622599566" style="color: #f47c20;">06-22599566</a>, dan helpen we je graag verder.
       </span>
     </p>
     <p>
-      <strong style="color: #eae6e2;">6. Wie zijn jullie?</strong><br>
-      <span style="color: #eae6e2; opacity: 0.8;">
+      <strong >6. Wie zijn jullie?</strong><br>
+      <span style="opacity: 0.8;">
         Een kleine familiezaak met liefde voor sushi. Al 15 jaar een vertrouwd recept, nu ook in Oegstgeest.
       </span>
     </p>
@@ -1496,16 +1455,16 @@ De zalm wordt elke dag met de hand gefileerd in onze keuken – samen met verse 
   </div>
   
   
-  <div class="section-divider"></div>
+  <div class="dots-divider">• • •</div>
 
 
 
   <div class="readable-content">
-  <p style="font-size: 13px; color: #999; text-align: center;">
+  <p style="font-size: 13px;  text-align: center;">
     Sushi Nova – premium sushi bezorgservice in Oegstgeest en Leiden. Bestel verse sushi, poke bowls en unieke boxen eenvoudig online.
   </p></div>
   
-  <footer style="text-align: center; padding: 20px 0; color: #888888; font-size: 14px;">
+  <footer style="text-align: center; padding: 20px 0; font-size: 14px;">
        © 2025 Sushi Nova
   </footer></div></div>
  
