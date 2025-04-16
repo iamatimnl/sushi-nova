@@ -293,13 +293,10 @@
   text-transform: none; /* ❌ 去掉全大写，更自然温和 */
   color: #3b2b1c;
   
-  background: rgba(255, 255, 255, 0.25); /* ✅ 更素雅、温润 */
+  background: transparent; /* 半透明背景 */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
-  box-shadow:
-    0 2px 6px rgba(244, 124, 32, 0.08),
-    inset 0 0 0 0.5px rgba(255, 255, 255, 0.3); /* ✨ 精致的微内边框 */
+  box-shadow: 0 8px 24px rgba(244, 124, 32, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.03); /* ✨ 精致的微内边框 */
 
   border: none;
   text-decoration: none;
