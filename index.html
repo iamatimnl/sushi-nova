@@ -296,6 +296,10 @@
   background: rgba(255, 255, 255, 0.1); /* ✅ 更轻柔的底色 */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+  0 6px 16px rgba(180, 136, 100, 0.08),
+  0 0 0 1px rgba(255, 255, 255, 0.03);
+
 
   border: none;
   text-decoration: none;
@@ -313,12 +317,6 @@
     inset 0 0 0 0.5px rgba(255, 255, 255, 0.3);
 }
 
-.orange-button:active, .button:active {
-  transform: scale(0.98);
-  box-shadow:
-    0 3px 10px rgba(180, 120, 60, 0.18),
-    inset 0 0 0 0.5px rgba(255, 255, 255, 0.3);
-}
 
 
 
