@@ -286,23 +286,25 @@
   align-items: center;
   justify-content: center;
   padding: 12px 28px;
-  border-radius: 40px;
+  border-radius: 12px; /* ✅ 从 40px 改为 12px，更干练 */
   font-size: 16px;
-  font-weight: 700; /* ✅ 更加粗壮有力 */
-  letter-spacing: 0.5px; /* ✅ 稍微拉开字体间距，更清晰 */
-  text-transform: uppercase; 
+  font-weight: 600; /* ✅ 稍减，去除“膨胀感” */
+  letter-spacing: 0.4px;
+  text-transform: none; /* ❌ 去掉全大写，更自然温和 */
   color: #3b2b1c;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15), rgba(244, 124, 32, 0.05));
+  
+  background: rgba(255, 255, 255, 0.25); /* ✅ 更素雅、温润 */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
   box-shadow:
-    0 0 20px rgba(244, 124, 32, 0.2),
-    0 0 40px rgba(244, 124, 32, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.06);
+    0 2px 6px rgba(244, 124, 32, 0.08),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.3); /* ✨ 精致的微内边框 */
+
   border: none;
   text-decoration: none;
   transition: all 0.3s ease;
-  max-width: 280px;
+  max-width: 260px;
   margin: 30px auto 0;
   cursor: pointer;
 }
