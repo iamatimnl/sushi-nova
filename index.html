@@ -1133,7 +1133,8 @@
   <div class="side-menu" id="sideMenu">
     <button class="close-btn" id="closeBtn" aria-label="Sluit menu">×</button>
     <ul>
-      <li><a href="#topLogo" id="homeButton">Home</a></li>
+      <li><a href="#" id="homeButton">Home</a></li>
+
       <li><a href="#waarom">Waarom Sushi Nova</a></li>
 
       
@@ -1169,7 +1170,7 @@
         </a>
     </div>
 
-    <div class="readable-content" id="topLogo">
+     <div class="readable-content">
     <div class="title-with-windmill">
 
      <h1 id="welkom" class="sushi-title">Welkom bij Sushi Nova</h1>
@@ -1989,7 +1990,16 @@
   });
 </script>
  
- 
+ <script>
+  document.getElementById("homeButton").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.getElementById("topLogo").scrollIntoView({
+      behavior: "smooth",
+      block: "start"  // 或 "center" 根据需要调整
+    });
+  });
+</script>
+
   
  
 </body>
