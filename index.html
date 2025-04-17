@@ -610,7 +610,19 @@
     
 
 
-    
+    .glow-background {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: glow 4s ease-in-out infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
     
     
 
@@ -826,7 +838,7 @@
       inset 0 1px 1px rgba(255,255,255,0.5),
       inset 0 -4px 8px rgba(244, 124, 32, 0.08);
 
-  
+   
 
     color: #3e2c1a;
     font-size: 13.5px;
@@ -858,7 +870,11 @@
         font-size: 14px !important;
       }
     
-     
+      @keyframes pulseGlow {
+        0%, 100% { transform: scale(1); opacity: 0.15; }
+        50% { transform: scale(1.2); opacity: 0.3; }
+      }
+    }
    
   
 .close-btn {
@@ -1990,10 +2006,6 @@
   });
 </script>
 
-  
- 
-</body>
-</html>
   
  
 </body>
