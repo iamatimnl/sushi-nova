@@ -22,6 +22,8 @@
   <link rel="apple-touch-icon" href="/icon-192.png">
 
 
+ 
+  
   <style>
     html, body {
       margin: 0;
@@ -96,7 +98,7 @@
     
     @media (max-width: 768px) {
       body {
-        background-color: #f3e1cd;
+        background-color: #f5ecdd;
         
       }
 
@@ -202,8 +204,8 @@
       align-items: center;
     
       position: fixed;
-      bottom: 8px;
-      right: 6px;
+      bottom: 6px;
+      right: 40px;
       transform: translateX(-50%);
     
       width: 64px;
@@ -818,16 +820,14 @@
     
       .readable-content,
       .readable-intro {
-        background-color: rgba(248, 229, 210, 0.08); /* 奶茶米白 */
+        background-color: rgba(249, 243, 231, 0.92); /* 奶茶米白 + 毛玻璃效果 */
         border-radius: 16px;
-        margin: 24px auto;
         padding: 20px 24px;
+        max-width: 600px;
+        margin: 24px auto;
       
-        box-shadow:
-  inset 0 3px 6px rgba(244, 124, 32, 0.15),   /* 顶部内阴影稍加强 */
-  inset 0 -3px 6px rgba(244, 124, 32, 0.12),  /* 底部内阴影加深一点点 */
-  0 4px 16px rgba(180, 136, 100, 0.04);       /* 外部浮影减轻一点，优雅 */
-
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.03);
       
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
@@ -839,6 +839,7 @@
         overflow: hidden;
         transition: all 0.3s ease;
       }
+      
       
       .readable-content p,
       .readable-content h2,
@@ -856,7 +857,7 @@
       }
     
       h3 {
-        font-size: 14px !important;
+        font-size: 15px !important;
       }
     
     } /* ✅ 正确关闭 media 查询 */
@@ -925,7 +926,7 @@
   position: fixed;
   bottom: 10px;
 
-  right: 30%;
+  right: 42%;
   width: 64px;
   height: 64px;
   background:transparent; /* 比主背景稍浅或更透明 */
@@ -961,7 +962,7 @@
   display: flex;
   position: fixed;
   bottom: 10px;
-  left: 30%;
+  right: 0px;
    width: 64px;
   height: 64px;
 
@@ -1078,8 +1079,8 @@
 #callButton {
   display: flex;
   position: fixed;
-  bottom: 8px;
-  left: 20px;
+  bottom: 7px;
+  left: 0px;
   width: 64px;
   height: 64px;
   background:transparent; /* 比主背景稍浅或更透明 */
@@ -1113,7 +1114,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: rgba(255, 248, 240, 0.75); /* 和纸感奶油白 */
+  background-color: #fffaf8; /* 和纸感奶油白 */
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -1151,6 +1152,42 @@
     }}d
 
 
+
+
+    #mapRouteButton {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      #mapRouteButton {
+        display: flex;
+        position: fixed;
+        bottom: 5px;
+        left: 70px;
+        width: 64px;
+        height: 64px;
+        background: transparent;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        z-index: 9999;
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 0.4s ease, transform 0.2s ease;
+      }
+    
+      #mapRouteButton img {
+        width: 28px;
+        height: 28px;
+        opacity: 0.9;
+      }
+    
+      #mapRouteButton:hover {
+        transform: scale(1.1);
+      }
+    }
+    
 
   
 
@@ -1596,7 +1633,14 @@
     </svg>
   </button>
 
+  <button id="mapRouteButton" type="button" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=Ommevoort+4,+2341VT+Oegstgeest', '_blank')" aria-label="Route">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="#3e2c1a" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C10.3 2 8.8 2.6 7.6 3.8C5.2 6.2 5.2 10.2 7.6 12.6L12 17L16.4 12.6C18.8 10.2 18.8 6.2 16.4 3.8C15.2 2.6 13.7 2 12 2ZM12 11C11.2 11 10.5 10.3 10.5 9.5C10.5 8.7 11.2 8 12 8C12.8 8 13.5 8.7 13.5 9.5C13.5 10.3 12.8 11 12 11Z"/>
+    </svg>
+  </button>
   
+
+
   
 
   <script>
