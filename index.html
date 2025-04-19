@@ -77,14 +77,17 @@
       color: #3e2c1a;
       position: relative;
     }
-  
-  
+
+    
+    
     @media (max-width: 768px) {
       body {
         background-color: #f3e1cd;
+        
       }
 
       .wrapper {
+        
         width: 100% !important;
         height: auto !important;
         max-height: none !important;
@@ -105,20 +108,22 @@
  
     
 
-    .navbar {
-      display: flex;
-      justify-content: center;  /* 使所有内容水平方向居中 */
-      align-items: center;      /* 使所有内容垂直方向居中 */
-      height: 46px;             /* 增加高度来确保有足够空间 */
-      padding: 0 24px;          /* 设置合适的内边距 */
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background-color: transparent;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      
+    @media (min-width: 768px) {
+      .navbar {
+        display: flex;
+        justify-content: center;  /* 水平居中 */
+        align-items: center;      /* 垂直居中 */
+        height: 46px;
+        padding: 0 24px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background-color: transparent;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
     }
+    
     
    
     
@@ -177,20 +182,32 @@
     }
 
     .hamburger {
-      display: none;
+      display:flex ;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-end;
-      width: 30px;
-      height: 24px;
+      align-items: center;
+    
+      position: fixed;
+      bottom: 8px;
+      right: 6px;
+      transform: translateX(-50%);
+    
+      width: 64px;
+      height: 64px;
+    
+      border: none;
       cursor: pointer;
-      position: absolute;
-      right: 20px;
-      top: 16px;
-      z-index: 1000;
+      z-index: 9999;
+    
+      transition: opacity 0.4s ease, transform 0.2s ease;
+    }
+    @media (min-width: 769px) {
+      .hamburger {
+        display: none !important;
+      }
     }
     .hamburger span {
-      width: 100%;
+      width: 40%;
       height: 3px;
       background-color: #3e2c1a;
       margin-bottom: 5px;
@@ -328,9 +345,8 @@
     
     @media (max-width: 768px) {
     .nav-links { display: none; }
-    .hamburger { display: flex; }
     .side-menu {
-      background-color: #f3e1cd;
+      background-color: #f3e6cd;
     
      }
 
@@ -449,42 +465,49 @@
       display: none;
     }
     @media (max-width: 768px) {
-    .navbar-logo-mobile {
-     display: flex;
-     justify-content: center;
-      align-items: center;
-      height: 40px; /* ✅ 控制容器高度，避免撑高 navbar */
-      padding: 0;
-      margin: 0 auto;
-    }
-    
-    .navbar-logo-mobile img {
-      height: 100%; /* ✅ 让图片等于容器高度 */
-      width:auto;
-      object-fit: contain;
-    }
-    
-    .wrapper .logo {
-      display: none;
-    }
-    
-    .navbar {
-      height: 50px;
-      padding: 0 20px;
-    
-       background-color:#f3e1cd;  /* 半透明奶油底 */
-       .navbar {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.094);
+      .navbar {
+        position: fixed !important;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        background-color: transparent;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        transform: translateY(0);  /* 初始正常显示 */
       }
-       /* 底部阴影色 */ 
+    
+      .navbar.hidden {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(-100%); /* 👈 滑动消失向上飞出 */
+      }
+    
+      .navbar-logo-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        margin: 0 auto;
+        transition: opacity 0.2s ease; /* 👈 如果你单独想控制 logo，也可以 */
+      }
+    
+      .navbar-logo-mobile img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+      }
+    } 
+      .navbar-logo-mobile img {
+       position: relative;  /* 防止脱离文档流 */
+       z-index: auto;        /* 不要设得太高 */
+       transition: opacity 0.3s ease;
+      }
     
     
     
-     
-      transition: background 0.3s ease;
-    }}
+      
     
-
 
     @keyframes spin {
       from { transform: rotate(30deg); }
@@ -562,7 +585,19 @@
       position: relative;
     }
   
+    @media (max-width: 768px) {
+      .wrapper .logo {
+        display: none;
+      }
+    }
     
+    @media (min-width: 769px) {
+      .wrapper .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   
     @keyframes zoomSequence {
       0%   { transform: translateY(10vh) scale(0.6); opacity: 0; }
@@ -585,10 +620,7 @@
       .readable-content h3 { font-size: 18px; }
     }
        
-    @media (max-width: 768px) {
-      .logo {
-        margin-bottom: 0;
-      }
+   
     
       .sushi-title {
         margin-top: 0;
@@ -598,7 +630,7 @@
         margin-top: 0;
         margin-bottom: 10px;
       }
-    }
+    
     
 
 
@@ -618,46 +650,7 @@
     
     
 
-    #smartActionBtn {
-      display: flex;
-      position: fixed;
-      bottom: 20px;
-      right: 30px;
-      width: 64px;
-      height: 64px;
     
-      background: rgba(255, 255, 255, 0.3); /* 淡奶油透明背景 */
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    
-      border-radius: 50%;
-      box-shadow:
-        0 4px 12px rgba(244, 124, 32, 0.1),
-        inset 0 0 4px rgba(255, 255, 255, 0.4);
-    
-      align-items: center;
-      justify-content: center;
-      border: none;
-      cursor: pointer;
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease, transform 0.2s ease;
-    }
-    
-    #smartActionBtn.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    
-    #smartActionBtn:active {
-      transform: scale(0.95);
-    }
-    
-    #smartActionIcon path {
-      fill: #3b2b1c;
-      transition: all 0.3s ease;
-    }
     
 
 
@@ -757,12 +750,7 @@
      }
     }
 
-    @media (max-width: 768px) {
-      .readable-content:first-of-type {
-        margin-top: -20px !important;
-      }
-    }
-    
+   
     
     
     .contact-item {
@@ -806,43 +794,38 @@
     }
 
     @media (max-width: 768px) {
-  .wrapper {
+      .wrapper {
         padding: 0 !important;
       }
-  .readable-intro {
-   margin-top: -1.2px !important;
-  }
-      
+    
+      .readable-intro {
+        margin-top: 45px !important;
+      }
+    
       .readable-content,
-  .readable-intro {
-    width: 100%;
-    max-width: 100%;
-    margin: 20px auto;
-    padding: 20px 24px;
-    background-color: rgba(248, 229, 210, 0.12);
-    border-radius: 16px;
-
-    /* ❌ 不在这里加 border-top，让它由 + 选择器控制 */
-    border-bottom: 1px solid rgba(200, 150, 100, 0.2);
-
-    box-shadow:
-      0 4px 24px rgba(180, 136, 100, 0.062),
-      inset 0 1px 1px rgba(255,255,255,0.5),
-      inset 0 -4px 8px rgba(244, 124, 32, 0.08);
-
-   
-
-    color: #3e2c1a;
-    font-size: 13.5px;
-    line-height: 1.7;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
- 
-    
+      .readable-intro {
+        background-color: rgba(248, 229, 210, 0.08); /* 奶茶米白 */
+        border-radius: 16px;
+        margin: 24px auto;
+        padding: 20px 24px;
       
-    
+        box-shadow:
+  inset 0 3px 6px rgba(244, 124, 32, 0.15),   /* 顶部内阴影稍加强 */
+  inset 0 -3px 6px rgba(244, 124, 32, 0.12),  /* 底部内阴影加深一点点 */
+  0 4px 16px rgba(180, 136, 100, 0.04);       /* 外部浮影减轻一点，优雅 */
+
+      
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      
+        color: #3e2c1a;
+        font-size: 13.5px;
+        line-height: 1.7;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      
       .readable-content p,
       .readable-content h2,
       .readable-content li {
@@ -862,7 +845,14 @@
         font-size: 14px !important;
       }
     
-  
+    } /* ✅ 正确关闭 media 查询 */
+    
+    /* keyframes 应该写在 media 查询外部！ */
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.15; }
+      50% { transform: scale(1.2); opacity: 0.3; }
+    }
+    
    
   
 .close-btn {
@@ -919,22 +909,19 @@
 #homeButtonFloating {
   display: flex;
   position: fixed;
-  bottom: 20px;
-  left: 30px;
-  width: 60px;
-  height: 60px;
-  background: transparent; /* 半透明背景 */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 24px rgba(244, 124, 32, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.03);
-  border-radius: 50%;
+  bottom: 10px;
+
+  right: 30%;
+  width: 64px;
+  height: 64px;
+  background:transparent; /* 比主背景稍浅或更透明 */
   align-items: center;
   justify-content: center;
   border: none;
   cursor: pointer;
   z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.4s ease, transform 0.2s ease;
 }
 
@@ -959,23 +946,20 @@
 #smartActionBtn {
   display: flex;
   position: fixed;
-  bottom: 20px;
-  right: 30px;
+  bottom: 10px;
+  left: 30%;
    width: 64px;
   height: 64px;
 
    background:transparent; /* 比主背景稍浅或更透明 */
-   backdrop-filter: blur(10px);
-   -webkit-backdrop-filter: blur(10px);
-   box-shadow: 0 8px 24px rgba(244, 124, 32, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.03);
-  border-radius: 50%;
+  
  
   align-items: center;
   justify-content: center;
   border: none;
   cursor: pointer;
   z-index: 9999;
-  opacity: 0;
+  
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.2s ease;
  }
@@ -1064,8 +1048,93 @@
     letter-spacing: 6px;
   }
 }
+.navbar-logo-mobile-wrapper {
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.navbar-logo-mobile-wrapper.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+#callButton {
+  display: flex;
+  position: fixed;
+  bottom: 8px;
+  left: 20px;
+  width: 64px;
+  height: 64px;
+  background:transparent; /* 比主背景稍浅或更透明 */
 
 
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s ease, transform 0.2s ease;
+}
+@media (min-width: 769px) {
+  #callButton {
+    display: none !important;
+  }
+}
+
+#bottomBar {
+  position: fixed;
+  bottom: 10px; /* ← 上浮一点，让下圆角看得见 */
+  left: 0;
+  width: calc(100% - 20px);
+  margin: 0 10px;
+
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(255, 248, 240, 0.75); /* 和纸感奶油白 */
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 16px; /* ← 四个角都圆 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+@media (min-width: 769px) {
+  #bottomBar {
+    display: none !important;
+  }
+}
+
+
+.bar-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #3e2c1a; /* 深棕点缀字体 */
+  font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+}
+
+ /* ✅ 只在桌面端设置专属位置 */
+@media (min-width: 769px) {
+  #homeButtonFloating {
+    left: 20px;
+  }}
+
+  @media (min-width: 769px) {
+    #smartActionBtn {
+      right: 20px !important; /* 👈 保证在右下角 */
+      left: auto !important;  /* ✅ 防止被移动到左边 */
+    }}d
 
 
 
@@ -1080,9 +1149,13 @@
   <div class="navbar" id="navbar">
   <div class="navbar-left">
   </div>
-  <div class="navbar-logo-mobile">
-    <img src="https://i.postimg.cc/05fLqS5M/o.png" alt="Sushi Nova Logo" />
+  
+  <div class="navbar-logo-mobile-wrapper">
+    <div class="navbar-logo-mobile">
+      <img src="https://i.postimg.cc/05fLqS5M/o.png" alt="Sushi Nova Logo" />
+    </div>
   </div>
+  
     <ul class="nav-links">
       <li class="desktop-only"><a href="#logoAnchor" id="homeButton">Home</a></li>
       
@@ -1116,13 +1189,9 @@
     </div>
     
   
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+   
   </div>
-
+ 
   <div class="side-menu" id="sideMenu">
     <button class="close-btn" id="closeBtn" aria-label="Sluit menu">×</button>
     <ul>
@@ -1484,7 +1553,14 @@
        © 2025 Sushi Nova
   </footer></div></div>
  
-
+  <div id="bottomBar">
+   
+</div>
+<div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
   <button id="smartActionBtn" type="button" title="Bestel nu" aria-label="Smart Button">
     <svg id="smartActionIcon" width="45" height="28" viewBox="0 0 24 24" fill="none">
       <!-- 默认图标是购物车 -->
@@ -1500,6 +1576,13 @@
       <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z" fill="white"/>
     </svg>
   </button>
+  <button id="callButton" onclick="makeCall()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="#3e2c1a" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.6 10.8C8.5 14.7 11.3 17.5 15.2 19.4L17.6 17C17.9 16.7 18.3 16.6 18.7 16.7C20 17 21.4 17.2 22 17.3C22.6 17.4 23 17.9 23 18.5V22C23 22.6 22.6 23 22 23C10.4 23 1 13.6 1 2C1 1.4 1.4 1 2 1H5.5C6.1 1 6.6 1.4 6.7 2C6.8 2.6 7 4 7.3 5.3C7.4 5.7 7.3 6.1 7 6.4L4.6 8.8C5.2 9.9 5.8 10.5 6.6 10.8Z"/>
+    </svg>
+  </button>
+
+  
   
 
   <script>
@@ -1994,6 +2077,59 @@
   });
 </script>
 
+<script>
+  function makeCall() {
+    window.location.href = "tel:0622599566"; // 台湾电话格式 OK
+  }
+  </script>
+  
+
+  <script>
+    let lastTouchY = 0;
+    let currentOpacity = 0.98; // 默认加载时为最大不透明
+    const minOpacity = 0.1;
+    const maxOpacity = 0.98;
+    
+    // 获取元素
+    const bar = document.getElementById('bottomBar');
+    const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
+    
+    // 设置初始透明度（页面刚加载时）
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.scrollY <= 0) {
+        currentOpacity = maxOpacity;
+        if (bar) bar.style.opacity = currentOpacity;
+        if (logoBar) logoBar.style.opacity = currentOpacity;
+      }
+    });
+    
+    // 开始监听触摸
+    document.addEventListener('touchstart', (e) => {
+      lastTouchY = e.touches[0].clientY;
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchY - lastTouchY;
+    
+      if (deltaY > 0) {
+        currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
+      } else if (deltaY < 0) {
+        currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
+      }
+    
+      const opacityValue = currentOpacity.toFixed(2);
+      if (bar) bar.style.opacity = opacityValue;
+      if (logoBar) logoBar.style.opacity = opacityValue;
+    
+      lastTouchY = touchY;
+    });
+    </script>
+    
+    
+    
+    
+    
   
  
 </body>
