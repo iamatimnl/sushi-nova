@@ -3,8 +3,8 @@
   "short_name": "SushiNova",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f3e1cd",
-  "theme_color": "#f47c20",
+  "background_color": "#f5ecdd",
+  "theme_color": "rgba(249, 243, 231, 0.92)",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -18,4 +18,5 @@
     }
   ]
 }
+
 
