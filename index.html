@@ -2134,46 +2134,59 @@
   
 
   <script>
+  (function () {
     let lastTouchY = 0;
-    let currentOpacity = 0.98; // 默认加载时为最大不透明
+    let currentOpacity = 0.9; // 默认加载时设置为 0.9 不透明
     const minOpacity = 0.1;
     const maxOpacity = 0.9;
-    
-    // 获取元素
+
     const bar = document.getElementById('bottomBar');
     const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
-    
-    // 设置初始透明度（页面刚加载时）
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.scrollY <= 0) {
-        currentOpacity = maxOpacity;
-        if (bar) bar.style.opacity = currentOpacity;
-        if (logoBar) logoBar.style.opacity = currentOpacity;
-      }
+
+    function updateOpacity(opacity) {
+      if (bar) bar.style.opacity = opacity;
+      if (logoBar) logoBar.style.opacity = opacity;
+    }
+
+    // ✅ 页面初始载入时设置为 maxOpacity
+    window.addEventListener('load', () => {
+      updateOpacity(maxOpacity);
     });
-    
-    // 开始监听触摸
+
+    // ✅ Home 按钮点击时，也设置为 maxOpacity
+    const homeBtn = document.getElementById("homeButtonFloating");
+    const topNavHomeBtn = document.getElementById("homeButton");
+
+    function handleHomeClickOpacityFix() {
+      updateOpacity(maxOpacity);
+    }
+
+    homeBtn?.addEventListener("click", handleHomeClickOpacityFix);
+    topNavHomeBtn?.addEventListener("click", handleHomeClickOpacityFix);
+
+    // ✅ 滑动触摸逻辑
     document.addEventListener('touchstart', (e) => {
       lastTouchY = e.touches[0].clientY;
     });
-    
+
     document.addEventListener('touchmove', (e) => {
       const touchY = e.touches[0].clientY;
       const deltaY = touchY - lastTouchY;
-    
+
       if (deltaY > 0) {
         currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
       } else if (deltaY < 0) {
         currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
       }
-    
+
       const opacityValue = currentOpacity.toFixed(2);
-      if (bar) bar.style.opacity = opacityValue;
-      if (logoBar) logoBar.style.opacity = opacityValue;
-    
+      updateOpacity(opacityValue);
+
       lastTouchY = touchY;
     });
-    </script>
+  })();
+</script>
+
     <!-- ✅ 放在你所有 script 的最后前面 -->
 <script>
   // 手机模式下强制回到顶部，避免跳到中间锚点（例如 #over）
