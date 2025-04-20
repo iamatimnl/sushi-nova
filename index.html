@@ -305,8 +305,7 @@
       color: #5e4533;
       margin-bottom: 30px;
     }
-    
-.orange-button, .button {
+   .orange-button, .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -316,23 +315,21 @@
   font-weight: 600;
   letter-spacing: 0.4px;
   text-transform: none;
-  color: #3b2b1c;
-
-  background: rgba(255, 255, 255, 0.2); /* ✅ 更轻柔的底色 */
+  color: #2c1a0f;
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow:
-  0 6px 16px rgba(180, 136, 100, 0.18),
-  0 0 0 1px rgba(255, 255, 255, 0.13);
-
-
+    0 6px 16px rgba(180, 136, 100, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.13);
   border: none;
   text-decoration: none;
   transition: all 0.3s ease;
-  max-width: 260px;
+  width: fit-content;
   margin: 30px auto 0;
   cursor: pointer;
-}
+} 
+
 
 .orange-button:hover, .button:hover {
   transform: scale(1.3);
