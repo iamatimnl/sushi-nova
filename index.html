@@ -809,7 +809,7 @@
      letter-spacing: 0.5px;
     }
 
-    @media (max-width: 768px) {
+   @media (max-width: 768px) {
       .wrapper {
         padding: 0 !important;
       }
@@ -818,17 +818,29 @@
         margin-top: 45px !important;
       }
     
-      .readable-intro,
-      .readable-content {
-        max-width: 640px;                  /* 控制整体宽度，避免太宽 */
-        margin: 24px auto;                 /* 上下间距 + 左右居中 */
-        padding: 24px 20px;                /* 卡片内边距，视觉更舒适 */
-        border-radius: 20px;
-        background-color: #f9f3e7;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        font-size: 15px;
+      .readable-content,
+      .readable-intro {
+        background-color: rgba(249, 243, 231, 0.92); /* 奶茶米白 + 毛玻璃效果 */
+        border-radius: 16px;
+        padding: 20px 24px;
+        max-width: 600px;
+        margin: 24px auto;
+      
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      
+        color: #3e2c1a;
+        font-size: 13.5px;
         line-height: 1.7;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
       }
+      
+      
       
       
       
