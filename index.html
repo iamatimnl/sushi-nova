@@ -2174,7 +2174,22 @@
       lastTouchY = touchY;
     });
     </script>
-    
+    <!-- ✅ 放在你所有 script 的最后前面 -->
+<script>
+  window.addEventListener("load", () => {
+    if (window.innerWidth <= 768) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "auto" // 直接瞬移，不要平滑滚动
+        });
+      }, 50); // 稍微等一下，确保元素都加载完
+    }
+  });
+</script>
+
+
     
     
     
