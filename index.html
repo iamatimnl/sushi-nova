@@ -2231,7 +2231,22 @@
       })();
     </script>
       
-
+  <!-- ✅ 插入这里 -->
+  <script>
+    window.addEventListener("load", () => {
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "auto"
+          });
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }, 80);
+      }
+    });
+  </script>
 
 
 </body>
