@@ -1256,9 +1256,8 @@
       <li><a href="#faq">FAQ</a></li>
 
       <li><a href="https://www.sushinova.nl" target="_blank">Bestellen</a></li>
-      <li class="lang-switch-mobile">
-        <a href="0.html">EN</a>
-      </li>
+     <li class="lang-switch-mobile">
+  <a href="/en/">EN</a></li>
     </ul>
   </div>
  
@@ -2247,7 +2246,11 @@
       }
     });
   </script>
-
+<script>
+  document.getElementById("langSwitch").addEventListener("click", function () {
+    window.location.href = "/en/";
+  });
+</script>
 
 </body>
 </html>
