@@ -11,8 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- ✅ PWA 支援 -->
-  <meta name="theme-color" content="#f5ecdd" />
- <!-- 你想要的顶部奶茶色 -->
+  <meta name="theme-color" content="#f3e1cd"> <!-- 你想要的顶部奶茶色 -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- iOS顶部跟随背景色 -->
@@ -819,18 +818,19 @@
         margin-top: 45px !important;
       }
     
-     .readable-intro,
+      .readable-intro,
       .readable-content {
         max-width: 640px;                  /* 控制整体宽度，避免太宽 */
-        margin: 20px auto;                 /* 上下间距 + 左右居中 */
+        margin: 24px auto;                 /* 上下间距 + 左右居中 */
         padding: 24px 20px;                /* 卡片内边距，视觉更舒适 */
         border-radius: 20px;
         background-color: #f9f3e7;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         font-size: 15px;
-        color: #3e2c1a;
         line-height: 1.7;
       }
+      
+      
       
       .readable-content p,
       .readable-content h2,
@@ -2134,79 +2134,99 @@
   
 
   <script>
-  (function () {
     let lastTouchY = 0;
-    let currentOpacity = 0.9; // 默认加载时设置为 0.9 不透明
+    let currentOpacity = 0.98; // 默认加载时为最大不透明
     const minOpacity = 0.1;
-    const maxOpacity = 0.9;
-
+    const maxOpacity = 0.98;
+    
+    // 获取元素
     const bar = document.getElementById('bottomBar');
     const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
-
-    function updateOpacity(opacity) {
-      if (bar) bar.style.opacity = opacity;
-      if (logoBar) logoBar.style.opacity = opacity;
-    }
-
-    // ✅ 页面初始载入时设置为 maxOpacity
-    window.addEventListener('load', () => {
-      updateOpacity(maxOpacity);
+    
+    // 设置初始透明度（页面刚加载时）
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.scrollY <= 0) {
+        currentOpacity = maxOpacity;
+        if (bar) bar.style.opacity = currentOpacity;
+        if (logoBar) logoBar.style.opacity = currentOpacity;
+      }
     });
-
-    // ✅ Home 按钮点击时，也设置为 maxOpacity
-    const homeBtn = document.getElementById("homeButtonFloating");
-    const topNavHomeBtn = document.getElementById("homeButton");
-
-    function handleHomeClickOpacityFix() {
-      updateOpacity(maxOpacity);
-    }
-
-    homeBtn?.addEventListener("click", handleHomeClickOpacityFix);
-    topNavHomeBtn?.addEventListener("click", handleHomeClickOpacityFix);
-
-    // ✅ 滑动触摸逻辑
+    
+    // 开始监听触摸
     document.addEventListener('touchstart', (e) => {
       lastTouchY = e.touches[0].clientY;
     });
-
+    
     document.addEventListener('touchmove', (e) => {
       const touchY = e.touches[0].clientY;
       const deltaY = touchY - lastTouchY;
-
+    
       if (deltaY > 0) {
         currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
       } else if (deltaY < 0) {
         currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
       }
-
+    
       const opacityValue = currentOpacity.toFixed(2);
-      updateOpacity(opacityValue);
-
+      if (bar) bar.style.opacity = opacityValue;
+      if (logoBar) logoBar.style.opacity = opacityValue;
+    
       lastTouchY = touchY;
     });
-  })();
-</script>
-
-    <!-- ✅ 放在你所有 script 的最后前面 -->
-<script>
-  // 手机模式下强制回到顶部，避免跳到中间锚点（例如 #over）
-  window.addEventListener("load", () => {
-    if (window.innerWidth <= 768) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "auto" // 不要平滑，直接跳到顶部
+    </script>
+    <script>
+      (function () {
+        let lastTouchY = 0;
+        let currentOpacity = 0.9; // 默认加载时设置为 0.9 不透明
+        const minOpacity = 0.1;
+        const maxOpacity = 0.9;
+    
+        const bar = document.getElementById('bottomBar');
+        const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
+    
+        function updateOpacity(opacity) {
+          if (bar) bar.style.opacity = opacity;
+          if (logoBar) logoBar.style.opacity = opacity;
+        }
+    
+        // ✅ 页面初始载入时设置为 maxOpacity
+        window.addEventListener('load', () => {
+          updateOpacity(maxOpacity);
         });
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }, 80); // 稍微延迟，确保页面结构加载完成
-    }
-  });
-</script>
-
-
-
+    
+        // ✅ Home 按钮点击时，也设置为 maxOpacity
+        const homeBtn = document.getElementById("homeButtonFloating");
+        const topNavHomeBtn = document.getElementById("homeButton");
+    
+        function handleHomeClickOpacityFix() {
+          updateOpacity(maxOpacity);
+        }
+    
+        homeBtn?.addEventListener("click", handleHomeClickOpacityFix);
+        topNavHomeBtn?.addEventListener("click", handleHomeClickOpacityFix);
+    
+        // ✅ 滑动触摸逻辑
+        document.addEventListener('touchstart', (e) => {
+          lastTouchY = e.touches[0].clientY;
+        });
+    
+        document.addEventListener('touchmove', (e) => {
+          const touchY = e.touches[0].clientY;
+          const deltaY = touchY - lastTouchY;
+    
+          if (deltaY > 0) {
+            currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
+          } else if (deltaY < 0) {
+            currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
+          }
+    
+          const opacityValue = currentOpacity.toFixed(2);
+          updateOpacity(opacityValue);
+    
+          lastTouchY = touchY;
+        });
+      })();
+    </script>
     
     
     
