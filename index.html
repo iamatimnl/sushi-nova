@@ -2176,18 +2176,22 @@
     </script>
     <!-- ✅ 放在你所有 script 的最后前面 -->
 <script>
+  // 手机模式下强制回到顶部，避免跳到中间锚点（例如 #over）
   window.addEventListener("load", () => {
     if (window.innerWidth <= 768) {
       setTimeout(() => {
         window.scrollTo({
           top: 0,
           left: 0,
-          behavior: "auto" // 直接瞬移，不要平滑滚动
+          behavior: "auto" // 不要平滑，直接跳到顶部
         });
-      }, 50); // 稍微等一下，确保元素都加载完
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }, 80); // 稍微延迟，确保页面结构加载完成
     }
   });
 </script>
+
 
 
     
