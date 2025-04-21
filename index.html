@@ -844,6 +844,22 @@
 
       }
     }
+    
+    /* 其他样式... */
+
+.readable-content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.readable-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+    
         
         /* keyframes 应该写在 media 查询外部！ */
         @keyframes pulseGlow {
@@ -2256,6 +2272,41 @@
     window.location.href = "/en/";
   });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll('.readable-content');
+  const dividers = document.querySelectorAll('.dots-divider');
+
+  // 所有 readable-content 一开始都隐藏（不需手动加 class）
+  sections.forEach(section => {
+    section.classList.add('hidden-section');
+  });
+
+  // 所有分隔符也可隐藏（可选）
+  dividers.forEach(divider => {
+    divider.classList.add('hidden-divider');
+  });
+
+  // 使用 IntersectionObserver 检测是否进入视口
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // 只触发一次
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  // 启动监听
+  document.querySelectorAll('.readable-content, .dots-divider').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
+
 
 
 </body>
