@@ -785,22 +785,26 @@
   }
 
   .readable-content,
-  .readable-intro {
-   max-width: 90%;
+.readable-intro {
+  max-width: 90%;
   margin: 24px auto;
   padding: 16px 20px;
   border-radius: 20px;
 
-  background: rgba(255, 255, 255, 0.65); /* 半透明玻璃白 */
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.55); /* 比 0.65 更有通透感 */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 更柔、沉稳 */
-  
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),             /* 外部浮影 */
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),    /* 顶部拉伸高光 */
+    inset 0 -1px 1px rgba(255, 255, 255, 0.2);   /* 底部柔光 */
+
   font-size: 15px;
   line-height: 1.7;
   transition: all 0.3s ease;
-  }
+}
+
 
   .readable-content p,
   .readable-content h2,
