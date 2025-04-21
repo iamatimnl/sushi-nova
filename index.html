@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- ✅ PWA 支援 -->
-  <meta name="theme-color" content="#f5ecdd"> <!-- 你想要的顶部奶茶色 -->
+  <meta name="theme-color" content="#f3e1cd"> <!-- 你想要的顶部奶茶色 -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- iOS顶部跟随背景色 -->
@@ -205,7 +205,7 @@
     
       position: fixed;
       bottom: 6px;
-      right: -28px;
+      right: 40px;
       transform: translateX(-50%);
     
       width: 64px;
@@ -305,25 +305,59 @@
       color: #5e4533;
       margin-bottom: 30px;
     }
-.orange-soft-button {
-  display: inline-block;
-  background-color: #f47c20;
-  color:#f5ecdd;
-  padding: 10px 24px;
-  font-size: 15px;
-  border-radius: 10px;
+    
+.orange-button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: none;
+  color: #3b2b1c;
+
+  background: rgba(255, 255, 255, 0.2); /* ✅ 更轻柔的底色 */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+  0 6px 16px rgba(180, 136, 100, 0.18),
+  0 0 0 1px rgba(255, 255, 255, 0.13);
+
+
+  border: none;
   text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  max-width: 260px;
+  margin: 30px auto 0;
+  cursor: pointer;
 }
 
-.orange-soft-button:hover {
-  background-color: #e86f1c;
-  transform: translateY(-1px);
+.orange-button:hover, .button:hover {
+  transform: scale(1.3);
+  background-color: rgba(210, 140, 90, 0.18); /* 🍯 焦糖杏褐 hover色调 */
+  box-shadow:
+    0 6px 24px rgba(180, 120, 60, 0.22),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.3);
+}
+.orange-button:active, .button:active {
+  transform: scale(0.98);
+  box-shadow:
+    0 3px 10px rgba(180, 120, 60, 0.18),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.3);
 }
 
 
-  
+
+
+
+    @media (max-width: 768px) {
+     .orange-button,
+     .button {
+      display: none !important;
+     }
+    }
     
     @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -775,56 +809,49 @@
      letter-spacing: 0.5px;
     }
 
-   @media (max-width: 768px) {
-  .wrapper {
-    padding: 0 !important;
-  }
-
-  .readable-intro {
-    margin-top: 45px !important;
-  }
-
-  .readable-content,
-  .readable-intro {
-    max-width: 640px;
-    margin: 24px auto;
-    padding: 24px 20px;
-    border-radius: 20px;
-
-    /* 毛玻璃特效 */
-    background: rgba(249, 243, 231, 0.8); /* 半透明奶茶色 */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    /* 投影和浮感 */
-    box-shadow:
-      0 4px 10px rgba(0, 0, 0, 0.05),
-      0 12px 28px rgba(0, 0, 0, 0.06);
-
-    font-size: 15px;
-    line-height: 1.7;
-    transition: all 0.3s ease;
-  }
-
-  .readable-content p,
-  .readable-content h2,
-  .readable-content li {
-    position: relative;
-    z-index: 1;
-  }
-
-  h1 {
-    font-size: 20px !important;
-  }
-
-  h2 {
-    font-size: 17px !important;
-  }
-
-  h3 {
-    font-size: 15px !important;
-  }
-} /* ✅ 正确关闭 media 查询 */
+    @media (max-width: 768px) {
+      .wrapper {
+        padding: 0 !important;
+      }
+    
+      .readable-intro {
+        margin-top: 45px !important;
+      }
+    
+      .readable-intro,
+      .readable-content {
+        max-width: 640px;                  /* 控制整体宽度，避免太宽 */
+        margin: 24px auto;                 /* 上下间距 + 左右居中 */
+        padding: 24px 20px;                /* 卡片内边距，视觉更舒适 */
+        border-radius: 20px;
+        background-color: #f9f3e7;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      
+      
+      
+      .readable-content p,
+      .readable-content h2,
+      .readable-content li {
+        position: relative;
+        z-index: 1;
+      }
+    
+      h1 {
+        font-size: 18px !important;
+      }
+    
+      h2 {
+        font-size: 17px !important;
+      }
+    
+      h3 {
+        font-size: 15px !important;
+      }
+    
+    } /* ✅ 正确关闭 media 查询 */
     
     /* keyframes 应该写在 media 查询外部！ */
     @keyframes pulseGlow {
@@ -889,7 +916,7 @@
   display: flex;
   position: fixed;
   bottom: 10px;
-  border-radius: 50%;
+
   right: 42%;
   width: 64px;
   height: 64px;
@@ -926,10 +953,10 @@
   display: flex;
   position: fixed;
   bottom: 10px;
-  right: 76px;
+  right: 0px;
    width: 64px;
   height: 64px;
- border-radius: 50%;
+
    background:transparent; /* 比主背景稍浅或更透明 */
   
  
@@ -947,7 +974,6 @@
   #homeButtonFloating,
   #smartActionBtn {
     animation: distantStarGlow 6s ease-in-out infinite;
-  
     background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15), rgba(244, 124, 32, 0.05));
     box-shadow:
       0 0 20px rgba(244, 124, 32, 0.3),
@@ -1227,8 +1253,9 @@
       <li><a href="#faq">FAQ</a></li>
 
       <li><a href="https://www.sushinova.nl" target="_blank">Bestellen</a></li>
-     <li class="lang-switch-mobile">
-  <a href="/en/">EN</a></li>
+      <li class="lang-switch-mobile">
+        <a href="0.html">EN</a>
+      </li>
     </ul>
   </div>
  
@@ -1275,21 +1302,21 @@
       <div class="readable-content">
         
         <h2 id="waarom" class="subheading scroll-offset">
-        Wat je kunt ver<img src="https://i.postimg.cc/Hk4YP6cR/089-1.png" alt="icon" class="icon1-title">achten van ons
+        Wat je van ons kunt ver<img src="https://i.postimg.cc/Hk4YP6cR/089-1.png" alt="icon" class="icon1-title">achten 
+
+        </h2>
         </h2>
       
         <p class="about">
-          <strong>Variatie</strong> – Of je nu houdt van klassieke rolls of verrassende combinaties: bij ons vind je volop keuze. Vlees, vis of plantaardig – onze menukaart biedt voor ieder wat wils.
+          <strong>Variatie</strong> – Of je nu houdt van klassieke rolls of juist verrassende combinaties: bij ons vind je volop keuze. Vlees, vis of plantaardig – onze kaart biedt voor ieder wat wils. 
           <br><br>
       
           <strong>Vrijheid</strong> – Jij kiest, wij maken het. Stel zelf je sushi samen met je favoriete vulling, toppings en saus. Roll, bowl of box – alles is mogelijk. Jij bepaalt de smaak, wij zorgen voor de rest.
           <br><br>
       
-          <p>
-  <strong>Versheid</strong> – We gebruiken uitsluitend dagverse ingrediënten. Onze hele zalm en tonijn komen rechtstreeks van Fix Fisch Rijnsburg. <br>
-  In combinatie met verse rijst en geheime huisrecepten proef je dat in elke hap.
-</p>
+          <strong>Versheid</strong> – We gebruiken alleen dagverse ingrediënten. Onze hele zalm en tonijn komen rechtstreeks van Fix Fisch Rijnsburg. Samen met verse rijst en geheime huisrecepten. Dat proef je in elke hap.
 
+        </p>
       </div>
       
       <div class="spacer"></div>
@@ -1300,37 +1327,28 @@
         <h3 id="sushi-boxen" class="section-title scroll-offset">Box</h3>
 
         <ul>
-        <li><strong>Meatlover Box:</strong> Voor de echte vleesliefhebber – met sappige beef, malse kip en heerlijke grillrollen.</li>
-        <li><strong>Oranje Box:</strong> Zalm in topvorm – romig, vers en met precisie gesneden.</li>
-        <li><strong>Veggie Box:</strong> Fris, verrassend en 100% plantaardig – ook zonder vis overheerlijk.</li>
-        <li><strong>All-Star Box:</strong> Een zorgvuldig geselecteerde selectie van favorieten – gevarieerd, smaakvol en altijd een succes.</li>
-        <li><strong>Viva Box:</strong> Een feestelijke mix – kleurrijk, creatief en perfect voor elke party of speciale gelegenheid.</li>
+          <li><strong>Meatlover Box:</strong> Voor de echte vleesliefhebber – met sappige beef, malse kip en heerlijke grillrollen.</li>
+          <li><strong>Oranje Box:</strong> Zalm in topvorm – romig, vers en met precisie gesneden.</li>
+          <li><strong>Veggie Box:</strong> Kleurrijk, verrassend en 100% plantaardig – ook zonder vis overheerlijk.</li>
+          <li><strong>Custom X Box:</strong> Jouw sushi, jouw stijl. Stel je eigen box samen met je favoriete combinaties.</li>
         </ul>
       
         <h3 id="poke-bowls" class="section-title scroll-offset">Poke Bowls</h3>
         <ul>
-        <li><strong>Salmon Bowl:</strong> Verse zalm, edamame, wakame, avocado, komkommer, massago, mais en sesam op sushi-rijst.</li>
-        <li><strong>Vega Bowl:</strong> Avocado, edamame, wakame, komkommer, tamago en tofu – fris en plantaardig.</li>
-        <li><strong>Rainbowl:</strong> Luxe en kleurrijk – met zalm, tonijn, avocado en een regenboog aan masago. Een visueel en culinair feest.</li>
-        <li><strong>Meatlover Bowl:</strong> Teriyaki beef, kip en sappige Japanse karaage – hartig, vullend en onweerstaanbaar.</li>
-        <li><strong>X Bowl:</strong> Stel je eigen bowl samen – kies jouw favoriete basis, toppings en saus. Jouw bowl, jouw smaak.</li>
+          <li><strong>Salmon Bowl:</strong> Verse zalm, edamame, wakame, avocado, komkommer, massago, mais en sesam op sushi-rijst.</li>
+          <li><strong>Vega Bowl:</strong> Avocado, edamame, wakame, komkommer, tamago en tofu – fris en plantaardig.</li>
         </ul>
       
         <h3 id="snacks" class="section-title scroll-offset">Snacks</h3>
-<ul>
-  <li><strong>Gyoza:</strong> Knapperige dumplings met kip.</li>
-  <li><strong>Ebi Fry:</strong> Gefrituurde garnalen met spicy mayo.</li>
-  <li><strong>Tori Karaage:</strong> Japanse gefrituurde kip – mals van binnen, krokant van buiten. Een echte klassieker.</li>
-  <li><strong>Kimchi Komkommer:</strong> Huisgemaakte kimchi-komkommer – fris, zoetzuur en perfect als bijgerecht.</li>
-</ul>
+        <ul>
+          <li><strong>Gyoza:</strong> Knapperige dumplings met kip of groenten.</li>
+          <li><strong>Ebi Fry:</strong> Gefrituurde garnalen met zoete chilisaus.</li>
+        </ul>
+   
       
 
-  <div style="text-align: center; margin: 30px auto;">
-  <a href="https://www.sushinova.nl" target="_blank" class="orange-soft-button">
-    Bekijk Volledig Menu
-  </a>
-</div>
-    </div>
+    <a href="https://www.sushinova.nl" target="_blank" class="orange-button">Bestel Nu</a></div>
+    
     <div class="spacer"></div>
     <div class="dots-divider">• • •</div>
 
@@ -1430,7 +1448,7 @@
         <a href="tel:0622599566" class="contact-link">06-22599566</a>
       </span><br>
     
-      <!-- ✉ 邮箱 -->
+      <!-- ✉️ 邮箱 -->
       <span class="contact-item">
         <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
@@ -1498,7 +1516,7 @@
       <p id="postcodeResult" style="margin-top: 15px; font-size: 18px;"></p>
     </div>
   
-    <!-- 🖼 配送地图图像（替代 iframe） -->
+    <!-- 🖼️ 配送地图图像（替代 iframe） -->
     <div style="max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 2; position: relative;">
       <img src="https://i.postimg.cc/dQG3Fft4/Chat-GPT-Image-29-mrt-2025-09-56-43.png" alt="Bezorggebied van Sushi Nova in Oegstgeest en omgeving"
            style="width: 100%; display: block;" />
@@ -1641,10 +1659,10 @@
   
       if (allowed.includes(input)) {
         result.style.color = "#00cc88";
-        result.innerText = ✅ Ja! Wij bezorgen in ${input}.;
+        result.innerText = `✅ Ja! Wij bezorgen in ${input}.`;
       } else {
         result.style.color = "#ff5555";
-        result.innerText = ❌ Sorry, wij bezorgen niet in ${input}.;
+        result.innerText = `❌ Sorry, wij bezorgen niet in ${input}.`;
       }
     }
   </script>
@@ -1755,7 +1773,7 @@
       };
   
       Object.entries(highlightMap).forEach(([key, selector]) => {
-        const link = document.querySelector(a[href="#${key}"]);
+        const link = document.querySelector(`a[href="#${key}"]`);
         const target = document.querySelector(selector);
   
         if (link && target) {
@@ -1923,7 +1941,7 @@
         return window.innerWidth <= 768;
       }
     
-      // 🎛 参数可微调
+      // 🎛️ 参数可微调
       const baseSpeed = 0.06;       // 默认转速
       const maxSpeed = 0.3;         // 鼠标最快时可到达的速度
       const hoverSpeed = 0.26;      // 悬停风车时的速度
@@ -1945,7 +1963,7 @@
         angle += speed * deltaTime;
         if (angle >= 360) angle -= 360;
     
-        blades.style.transform = rotate(${angle}deg);
+        blades.style.transform = `rotate(${angle}deg)`;
         requestAnimationFrame(animate);
       }
     
@@ -2156,82 +2174,12 @@
       lastTouchY = touchY;
     });
     </script>
-    <script>
-      (function () {
-        let lastTouchY = 0;
-        let currentOpacity = 0.9; // 默认加载时设置为 0.9 不透明
-        const minOpacity = 0.1;
-        const maxOpacity = 0.9;
     
-        const bar = document.getElementById('bottomBar');
-        const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
     
-        function updateOpacity(opacity) {
-          if (bar) bar.style.opacity = opacity;
-          if (logoBar) logoBar.style.opacity = opacity;
-        }
     
-        // ✅ 页面初始载入时设置为 maxOpacity
-        window.addEventListener('load', () => {
-          updateOpacity(maxOpacity);
-        });
     
-        // ✅ Home 按钮点击时，也设置为 maxOpacity
-        const homeBtn = document.getElementById("homeButtonFloating");
-        const topNavHomeBtn = document.getElementById("homeButton");
     
-        function handleHomeClickOpacityFix() {
-          updateOpacity(maxOpacity);
-        }
-    
-        homeBtn?.addEventListener("click", handleHomeClickOpacityFix);
-        topNavHomeBtn?.addEventListener("click", handleHomeClickOpacityFix);
-    
-        // ✅ 滑动触摸逻辑
-        document.addEventListener('touchstart', (e) => {
-          lastTouchY = e.touches[0].clientY;
-        });
-    
-        document.addEventListener('touchmove', (e) => {
-          const touchY = e.touches[0].clientY;
-          const deltaY = touchY - lastTouchY;
-    
-          if (deltaY > 0) {
-            currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
-          } else if (deltaY < 0) {
-            currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
-          }
-    
-          const opacityValue = currentOpacity.toFixed(2);
-          updateOpacity(opacityValue);
-    
-          lastTouchY = touchY;
-        });
-      })();
-    </script>
-      
-  <!-- ✅ 插入这里 -->
-  <script>
-    window.addEventListener("load", () => {
-      if (window.innerWidth <= 768) {
-        setTimeout(() => {
-          window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "auto"
-          });
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
-        }, 80);
-      }
-    });
-  </script>
-<script>
-  document.getElementById("langSwitch").addEventListener("click", function () {
-    window.location.href = "/en/";
-  });
-</script>
-
-
+  
+ 
 </body>
-</html>
+</html>>
