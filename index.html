@@ -776,73 +776,55 @@
     }
 
    @media (max-width: 768px) {
-      .wrapper {
-        padding: 0 !important;
-      }
-    
-      .readable-intro {
-        margin-top: 45px !important;
-      }
-    
-     .readable-content,
-.readable-intro {
-  position: relative;
-  background: rgba(249, 243, 231, 0.82); /* 奶茶米白 + 半透明毛玻璃 */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  padding: 24px 20px;
-  max-width: 640px;
-  margin: 24px auto;
-  transition: transform 0.2s ease;
-  transform-origin: bottom center;
-  overflow: hidden;
-  font-size: 15px;
-  line-height: 1.7;
-  z-index: 1;
-}
+  .wrapper {
+    padding: 0 !important;
+  }
 
-.readable-content::after,
-.readable-intro::after {
-  content: "";
-  position: absolute;
-  bottom: -12px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  background: linear-gradient(to bottom, rgba(249, 243, 231, 0.6), transparent);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  z-index: 0;
-  pointer-events: none;
-}
-      
-      
-      
-      
-      
-      .readable-content p,
-      .readable-content h2,
-      .readable-content li {
-        position: relative;
-        z-index: 1;
-      }
-    
-      h1 {
-        font-size: 19px !important;
-      }
-    
-      h2 {
-        font-size: 17px !important;
-      }
-    
-      h3 {
-        font-size: 15px !important;
-      }
-    
-    } /* ✅ 正确关闭 media 查询 */
+  .readable-intro {
+    margin-top: 45px !important;
+  }
+
+  .readable-content,
+  .readable-intro {
+    max-width: 640px;
+    margin: 24px auto;
+    padding: 24px 20px;
+    border-radius: 20px;
+
+    /* 毛玻璃特效 */
+    background: rgba(249, 243, 231, 0.8); /* 半透明奶茶色 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* 投影和浮感 */
+    box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.05),
+      0 12px 28px rgba(0, 0, 0, 0.06);
+
+    font-size: 15px;
+    line-height: 1.7;
+    transition: all 0.3s ease;
+  }
+
+  .readable-content p,
+  .readable-content h2,
+  .readable-content li {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 20px !important;
+  }
+
+  h2 {
+    font-size: 17px !important;
+  }
+
+  h3 {
+    font-size: 15px !important;
+  }
+} /* ✅ 正确关闭 media 查询 */
     
     /* keyframes 应该写在 media 查询外部！ */
     @keyframes pulseGlow {
@@ -2249,42 +2231,7 @@
     window.location.href = "/en/";
   });
 </script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".readable-content, .readable-intro");
 
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    function updateCardTransform() {
-      const scrollY = window.scrollY;
-
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const distanceFromTop = rect.top;
-
-        // 滚动时根据位置给卡片设置轻微浮动效果（越接近视口上方，越往上“抬起”）
-        if (distanceFromTop < window.innerHeight && distanceFromTop > -200) {
-          const factor = 1 - distanceFromTop / window.innerHeight;
-          card.style.transform = `translateY(${Math.min(-factor * 10, 0)}px) scale(${1 + factor * 0.02})`;
-        } else {
-          card.style.transform = "translateY(0) scale(1)";
-        }
-      });
-
-      ticking = false;
-    }
-
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(updateCardTransform);
-        ticking = true;
-      }
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-  });
-</script>
 
 </body>
 </html>
