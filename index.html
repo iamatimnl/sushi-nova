@@ -50,6 +50,11 @@
       color: #3e2c1a;
     }
 
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 24px 0 16px;
+    }
 
     .wrapper {
       width: 185vmin;
@@ -89,66 +94,7 @@
       position: relative;
     }
 
-     @media (max-width: 768px) {
-      .wrapper {
-        padding: 0 !important;
-      }
     
-      .readable-intro {
-        margin-top: 45px !important;
-      }
-    
-      .readable-intro,
-      .readable-content {
-        max-width: 95%;
-    margin: 24px auto;
-    padding: 16px 20px;
-    border-radius: 18px;
-
-    background: rgba(255, 255, 255, 0.6); /* 半透明白色 */
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* 柔和阴影 */
-    font-size: 15px;
-     color: #3e2c1a;  
-    line-height: 1.7;
-    font-family: 'Inter', sans-serif;
-    
-    line-height: 1.7;
-    transition: all 0.3s ease;
-  }
-
-  .readable-content p,
-  .readable-content h2,
-  .readable-content li {
-    position: relative;
-    z-index: 1;
-  }
-
-  h1 {
-    font-size: 18px !important;
-  }
-
-  h2 {
-    font-size: 16px !important;
-  }
-
-  h3 {
-    font-size: 15px !important;
-  }
-} /* ✅ 正确关闭 media 查询 */
-    
- 
-     
-    
- 
-    
-    /* keyframes 应该写在 media 查询外部！ */
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.15; }
-      50% { transform: scale(1.2); opacity: 0.3; }
-    }
     
     @media (max-width: 768px) {
       body {
@@ -194,9 +140,6 @@
       }
     }
     
-
-
-
     
    
     
@@ -262,7 +205,7 @@
     
       position: fixed;
       bottom: 6px;
-      right: -28px;
+      right: 40px;
       transform: translateX(-50%);
     
       width: 64px;
@@ -271,7 +214,6 @@
       border: none;
       cursor: pointer;
       z-index: 9999;
-
     
       transition: opacity 0.4s ease, transform 0.2s ease;
     }
@@ -352,8 +294,17 @@
       max-height: 160px;
       margin-bottom: 10px !important
     }
-    
-   
+    h1 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #5e4533;
+    }
+    p.subtitle {
+      font-size: 16px;
+      color: #5e4533;
+      margin-bottom: 30px;
+    }
     
 .orange-button, .button {
   display: inline-flex;
@@ -439,11 +390,7 @@
       white-space: nowrap;
       transform: translateX(45px);
     }
-    @media (max-width: 768px) {
-  .sushi-title {
-    font-size: 18px;
-    transform: translateX(0);
-  }
+  
     
     
     
@@ -602,7 +549,7 @@
     /* 📱 手机适配特效（点击放大 + 呼吸爆发 + 自动跳转） */
     @media (max-width: 768px) {
     .sushi-title {
-     font-size: 18px;
+     font-size: 16px;
      transform: translateX(0);
     }
     
@@ -683,7 +630,11 @@
      }
     }
     
-   
+    @media (max-width: 768px) {
+      .readable-content h1 { font-size: 22px; }
+      .readable-content h2 { font-size: 20px; }
+      .readable-content h3 { font-size: 18px; }
+    }
        
    
     
@@ -850,7 +801,7 @@
     
     
     .tagline {
-     font-size: 16px;
+     font-size: 18px;
      font-weight: 500;
      color: #3b2b1c;
      margin-bottom: 8px;
@@ -858,7 +809,55 @@
      letter-spacing: 0.5px;
     }
 
-   
+    @media (max-width: 768px) {
+      .wrapper {
+        padding: 0 !important;
+      }
+    
+      .readable-intro {
+        margin-top: 45px !important;
+      }
+    
+      .readable-intro,
+      .readable-content {
+        max-width: 640px;                  /* 控制整体宽度，避免太宽 */
+        margin: 24px auto;                 /* 上下间距 + 左右居中 */
+        padding: 24px 20px;                /* 卡片内边距，视觉更舒适 */
+        border-radius: 20px;
+        background-color: #f9f3e7;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      
+      
+      
+      .readable-content p,
+      .readable-content h2,
+      .readable-content li {
+        position: relative;
+        z-index: 1;
+      }
+    
+      h1 {
+        font-size: 18px !important;
+      }
+    
+      h2 {
+        font-size: 17px !important;
+      }
+    
+      h3 {
+        font-size: 15px !important;
+      }
+    
+    } /* ✅ 正确关闭 media 查询 */
+    
+    /* keyframes 应该写在 media 查询外部！ */
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.15; }
+      50% { transform: scale(1.2); opacity: 0.3; }
+    }
     
    
   
@@ -954,13 +953,11 @@
   display: flex;
   position: fixed;
   bottom: 10px;
-  right: 76px;
+  right: 0px;
    width: 64px;
   height: 64px;
- border-radius: 50%;
-   background:transparent; /* 比主背景稍浅或更透明 */
-  
 
+   background:transparent; /* 比主背景稍浅或更透明 */
   
  
   align-items: center;
@@ -2185,4 +2182,4 @@
   
  
 </body>
-</html>>
+</html>
