@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="nl">
   <head>
@@ -240,14 +241,12 @@
     }
     .side-menu {
       position: fixed;
-      top: height: 100vh;     /* ✅ 占满整个视口高度 */
-    max-height: 100vh; /* ✅ 防止内容溢出，保险用法 */
-    overflow-y: auto; 
-      right: -100vw; /* ✅ 推出整整一个视口宽度 */
-    width: 80vw;    /* ✅ 比例更灵活，也不会撑爆屏幕 */
-    max-width: 280px;
+      top: 0;
+      right: -250px;
+      height: 100%;
+      width: 250px;
       
-      transition: right 0.45s ease;
+      transition: right 0.3s ease;
       padding: 60px 20px;
       z-index: 9999;
     }
@@ -414,7 +413,7 @@
       height: 100%;
       left: 16px;
     }
-    ì
+    
     .windmill-base {
       width: 100%;
       height: 100%;
