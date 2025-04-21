@@ -95,13 +95,15 @@
 
     
     
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
   html, body {
-    height: 100%; /* ✅ 非 min-height，而是明确 height */
+    min-height: 100vh;
+    height: auto; /* ✅ 不要设定 100%，让页面自由撑高 */
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
+}
 
   body {
     background-color: #f5ecdd;
