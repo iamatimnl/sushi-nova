@@ -784,26 +784,20 @@
     margin-top: 45px !important;
   }
 
-  .readable-content,
+    .readable-content,
   .readable-intro {
     max-width: 640px;
     margin: 24px auto;
     padding: 24px 20px;
     border-radius: 20px;
-
-    /* 毛玻璃特效 */
-    background: rgba(249, 243, 231, 0.8); /* 半透明奶茶色 */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    /* 投影和浮感 */
-    box-shadow:
-      0 4px 10px rgba(0, 0, 0, 0.05),
-      0 12px 28px rgba(0, 0, 0, 0.06);
-
+    background: rgba(255, 255, 255, 0.65); /* 半透明白色 */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12); /* 更强的浮动感 */
+    backdrop-filter: blur(18px); /* 模糊背景 */
+    -webkit-backdrop-filter: blur(18px); /* Safari 支持 */
     font-size: 15px;
     line-height: 1.7;
-    transition: all 0.3s ease;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 可选边框 */
   }
 
   .readable-content p,
