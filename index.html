@@ -238,22 +238,23 @@
       margin-bottom: 5px;
       border-radius: 2px;
     }
-    .side-menu {
-      position: fixed;
-      top: height: 100vh;     /* ✅ 占满整个视口高度 */
-    max-height: 100vh; /* ✅ 防止内容溢出，保险用法 */
-    overflow-y: auto; 
-      right: -100vw; /* ✅ 推出整整一个视口宽度 */
-    width: 80vw;    /* ✅ 比例更灵活，也不会撑爆屏幕 */
-    max-width: 280px;
-      
-      transition: right 0.45s ease;
-      padding: 60px 20px;
-      z-index: 9999;
-    }
-    .side-menu.active {
-      right: 0;
-    }
+  .side-menu {
+  position: fixed;
+  top: 0;
+  height: 100vh;       /* ✅ 视口高度 */
+  max-height: 100vh;   /* ✅ 防止超出 */
+  overflow-y: auto;    /* ✅ 内容多时可滚动 */
+  right: -100vw;       /* ✅ 初始隐藏在屏幕右边 */
+  width: 80vw;         /* ✅ 比例更灵活 */
+  max-width: 280px;
+  background-color: #f3e6cd;
+  transition: right 0.55s ease;
+  padding: 60px 20px;
+  z-index: 9999;
+}
+.side-menu.active {
+  right: 0;
+}
     .side-menu ul {
       list-style: none;
       padding: 0;
