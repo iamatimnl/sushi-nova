@@ -305,45 +305,35 @@
       color: #5e4533;
       margin-bottom: 30px;
     }
- .orange-button, .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 28px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  text-transform: none;
+ .menu-callout {
+  background-color: #f9f3e7; /* 奶茶米白，与你主背景一致 */
+  border-radius: 16px;
+  text-align: center;
+  padding: 20px;
+  margin: 30px auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  max-width: 500px;
+  font-size: 14.5px;
+  line-height: 1.6;
   color: #3e2c1a;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow:
-    0 6px 16px rgba(180, 136, 100, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.12);
-  border: none;
+}
+
+.orange-button {
+  display: inline-block;
+  background-color: #f47c20;
+  color: white;
+  padding: 10px 24px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  width: fit-content;
-  margin: 30px auto 0;
-  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.orange-button:hover, .button:hover {
-  transform: scale(1.06);
-  background-color: rgba(241, 217, 176, 0.9); /* 柔焦焦糖米 */
-  box-shadow:
-    0 8px 24px rgba(180, 120, 60, 0.2),
-    inset 0 0 0 0.5px rgba(255, 255, 255, 0.25);
+.orange-button:hover {
+  background-color: #da6e1c;
+  transform: scale(1.03);
 }
-
-
-.orange-button:focus, .button:focus {
-  outline: 2px solid rgba(180, 120, 60, 0.35);
-  outline-offset: 4px;
-}
-
 
 
 
@@ -1344,7 +1334,10 @@
 </ul>
       
 
-    <a href="https://www.sushinova.nl" target="_blank" class="orange-button">Bekijk in Menu</a>
+    <div class="menu-callout">
+  <p>Bekijk het volledige menu op onze bestelsite:</p>
+  <a href="https://www.sushinova.nl" target="_blank" class="orange-button">Bestel & Bekijk Menu</a>
+</div>
     </div>
     <div class="spacer"></div>
     <div class="dots-divider">• • •</div>
