@@ -793,14 +793,12 @@
   padding: 16px 20px;
   border-radius: 20px;
 
-  background: rgba(255, 253, 247, 0.5); /* iOS风格：半透明米白磨砂 */
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.96); /* 和卡片保持一致 */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.06),             /* 外部阴影浮感 */
-    inset 0 1px 1px rgba(255, 255, 255, 0.35),  /* 顶部高光 */
-    inset 0 -1px 1px rgba(255, 255, 255, 0.25); /* 底部柔光 */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 同卡片 */
 
   font-size: 15px;
   line-height: 1.7;
