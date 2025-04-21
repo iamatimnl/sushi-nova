@@ -786,21 +786,20 @@
 
   .readable-content,
   .readable-intro {
-   max-width: 95%;
-    margin: 24px auto;
-    padding: 16px 20px;
-    border-radius: 18px;
+   max-width: 90%;
+  margin: 24px auto;
+  padding: 16px 20px;
+  border-radius: 20px;
 
-    background: rgba(255, 255, 255, 0.6); /* 半透明白色 */
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.65); /* 半透明玻璃白 */
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* 柔和阴影 */
-    font-size: 15px;
-    
-
-    line-height: 1.7;
-    transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 更柔、沉稳 */
+  
+  font-size: 15px;
+  line-height: 1.7;
+  transition: all 0.3s ease;
   }
 
   .readable-content p,
@@ -1068,7 +1067,7 @@
 #bottomBar {
   position: fixed;
   bottom: 10px;
-  width: 95%;
+  width: 90%;
   max-width: 640px;
   left: 50%;
   transform: translateX(-50%);
@@ -1078,17 +1077,18 @@
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.95); /* 半透明玻璃感 */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.65); /* 和卡片保持一致 */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  border-radius: 16px;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 同卡片 */
 
   transition: opacity 0.2s ease, transform 0.3s ease;
   z-index: 9999;
 }
+
 
 
     
