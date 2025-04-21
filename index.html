@@ -94,48 +94,58 @@
       position: relative;
     }
 
-   @media (max-width: 768px) {
+@media (max-width: 768px) {
+
+  /* === 基础布局：整体页面背景与排版 === */
   body {
-    background: linear-gradient(180deg, #faf4ef 0%, #f5e6d1 100%);
     margin: 0;
+    padding: 0;
     font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #faf4ef 0%, #f5e6d1 100%);
     color: #4a2e1d;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* === 主容器 === */
   .wrapper {
-    background: rgba(245, 230, 209, 0.85);
+    background: rgba(245, 230, 209, 0.85); /* 奶茶玻璃感 */
     border-radius: 20px;
     padding: 24px;
+    margin: 16px;
     box-shadow: 0 8px 24px rgba(180, 136, 100, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
 
+  /* === 标题样式统一处理 === */
   h1, h2, h3 {
     font-family: 'Playfair Display', serif;
     color: #4a2e1d;
-    border-bottom: 2px solid #f1c66d;
+    border-bottom: 2px solid #f1c66d; /* 玉子黄底线 */
     display: inline-block;
     padding-bottom: 4px;
     margin-bottom: 12px;
   }
 
+  /* === 重点文字（用于局部高亮）=== */
   .highlight {
-    color: #8ca66a;
+    color: #8ca66a; /* 抹茶绿 */
     font-weight: bold;
   }
 
+  /* === 正文区块（如简介、菜单说明） === */
   .readable-content {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.4); /* 半透明和纸感 */
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     font-size: 15px;
     line-height: 1.75;
+    margin-top: 20px;
   }
+
 }
 
-  
 
     *, *::before, *::after {
       box-sizing: inherit;
