@@ -94,68 +94,47 @@
       position: relative;
     }
 
-       @media (max-width: 768px) {
-     .body {
-        background-color: #f5ecdd;
-        
-      }
-         
-    .wrapper {
-     width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    padding: 0 !important;
-     margin: 0 auto !important;
-     background: none !important;
-     box-shadow: none !important;
-    border-radius: 0 !important;
-    backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-    overflow: visible !important;
+   @media (max-width: 768px) {
+  body {
+    background: linear-gradient(180deg, #faf4ef 0%, #f5e6d1 100%);
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #4a2e1d;
   }
 
-  .readable-intro {
-    margin-top: 45px !important;
-  }
-
- @media (max-width: 768px) {
-  .readable-intro,
-  .readable-content {
-    max-width: 640px;
-    margin: 24px auto;
-    padding: 24px 20px;
-    border-radius: 16px;
-    background: rgba(241, 227, 206, 0.65); /* 半透明背景色 */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.19);
+  .wrapper {
+    background: rgba(245, 230, 209, 0.85);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(180, 136, 100, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #4a2e1d;
+    border-bottom: 2px solid #f1c66d;
+    display: inline-block;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+  }
+
+  .highlight {
+    color: #8ca66a;
+    font-weight: bold;
+  }
+
+  .readable-content {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     font-size: 15px;
-    line-height: 1.7;
-    color: #3e2c1a;
-    border: 1px solid rgba(255, 255, 255, 0.06); /* 用你的字体主色 + 轻透明 */
-  }
-
-  .readable-content p,
-  .readable-content h2,
-  .readable-content li {
-    position: relative;
-    z-index: 1;
-  }
-
-  h1 {
-    font-size: 18px !important;
-  }
-
-  h2 {
-    font-size: 17px !important;
-  }
-
-  h3 {
-    font-size: 15px !important;
+    line-height: 1.75;
   }
 }
-   
-    
+
   
 
     *, *::before, *::after {
