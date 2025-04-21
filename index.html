@@ -94,57 +94,29 @@
       position: relative;
     }
 
-@media (max-width: 768px) {
+    
+    
+    @media (max-width: 768px) {
+      body {
+        background-color: #f5ecdd;
+        
+      }
 
-  /* 主背景柔和有层次 */
-  body {
-    background: linear-gradient(180deg, #faf4ef 0%, #f5e6d1 100%);
-    padding: 16px;
-    font-family: 'Inter', sans-serif;
-    color: #4a2e1d;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* 主容器：不要太大，居中、加边距 */
-  .wrapper {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* 卡片之间的距离 */
-  }
-
-  /* 每个内容区块：就是卡片的样式 */
-  .readable-content {
-    background: rgba(255, 255, 255, 0.6); /* 半透明奶白 */
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-    font-size: 16px;
-    line-height: 1.75;
-    backdrop-filter: blur(8px);
-  }
-
-  /* 让标题更有“日料菜单感” */
-  h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    color: #4a2e1d;
-    font-weight: 600;
-    margin: 0 0 12px;
-    border-bottom: 2px solid #f1c66d;
-    display: inline-block;
-    padding-bottom: 4px;
-  }
-
-  /* 每块卡片内部加点空间 */
-  .readable-content p {
-    margin-bottom: 12px;
-  }
-
-}
-
-
+      .wrapper {
+        
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        background: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        overflow: visible !important;
+      }
+    }
 
     *, *::before, *::after {
       box-sizing: inherit;
@@ -307,6 +279,10 @@
     
       
     
+      @keyframes pulseGlow {
+        0%, 100% { transform: scale(1); opacity: 0.15; }
+        50% { transform: scale(1.2); opacity: 0.3; }
+      }
     
     
     .logo {
@@ -799,8 +775,62 @@
      letter-spacing: 0.5px;
     }
 
- 
-  
+   @media (max-width: 768px) {
+  .wrapper {
+    padding: 0 !important;
+  }
+
+  .readable-intro {
+    margin-top: 45px !important;
+  }
+
+  .readable-content,
+  .readable-intro {
+    max-width: 640px;
+    margin: 24px auto;
+    padding: 24px 20px;
+    border-radius: 20px;
+
+    /* 毛玻璃特效 */
+    background: rgba(249, 243, 231, 0.8); /* 半透明奶茶色 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* 投影和浮感 */
+    box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.05),
+      0 12px 28px rgba(0, 0, 0, 0.06);
+
+    font-size: 15px;
+    line-height: 1.7;
+    transition: all 0.3s ease;
+  }
+
+  .readable-content p,
+  .readable-content h2,
+  .readable-content li {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 20px !important;
+  }
+
+  h2 {
+    font-size: 17px !important;
+  }
+
+  h3 {
+    font-size: 15px !important;
+  }
+} /* ✅ 正确关闭 media 查询 */
+    
+    /* keyframes 应该写在 media 查询外部！ */
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.15; }
+      50% { transform: scale(1.2); opacity: 0.3; }
+    }
     
    
   
@@ -1245,7 +1275,7 @@
       <div class="readable-content">
         
         <h2 id="waarom" class="subheading scroll-offset">
-        Wat kun je ver<img src="https://i.postimg.cc/Hk4YP6cR/089-1.png" alt="icon" class="icon1-title">achten van ons
+        Wat je kunt ver<img src="https://i.postimg.cc/Hk4YP6cR/089-1.png" alt="icon" class="icon1-title">achten van ons
         </h2>
       
         <p class="about">
@@ -1400,7 +1430,7 @@
         <a href="tel:0622599566" class="contact-link">06-22599566</a>
       </span><br>
     
-      <!-- ✉️ 邮箱 -->
+      <!-- ✉ 邮箱 -->
       <span class="contact-item">
         <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
@@ -1468,7 +1498,7 @@
       <p id="postcodeResult" style="margin-top: 15px; font-size: 18px;"></p>
     </div>
   
-    <!-- 🖼️ 配送地图图像（替代 iframe） -->
+    <!-- 🖼 配送地图图像（替代 iframe） -->
     <div style="max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 2; position: relative;">
       <img src="https://i.postimg.cc/dQG3Fft4/Chat-GPT-Image-29-mrt-2025-09-56-43.png" alt="Bezorggebied van Sushi Nova in Oegstgeest en omgeving"
            style="width: 100%; display: block;" />
@@ -1611,10 +1641,10 @@
   
       if (allowed.includes(input)) {
         result.style.color = "#00cc88";
-        result.innerText = `✅ Ja! Wij bezorgen in ${input}.`;
+        result.innerText = ✅ Ja! Wij bezorgen in ${input}.;
       } else {
         result.style.color = "#ff5555";
-        result.innerText = `❌ Sorry, wij bezorgen niet in ${input}.`;
+        result.innerText = ❌ Sorry, wij bezorgen niet in ${input}.;
       }
     }
   </script>
@@ -1725,7 +1755,7 @@
       };
   
       Object.entries(highlightMap).forEach(([key, selector]) => {
-        const link = document.querySelector(`a[href="#${key}"]`);
+        const link = document.querySelector(a[href="#${key}"]);
         const target = document.querySelector(selector);
   
         if (link && target) {
@@ -1893,7 +1923,7 @@
         return window.innerWidth <= 768;
       }
     
-      // 🎛️ 参数可微调
+      // 🎛 参数可微调
       const baseSpeed = 0.06;       // 默认转速
       const maxSpeed = 0.3;         // 鼠标最快时可到达的速度
       const hoverSpeed = 0.26;      // 悬停风车时的速度
@@ -1915,7 +1945,7 @@
         angle += speed * deltaTime;
         if (angle >= 360) angle -= 360;
     
-        blades.style.transform = `rotate(${angle}deg)`;
+        blades.style.transform = rotate(${angle}deg);
         requestAnimationFrame(animate);
       }
     
