@@ -805,7 +805,26 @@
   line-height: 1.6;
   color: #3e2c1a;
   transition: all 0.3s ease;
-}/* ✅ 正确关闭 media 查询 */
+}
+  .readable-content p,
+  .readable-content h2,
+  .readable-content li {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-size: 18px !important;
+  }
+
+  h2 {
+    font-size: 17px !important;
+  }
+
+  h3 {
+    font-size: 15px !important;
+  }
+}
     
     /* keyframes 应该写在 media 查询外部！ */
     @keyframes pulseGlow {
