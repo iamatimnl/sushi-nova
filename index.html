@@ -31,7 +31,7 @@
       height: 100%;
       width: 100%;
       font-family: 'Playfair Display', serif;
-      background-color: #f5d4b6; /* 统一背景色为球体主色调 */
+      background-color: #f5ecdd; /* 统一背景色为球体主色调 */
       background-image: none; /* 去除多余的渐变背景 */
       background-repeat: no-repeat;
       background-size: cover;
@@ -97,8 +97,15 @@
     
     
     @media (max-width: 768px) {
-      body {
-        background-color: #f5ecdd;
+  
+  html, body {
+    min-height: 100vh;
+    height: auto; /* ✅ 不要设定 100%，让页面自由撑高 */
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background-color: #f5d4b6;
+
         
       
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;}
@@ -110,7 +117,7 @@
         max-height: none !important;
         padding: 0 !important;
         margin: 0 auto !important;
-        background: none !important;
+        background-color: transparent;
         box-shadow: none !important;
         border-radius: 0 !important;
         backdrop-filter: none !important;
@@ -175,7 +182,7 @@
       color: #3b2b1c;
       text-decoration: none;
       font-weight: 500;
-      font-size: 15px;
+      font-size: 18px;
       transition: 0.3s;
     }
     .nav-links a:hover {
@@ -233,17 +240,21 @@
     .side-menu {
       position: fixed;
       top: 0;
-      right: -250px;
-      height: 100%;
-      width: 250px;
-      
-      transition: right 0.3s ease;
+      height: 100vh;       /* ✅ 视口高度 */
+      max-height: 100vh;   /* ✅ 防止超出 */
+      overflow-y: auto;    /* ✅ 内容多时可滚动 */
+      right: -100vw;       /* ✅ 初始隐藏在屏幕右边 */
+      width: 80vw;         /* ✅ 比例更灵活 */
+      max-width: 280px;
+      background-color: #f3e6cd;
+      transition: right 0.45s ease;
       padding: 60px 20px;
       z-index: 9999;
     }
     .side-menu.active {
       right: 0;
     }
+    
     .side-menu ul {
       list-style: none;
       padding: 0;
@@ -306,532 +317,538 @@
       color: #5e4533;
       margin-bottom: 30px;
     }
-.orange-soft-button {
-  display: inline-block;
-  background-color: #f47c20;
-  color:#f5ecdd;
-  padding: 10px 24px;
-  font-size: 15px;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
-.orange-soft-button:hover {
-  background-color: #e86f1c;
-  transform: translateY(-1px);
-}
-
-
-  
-    
-    @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .side-menu {
-      background-color: #f3e6cd;
-    
-     }
-
-    
-    }
-
-    .scroll-offset {
-      scroll-margin-top: 100px;
-    }
-    .title-with-windmill {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-      white-space: nowrap;
-      flex-wrap: nowrap;
-    }
-    
-    .sushi-title {
-      font-size: 28px;
-      font-weight: 600;
-      color: #3b2b1c;
-      margin: 0;
-      white-space: nowrap;
-      transform: translateX(45px);
-    }
-  
-    
-    
-    
-    .windmill-wrapper {
-      transform: translateX(40px); /* 控制风车整体位置 */
-    }
-    
-    .windmill-link {
-      position: relative;
+    .orange-soft-button {
       display: inline-block;
-      width: 80px;
-      height: 80px;
-      transition: transform 0.3s ease;
+      background-color:#3e2c1a;
+      color:#f5ecdd;
+      padding: 10px 24px;
+      font-size: 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
     }
     
-    .windmill-link::after {
-      content: "";
-      position: absolute;
-      top: -18px;
-      left: 6px;
-      width: 100px;
-      height:100px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.009);
-      animation: pulse 8s infinite;
-      z-index: 0;
+    .orange-soft-button:hover {
+      background-color: #e86f1c;
+      transform: translateY(-1px);
     }
-    
-    @keyframes pulse {
-      0% { transform: scale(0.6); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 0.3; }
-      100% { transform: scale(0.6); opacity: 0.5; }
-    }
-    
-    @keyframes pulse-hover {
-      0%   { transform: scale(0.6); opacity: 0.5; }
-      50%  { transform: scale(1.5); opacity: 0.2; }
-      100% { transform: scale(0.6); opacity: 0.5; }
-    }
-    
-    .windmill-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      left: 16px;
-    }
-    
-    .windmill-base {
-      width: 100%;
-      height: 100%;
-      transform: scale(1.5) translateY(10px); /* 放大+下移 */
-      transform-origin: bottom center; /* 以底部中心为基准缩放和偏移 */
-    }
-    
-    
-    
-    .windmill-blades {
-      position: absolute;
-      top: -36px;
-      left: -16px;
-      width: 120%;
-      height: 120%;
-      transform: rotate(30deg);
-      transform-origin: center center;
-      transition: transform 0s linear;
-      z-index: 2;
-      opacity: 0.95;
-      pointer-events: none;
-    }
-    @media (max-width: 768px) {
-      .windmill-blades {
-        top: -14px;
-        left: -8px;
-        width: 110%;
-        height: 110%;
-        transform: rotate(30deg);
-        transform-origin: center center;
-        transition: transform 0s linear;
-        z-index: 2;
-        opacity: 0.95;
-        pointer-events: none;
-      }
-    }
-    
-    
-    /* 默认隐藏这个移动logo */
-     .navbar-logo-mobile {
-      display: none;
-    }
-    @media (max-width: 768px) {
-      .navbar {
-        position: fixed !important;
-        top: 0;
-        width: 100%;
-        z-index: 999;
-        background-color: transparent;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-        transform: translateY(0);  /* 初始正常显示 */
-      }
-    
-      .navbar.hidden {
-        opacity: 0 !important;
-        pointer-events: none !important;
-        transform: translateY(-100%); /* 👈 滑动消失向上飞出 */
-      }
-    
-      .navbar-logo-mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        margin: 0 auto;
-        transition: opacity 0.2s ease; /* 👈 如果你单独想控制 logo，也可以 */
-      }
-    
-      .navbar-logo-mobile img {
-        height: 100%;
-        width: auto;
-        object-fit: contain;
-      }
-    } 
-      .navbar-logo-mobile img {
-       position: relative;  /* 防止脱离文档流 */
-       z-index: auto;        /* 不要设得太高 */
-       transition: opacity 0.3s ease;
-      }
-    
     
     
       
-    
-
-    @keyframes spin {
-      from { transform: rotate(30deg); }
-      to { transform: rotate(360deg); }
-    }
-    
-    /* 🔥 悬停动画组合版 */
-    .windmill-link:hover {
-      transform: scale(1.4); /* 📏 整体微放大 */
-    }
-    
-    .windmill-link:hover::after {
-      background: rgba(244, 124, 32, 0.45); /* 💡 呼吸圈加亮变橙 */
-      transform: scale(1.4); /* 呼吸圈放大 */
-      transition: all 0.4s ease;
-      animation: pulse-hover 4s infinite;
-    }
-    
-    .windmill-link:hover .windmill-blades {
-      animation: spin 2s linear infinite; /* 🚀 加速旋转 */
-    }
-    
-    /* 📱 手机适配特效（点击放大 + 呼吸爆发 + 自动跳转） */
-    @media (max-width: 768px) {
-    .sushi-title {
-     font-size: 16px;
-     transform: translateX(0);
-    }
-    
-    .windmill-wrapper {
-      transform: translateX(10px);
-      
-    }
-    
-    .windmill-link {
-      width: 50px;
-      height: 50px;
-    }
-    
-    .windmill-link::after {
-     top: -6px;
-     left: -6px;
-     width: 62px;
-     height: 62px;
-    }
-    
-    .title-with-windmill {
-     flex-wrap: wrap;
-     gap: 12px;
-    }
-    
-    .windmill-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #1a1a1a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-  
-    .windmill-overlay .windmill-link {
-      width: 100vw;
-      height: 100vw;
-      max-width: 360px;
-      max-height: 360px;
-      border-radius: 50%;
-      background-color: #1a1a1a;
-      animation: zoomSequence 2.2s ease-in-out forwards;
-      transform: translateY(10vh) scale(1);
         
-      position: relative;
-    }
-  
-    @media (max-width: 768px) {
-      .wrapper .logo {
-        display: none;
-      }
-    }
+        @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .side-menu {
+          background-color: #f3e6cd;
+        
+         }
     
-    @media (min-width: 769px) {
-      .wrapper .logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-  
-    @keyframes zoomSequence {
-      0%   { transform: translateY(10vh) scale(0.6); opacity: 0; }
-      30%  { transform: translateY(10vh) scale(1.1); opacity: 1; }
-      80%  { transform: translateY(10vh) scale(1.1); opacity: 1; }
-      100% { transform: translateY(10vh) scale(0); opacity: 0; }
-    }
+        
+        }
     
-  
-    @keyframes pulse-hover {
-      0%   { transform: scale(0.8); opacity: 0.6; }
-      50%  { transform: scale(1.6); opacity: 0.2; }
-      100% { transform: scale(0.8); opacity: 0.6; }
-     }
-    }
+        .scroll-offset {
+          scroll-margin-top: 100px;
+        }
+        .title-with-windmill {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 20px;
+          white-space: nowrap;
+          flex-wrap: nowrap;
+        }
+        
+        .sushi-title {
+          font-size: 28px;
+          font-weight: 600;
+          color: #3b2b1c;
+          margin: 0;
+          white-space: nowrap;
+          transform: translateX(45px);
+        }
+      
+        
+        
+        
+        .windmill-wrapper {
+          transform: translateX(40px); /* 控制风车整体位置 */
+        }
+        
+        .windmill-link {
+          position: relative;
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+          transition: transform 0.3s ease;
+        }
+        
+        .windmill-link::after {
+          content: "";
+          position: absolute;
+          top: -18px;
+          left: 6px;
+          width: 100px;
+          height:100px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.009);
+          animation: pulse 8s infinite;
+          z-index: 0;
+        }
+        
+        @keyframes pulse {
+          0% { transform: scale(0.6); opacity: 0.5; }
+          50% { transform: scale(1.2); opacity: 0.3; }
+          100% { transform: scale(0.6); opacity: 0.5; }
+        }
+        
+        @keyframes pulse-hover {
+          0%   { transform: scale(0.6); opacity: 0.5; }
+          50%  { transform: scale(1.5); opacity: 0.2; }
+          100% { transform: scale(0.6); opacity: 0.5; }
+        }
+        
+        .windmill-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          left: 16px;
+        }
+        
+        .windmill-base {
+          width: 100%;
+          height: 100%;
+          transform: scale(1.5) translateY(10px); /* 放大+下移 */
+          transform-origin: bottom center; /* 以底部中心为基准缩放和偏移 */
+        }
+        
+        
+        
+        .windmill-blades {
+          position: absolute;
+          top: -36px;
+          left: -16px;
+          width: 120%;
+          height: 120%;
+          transform: rotate(30deg);
+          transform-origin: center center;
+          transition: transform 0s linear;
+          z-index: 2;
+          opacity: 0.95;
+          pointer-events: none;
+        }
+        @media (max-width: 768px) {
+          .windmill-blades {
+            top: -14px;
+            left: -8px;
+            width: 110%;
+            height: 110%;
+            transform: rotate(30deg);
+            transform-origin: center center;
+            transition: transform 0s linear;
+            z-index: 2;
+            opacity: 0.95;
+            pointer-events: none;
+          }
+        }
+        
+        
+        /* 默认隐藏这个移动logo */
+         .navbar-logo-mobile {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .navbar {
+            position: fixed !important;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background-color: transparent;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            transform: translateY(0);  /* 初始正常显示 */
+          }
+        
+          .navbar.hidden {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transform: translateY(-100%); /* 👈 滑动消失向上飞出 */
+          }
+        
+          .navbar-logo-mobile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            margin: 0 auto;
+            transition: opacity 0.2s ease; /* 👈 如果你单独想控制 logo，也可以 */
+          }
+        
+          .navbar-logo-mobile img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+          }
+        } 
+          .navbar-logo-mobile img {
+           position: relative;  /* 防止脱离文档流 */
+           z-index: auto;        /* 不要设得太高 */
+           transition: opacity 0.3s ease;
+          }
+        
+        
+        
+          
+        
     
-    @media (max-width: 768px) {
-      .readable-content h1 { font-size: 22px; }
-      .readable-content h2 { font-size: 20px; }
-      .readable-content h3 { font-size: 18px; }
-    }
+        @keyframes spin {
+          from { transform: rotate(30deg); }
+          to { transform: rotate(360deg); }
+        }
+        
+        /* 🔥 悬停动画组合版 */
+        .windmill-link:hover {
+          transform: scale(1.4); /* 📏 整体微放大 */
+        }
+        
+        .windmill-link:hover::after {
+          background: rgba(244, 124, 32, 0.45); /* 💡 呼吸圈加亮变橙 */
+          transform: scale(1.4); /* 呼吸圈放大 */
+          transition: all 0.4s ease;
+          animation: pulse-hover 4s infinite;
+        }
+        
+        .windmill-link:hover .windmill-blades {
+          animation: spin 2s linear infinite; /* 🚀 加速旋转 */
+        }
+        
+        /* 📱 手机适配特效（点击放大 + 呼吸爆发 + 自动跳转） */
+        @media (max-width: 768px) {
+        .sushi-title {
+         font-size: 16px;
+         transform: translateX(0);
+        }
+        
+        .windmill-wrapper {
+          transform: translateX(10px);
+          
+        }
+        
+        .windmill-link {
+          width: 50px;
+          height: 50px;
+        }
+        
+        .windmill-link::after {
+         top: -6px;
+         left: -6px;
+         width: 62px;
+         height: 62px;
+        }
+        
+        .title-with-windmill {
+         flex-wrap: wrap;
+         gap: 12px;
+        }
+        
+        .windmill-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: #1a1a1a;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+      
+        .windmill-overlay .windmill-link {
+          width: 100vw;
+          height: 100vw;
+          max-width: 360px;
+          max-height: 360px;
+          border-radius: 50%;
+          background-color: #1a1a1a;
+          animation: zoomSequence 2.2s ease-in-out forwards;
+          transform: translateY(10vh) scale(1);
+            
+          position: relative;
+        }
+      
+        @media (max-width: 768px) {
+          .wrapper .logo {
+            display: none;
+          }
+        }
+        
+        @media (min-width: 769px) {
+          .wrapper .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      
+        @keyframes zoomSequence {
+          0%   { transform: translateY(10vh) scale(0.6); opacity: 0; }
+          30%  { transform: translateY(10vh) scale(1.1); opacity: 1; }
+          80%  { transform: translateY(10vh) scale(1.1); opacity: 1; }
+          100% { transform: translateY(10vh) scale(0); opacity: 0; }
+        }
+        
+      
+        @keyframes pulse-hover {
+          0%   { transform: scale(0.8); opacity: 0.6; }
+          50%  { transform: scale(1.6); opacity: 0.2; }
+          100% { transform: scale(0.8); opacity: 0.6; }
+         }
+        }
+        
+        @media (max-width: 768px) {
+          .readable-content h1 { font-size: 22px; }
+          .readable-content h2 { font-size: 20px; }
+          .readable-content h3 { font-size: 18px; }
+        }
+           
        
-   
+        
+          .sushi-title {
+            margin-top: 0;
+          }
+        
+          .title-with-windmill {
+            margin-top: 0;
+            margin-bottom: 10px;
+          }
+        
+        
     
-      .sushi-title {
-        margin-top: 0;
+    
+        .glow-background {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 200px;
+          height: 200px;
+          background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          animation: glow 4s ease-in-out infinite;
+          z-index: 1;
+          pointer-events: none;
+        }
+        
+        
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+    
+    
+    
+    
+        @keyframes glow {
+          0% { transform: translate(-50%, -50%) scale(1); opacity: 0.25; }
+          50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.1; }
+          100% { transform: translate(-50%, -50%) scale(1); opacity: 0.25; }
+        }
+        
+    
+    
+    
+    
+        .scroll-offset {
+          scroll-margin-top: 120px; /* 根据你的 navbar 高度调整 */
+        }
+    
+        #postcode-title {
+         font-size: 24px; /* 跟 h2 一致 */
+         font-weight: 600;
+         transition: color 0.3s ease;
+        }
+        #postcode-title.highlight {
+         color: #3e2c1a !important;
+        }
+        
+        #splash-screen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 9999;
+          height: 100vh;
+          background-color: #2c2c2e;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: opacity 1.2s ease;
+        }
+    
+        #splash-screen img {
+          max-width: 100%;
+          max-height: 100%;
+         object-fit: contain;
+        }
+    
+        #splash-screen.fade-out {
+         opacity: 0;
+         pointer-events: none;
+        }
+    
+        .navbar-lang-switch {
+         position: absolute;
+         right: 40px;
+         font-size: 16px;
+         color: #5e4533;
+      
+         font-weight: 600;
+         cursor: pointer;
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         user-select: none;
+         transition: opacity 0.3s ease;
+        }
+    
+        .navbar-lang-switch:hover {
+          color: #f47c20;
+        }
+    
+        @media (max-width: 768px) {
+         .navbar-lang-switch {
+         display: none;
+         }
+        }
+        /* 默认隐藏 */
+         lang-switch-mobile {
+          display: none;
+        }
+    
+        /* 在小屏（手机）上显示 */
+        @media (max-width: 768px) {
+         .lang-switch-mobile {
+         display: block;
+         }
+        }
+    
+       
+        
+        
+        .contact-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+          color: #5e4533;
+          transition: color 0.3s ease; /* ✅ 统一过渡动画 */
+        }
+        
+        .contact-item:hover {
+          color: #f47c20;
+        }
+        
+        .contact-link {
+          color: inherit; /* ✅ 继承父级颜色 */
+          text-decoration: underline;
+          font-weight: 500;
+          transition: color 0.3s ease; /* ✅ 加上和图标一样的过渡 */
+        }
+        
+        .icon {
+          width: 15px;
+          height: 15px;
+          stroke: currentColor; /* ✅ 用 currentColor 同步颜色 */
+          stroke-width: 2;
+          flex-shrink: 0;
+          transition: stroke 0.3s ease; /* ✅ 明确添加 stroke 动画 */
+        }
+        
+       
+        .tagline {
+         font-size: 18px;
+         font-weight: 500;
+         color: #3b2b1c;
+         margin-bottom: 8px;
+         text-align: center;
+         letter-spacing: 0.5px;
+        }
+        @media (max-width: 768px){
+          .tagline{font-size: 16px;}}
+       @media (max-width: 768px) {
+      .wrapper {
+        padding: 0 !important;
       }
     
-      .title-with-windmill {
-        margin-top: 0;
-        margin-bottom: 10px;
+      .readable-intro {
+        margin-top: 45px !important;
       }
     
+     .readable-content,
+    .readable-intro {
+      max-width: 93%;
+      margin: 24px auto;
+      padding: 16px 20px;
+      border-radius: 20px;
     
-
-
-    .glow-background {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      animation: glow 4s ease-in-out infinite;
-      z-index: 1;
-      pointer-events: none;
-    }
+      background: rgba(255, 245, 235, 0.55);  /* 偏橙半透明 */
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
     
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.25);
     
-
+      font-size: 15px;
+      line-height: 1.7;
+      color: #3e2c1a;
+      transition: all 0.3s ease;
+    }
+      .readable-content p,
+      .readable-content h2,
+      .readable-content li {
+        position: relative;
+        z-index: 1;
+      }
     
+      h1 {
+        font-size: 19px !important;
+        font-weight: 800 !important;
+
+      }
     
+      h2 {
+        font-size: 19px !important;
+        font-weight: 800 !important;
 
-
-
-
-
-
-
-
-
-
+      }
     
+      h3 {
+        font-size: 18px !important;
+        font-weight: 650 !important;
 
-
-
-
-    @keyframes glow {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.25; }
-      50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.1; }
-      100% { transform: translate(-50%, -50%) scale(1); opacity: 0.25; }
+      }
     }
-    
-
-
-
-
-    .scroll-offset {
-      scroll-margin-top: 120px; /* 根据你的 navbar 高度调整 */
-    }
-
-    #postcode-title {
-     font-size: 24px; /* 跟 h2 一致 */
-     font-weight: 600;
-     transition: color 0.3s ease;
-    }
-    #postcode-title.highlight {
-     color: #3e2c1a !important;
-    }
-    
-    #splash-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9999;
-      height: 100vh;
-      background-color: #2c2c2e;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 1.2s ease;
-    }
-
-    #splash-screen img {
-      max-width: 100%;
-      max-height: 100%;
-     object-fit: contain;
-    }
-
-    #splash-screen.fade-out {
-     opacity: 0;
-     pointer-events: none;
-    }
-
-    .navbar-lang-switch {
-     position: absolute;
-     right: 40px;
-     font-size: 16px;
-     color: #5e4533;
-  
-     font-weight: 600;
-     cursor: pointer;
-     display: flex;
-     align-items: center;
-     gap: 6px;
-     user-select: none;
-     transition: opacity 0.3s ease;
-    }
-
-    .navbar-lang-switch:hover {
-      color: #f47c20;
-    }
-
-    @media (max-width: 768px) {
-     .navbar-lang-switch {
-     display: none;
-     }
-    }
-    /* 默认隐藏 */
-     lang-switch-mobile {
-      display: none;
-    }
-
-    /* 在小屏（手机）上显示 */
-    @media (max-width: 768px) {
-     .lang-switch-mobile {
-     display: block;
-     }
-    }
-
-   
-    
-    
-    .contact-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      color: #5e4533;
-      transition: color 0.3s ease; /* ✅ 统一过渡动画 */
-    }
-    
-    .contact-item:hover {
-      color: #f47c20;
-    }
-    
-    .contact-link {
-      color: inherit; /* ✅ 继承父级颜色 */
-      text-decoration: underline;
-      font-weight: 500;
-      transition: color 0.3s ease; /* ✅ 加上和图标一样的过渡 */
-    }
-    
-    .icon {
-      width: 15px;
-      height: 15px;
-      stroke: currentColor; /* ✅ 用 currentColor 同步颜色 */
-      stroke-width: 2;
-      flex-shrink: 0;
-      transition: stroke 0.3s ease; /* ✅ 明确添加 stroke 动画 */
-    }
-    
-    
-    
-    .tagline {
-     font-size: 18px;
-     font-weight: 500;
-     color: #3b2b1c;
-     margin-bottom: 8px;
-     text-align: center;
-     letter-spacing: 0.5px;
-    }
-
-   @media (max-width: 768px) {
-  .wrapper {
-    padding: 0 !important;
-  }
-
-  .readable-intro {
-    margin-top: 45px !important;
-  }
-
-  .readable-content,
-.readable-intro {
-  max-width: 92%;
-  margin: 20px auto;
-  padding: 14px 18px;
-  border-radius: 24px;
-
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-
-  box-shadow:
-    0 6px 30px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
-
-  font-size: 15px;
-  line-height: 1.6;
-  color: #3e2c1a;
-  transition: all 0.3s ease;
-}
-  .readable-content p,
-  .readable-content h2,
-  .readable-content li {
-    position: relative;
-    z-index: 1;
-  }
-
-  h1 {
-    font-size: 18px !important;
-  }
-
-  h2 {
-    font-size: 19px !important;
-  }
-
-  h3 {
-    font-size: 15px !important;
-  }
-}
-    
-    /* keyframes 应该写在 media 查询外部！ */
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.15; }
-      50% { transform: scale(1.2); opacity: 0.3; }
-    }
-    
+        
+        /* keyframes 应该写在 media 查询外部！ */
+        @keyframes pulseGlow {
+          0%, 100% { transform: scale(1); opacity: 0.15; }
+          50% { transform: scale(1.2); opacity: 0.3; }
+        }
+        
    
   
 .close-btn {
@@ -1071,7 +1088,7 @@
 #bottomBar {
   position: fixed;
   bottom: 10px;
-  width: 90%;
+  width: 93%;
   max-width: 640px;
   left: 50%;
   transform: translateX(-50%);
@@ -1081,11 +1098,11 @@
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.65); /* 和卡片保持一致 */
+  background: rgba(255, 245, 235, 0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
-  border-radius: 20px;
+  border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 同卡片 */
 
@@ -1281,7 +1298,7 @@
       <div class="readable-content">
         
         <h2 id="waarom" class="subheading scroll-offset">
-        Wat kun je ver<img src="https://i.postimg.cc/Hk4YP6cR/089-1.png" alt="icon" class="icon1-title">achten van ons
+        Wat je kunt ver<img src="https://i.postimg.cc/Hk4YP6cR/089-1.png" alt="icon" class="icon1-title">achten van ons
         </h2>
       
         <p class="about">
@@ -1436,7 +1453,7 @@
         <a href="tel:0622599566" class="contact-link">06-22599566</a>
       </span><br>
     
-      <!-- ✉️ 邮箱 -->
+      <!-- ✉ 邮箱 -->
       <span class="contact-item">
         <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
@@ -1504,7 +1521,7 @@
       <p id="postcodeResult" style="margin-top: 15px; font-size: 18px;"></p>
     </div>
   
-    <!-- 🖼️ 配送地图图像（替代 iframe） -->
+    <!-- 🖼 配送地图图像（替代 iframe） -->
     <div style="max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 2; position: relative;">
       <img src="https://i.postimg.cc/dQG3Fft4/Chat-GPT-Image-29-mrt-2025-09-56-43.png" alt="Bezorggebied van Sushi Nova in Oegstgeest en omgeving"
            style="width: 100%; display: block;" />
