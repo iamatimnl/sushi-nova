@@ -67,7 +67,8 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       text-align: center;
-      line-height: 1.8;lo      letter-spacing: 0.3px;
+      line-height: 1.8;
+      letter-spacing: 0.3px;
       font-size: clamp(14px, 2.2vmin, 18px);
     
       /* 用主背景色打底，不使用额外渐变 */
@@ -95,37 +96,29 @@
 
     
     
-  @media (max-width: 768px) {
-  html, body {
-    min-height: 100vh;
-    height: auto; /* ✅ 不要设定 100%，让页面自由撑高 */
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-}
+    @media (max-width: 768px) {
+      body {
+  background-color: #f5ecdd;
 
-  body {
-    background-color: #f5ecdd;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
+        
+      
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;}
 
-  .wrapper {
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
-    background-color: #f5ecdd;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-
-    min-height: 100vh; /* ✅ 这是关键，让内容高度超过首屏 */
-    overflow-y: visible; /* ✅ 避免滚动冲突 */
-  }
-}
+      .wrapper {
+        
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        background-color: #f5ecdd;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        overflow: visible !important;
+      }
+    }
 
     *, *::before, *::after {
       box-sizing: inherit;
@@ -238,23 +231,20 @@
       margin-bottom: 5px;
       border-radius: 2px;
     }
-  .side-menu {
-  position: fixed;
-  top: 0;
-  height: 100vh;       /* ✅ 视口高度 */
-  max-height: 100vh;   /* ✅ 防止超出 */
-  overflow-y: auto;    /* ✅ 内容多时可滚动 */
-  right: -100vw;       /* ✅ 初始隐藏在屏幕右边 */
-  width: 80vw;         /* ✅ 比例更灵活 */
-  max-width: 280px;
-  background-color: #f3e6cd;
-  transition: right 0.55s ease;
-  padding: 60px 20px;
-  z-index: 9999;
-}
-.side-menu.active {
-  right: 0;
-}
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      height: 100%;
+      width: 250px;
+      
+      transition: right 0.3s ease;
+      padding: 60px 20px;
+      z-index: 9999;
+    }
+    .side-menu.active {
+      right: 0;
+    }
     .side-menu ul {
       list-style: none;
       padding: 0;
@@ -415,7 +405,7 @@
       height: 100%;
       left: 16px;
     }
-    ì
+    
     .windmill-base {
       width: 100%;
       height: 100%;
@@ -796,21 +786,21 @@
     margin-top: 45px !important;
   }
 
- .readable-content,
+  .readable-content,
 .readable-intro {
   max-width: 93%;
   margin: 24px auto;
   padding: 16px 20px;
   border-radius: 20px;
 
-  background: rgba(255, 245, 235, 0.55);  /* 偏橙半透明 */
+  background: rgba(255, 253, 247, 0.5); /* iOS风格：半透明米白磨砂 */
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.25);
+    0 8px 20px rgba(0, 0, 0, 0.06),             /* 外部阴影浮感 */
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),  /* 顶部高光 */
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25); /* 底部柔光 */
 
   font-size: 15px;
   line-height: 1.7;
@@ -1092,13 +1082,13 @@
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.9); /* 和卡片保持一致 */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.65); /* 和卡片保持一致 */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.38); /* 同卡片 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 同卡片 */
 
   transition: opacity 0.2s ease, transform 0.3s ease;
   z-index: 9999;
@@ -2176,9 +2166,9 @@
     <script>
       (function () {
         let lastTouchY = 0;
-        let currentOpacity = 0.98; // 默认加载时设置为 0.9 不透明
+        let currentOpacity = 0.9; // 默认加载时设置为 0.9 不透明
         const minOpacity = 0.1;
-        const maxOpacity = 0.98;
+        const maxOpacity = 0.9;
     
         const bar = document.getElementById('bottomBar');
         const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
