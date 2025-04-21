@@ -784,48 +784,45 @@
     margin-top: 45px !important;
   }
 
-  .readable-content,
-  .readable-intro {
-    max-width: 640px;
+  .readable-content {
+    max-width: 90%;
     margin: 24px auto;
-    padding: 24px 20px;
-    border-radius: 20px;
+    padding: 16px 20px;
+    border-radius: 18px;
 
-    /* 毛玻璃特效 */
-    background: rgba(249, 243, 231, 0.8); /* 半透明奶茶色 */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.6); /* 半透明白色 */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    /* 投影和浮感 */
-    box-shadow:
-      0 4px 10px rgba(0, 0, 0, 0.05),
-      0 12px 28px rgba(0, 0, 0, 0.06);
-
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* 柔和阴影 */
     font-size: 15px;
     line-height: 1.7;
+    font-family: 'Inter', sans-serif;
+    color: #2c1c10;
     transition: all 0.3s ease;
   }
 
   .readable-content p,
   .readable-content h2,
   .readable-content li {
+    margin-bottom: 12px;
     position: relative;
     z-index: 1;
   }
 
-  h1 {
-    font-size: 20px !important;
+  .readable-content h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
   }
 
-  h2 {
-    font-size: 17px !important;
+  .readable-content h2 {
+    font-size: 17px;
   }
 
-  h3 {
-    font-size: 15px !important;
+  .readable-content h3 {
+    font-size: 15px;
   }
-} /* ✅ 正确关闭 media 查询 */
-    
+}
     /* keyframes 应该写在 media 查询外部！ */
     @keyframes pulseGlow {
       0%, 100% { transform: scale(1); opacity: 0.15; }
