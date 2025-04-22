@@ -856,19 +856,7 @@
           50% { transform: scale(1.2); opacity: 0.3; }
         }
         
-.readable-content.rubber-effect {
-  animation: soft-inertia-in 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-  transform-origin: center bottom;
-  will-change: transform, opacity;
-}
 
-@keyframes soft-inertia-in {
-  0%   { transform: translateY(12px) scaleY(0.96); opacity: 0; }
-  40%  { transform: translateY(4px)  scaleY(1.015); opacity: 0.8; }
-  70%  { transform: translateY(0px)  scaleY(1.005); opacity: 1; }
-  100% { transform: translateY(0px)  scaleY(1);     opacity: 1; }
-}
-  
 .close-btn {
   position: absolute;
   top: 14px;
@@ -2289,28 +2277,33 @@
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const items = document.querySelectorAll(".readable-content");
+    const cards = document.querySelectorAll(".readable-content");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+    function updateCardTransforms() {
+      const viewportHeight = window.innerHeight;
 
-          // 加入橡皮筋动画（拉伸→回收，先重置再触发）
-          entry.target.classList.remove("rubber-effect");
-          void entry.target.offsetWidth;
-          entry.target.classList.add("rubber-effect");
-        } else {
-          entry.target.classList.remove("visible");
-        }
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const visibleAmount = Math.min(1, Math.max(0, 1 - rect.top / viewportHeight));
+
+        // 基础浮动效果
+        const translateY = (1 - visibleAmount) * 40;
+        const scale = 0.98 + 0.02 * visibleAmount;
+        const opacity = visibleAmount;
+        const blur = (1 - visibleAmount) * 6;
+
+        // 橡皮拉伸感（Y轴 scale 拉伸）
+        const stretch = 1 + (1 - visibleAmount) * 0.02;
+
+        card.style.transform = `translateY(${translateY}px) scale(${scale}) scaleY(${stretch})`;
+        card.style.opacity = opacity;
+        card.style.filter = `blur(${blur}px)`;
       });
-    }, {
-      root: null,
-      rootMargin: "0px 0px -15% 0px", // 底部15%触发
-      threshold: 0
-    });
 
-    items.forEach((item) => observer.observe(item));
+      requestAnimationFrame(updateCardTransforms);
+    }
+
+    requestAnimationFrame(updateCardTransforms);
   });
 </script>
 
