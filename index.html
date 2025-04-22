@@ -857,19 +857,16 @@
         }
         
 .readable-content.rubber-effect {
-  animation: stretch-y-soft 0.6s ease-out;
-  transform-origin: center;
+  animation: card-pushed-in-2D 0.7s ease-out;
+  transform-origin: center bottom;
 }
 
-@keyframes stretch-y-soft {
-  0%   { transform: scaleY(1); }
-  10%  { transform: scaleY(1.005); }
-  20%  { transform: scaleY(1.015); }
-  30%  { transform: scaleY(1.025); }
-  40%  { transform: scaleY(1.035); }
-  50%  { transform: scaleY(1.04); }     /* 顶点 - 最自然的拉伸点 */
-  65%  { transform: scaleY(1.025); }
-  80%  { transform: scaleY(1.01); }
+@keyframes card-pushed-in-2D {
+  0%   { transform: translateY(20px) skewY(4deg) scaleY(0.98); opacity: 0; }
+  20%  { transform: translateY(10px) skewY(2deg) scaleY(0.99); opacity: 0.5; }
+  40%  { transform: translateY(5px)  skewY(1deg) scaleY(1.01); opacity: 0.8; }
+  60%  { transform: translateY(0px)  skewY(0deg) scaleY(1.01); opacity: 1; }
+  80%  { transform: scaleY(0.995); }
   100% { transform: scaleY(1); }
 }
   
