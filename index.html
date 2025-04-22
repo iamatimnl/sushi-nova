@@ -856,16 +856,16 @@
           50% { transform: scale(1.2); opacity: 0.3; }
         }
         
-.readable-content.bounce {
-  animation: soft-rubber 0.5s ease-out;
-  transform-origin: center center;
+.readable-content.rubber-effect {
+  animation: rubber-bounce 0.6s ease-out;
+  transform-origin: center;
 }
 
-@keyframes soft-rubber {
+@keyframes rubber-bounce {
   0%   { transform: scale(1); }
-  25%  { transform: scale(1.015, 0.985); }
-  50%  { transform: scale(0.985, 1.015); }
-  75%  { transform: scale(1.005, 0.995); }
+  20%  { transform: scale(1.015, 0.985); }
+  45%  { transform: scale(0.97, 1.03); }
+  70%  { transform: scale(1.01, 0.99); }
   100% { transform: scale(1); }
 }
   
@@ -2291,27 +2291,28 @@
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
 
-    const animatedSet = new WeakSet(); // 记录已经动画过的元素，避免重复触发
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
 
-    function checkVisibility() {
-      items.forEach((item) => {
-        const rect = item.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
-
-        if (isVisible && !animatedSet.has(item)) {
-          item.classList.add("visible");
-          item.classList.add("rubber-effect");
-          animatedSet.add(item); // 标记为已触发动画
+          // 加入橡皮筋动画（拉伸→回收，先重置再触发）
+          entry.target.classList.remove("rubber-effect");
+          void entry.target.offsetWidth;
+          entry.target.classList.add("rubber-effect");
+        } else {
+          entry.target.classList.remove("visible");
         }
       });
+    }, {
+      root: null,
+      rootMargin: "0px 0px -15% 0px", // 底部15%触发
+      threshold: 0
+    });
 
-      requestAnimationFrame(checkVisibility); // 循环检查
-    }
-
-    requestAnimationFrame(checkVisibility);
+    items.forEach((item) => observer.observe(item));
   });
 </script>
-
 
 
 
