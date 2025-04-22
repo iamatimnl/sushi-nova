@@ -857,14 +857,20 @@
         }
         
 .readable-content.rubber-effect {
-  animation: stretch-y 0.5s ease-out;
+  animation: stretch-y-soft 0.6s ease-out;
   transform-origin: center;
 }
 
-@keyframes stretch-y {
+@keyframes stretch-y-soft {
   0%   { transform: scaleY(1); }
-  30%  { transform: scaleY(1.04); }  /* 向下轻轻拉 */
-  100% { transform: scaleY(1); }     /* 回正 */
+  10%  { transform: scaleY(1.005); }
+  20%  { transform: scaleY(1.015); }
+  30%  { transform: scaleY(1.025); }
+  40%  { transform: scaleY(1.035); }
+  50%  { transform: scaleY(1.04); }     /* 顶点 - 最自然的拉伸点 */
+  65%  { transform: scaleY(1.025); }
+  80%  { transform: scaleY(1.01); }
+  100% { transform: scaleY(1); }
 }
   
 .close-btn {
