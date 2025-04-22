@@ -2270,54 +2270,59 @@
   </script>
 <script>
   document.getElementById("langSwitch").addEventListener("click", function () {
-    window.location.href = "/en/";
-  });
-</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
-
     const screenHeight = window.innerHeight;
-    const triggerTop = screenHeight * 0.0999;    // ≈ -9.99%
-    const tolerance = screenHeight * 0.02;       // ±2% 容差
+    const triggerTop = screenHeight * 0.0999; // ≈ 9.99%
+    const tolerance = screenHeight * 0.025;   // ±2.5%
+
+    let lastScrollY = window.scrollY;
+    let scrollDirection = 'down';
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+      lastScrollY = currentScrollY;
+    });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const rect = entry.boundingClientRect;
 
-        // ✅ 展开条件：进入 9.99% ± 2% 区间
+        // ✅ 展开：向下滑动时进入 trigger 区域 ±容差
         if (
           entry.isIntersecting &&
+          scrollDirection === 'down' &&
           rect.top >= (triggerTop - tolerance) &&
           rect.top <= (triggerTop + tolerance)
         ) {
-          entry.target.classList.add("visible");
+          entry.target.classList.add('visible');
         }
 
-        // ✅ 折叠条件：完全离开上下边界才回收
+        // ✅ 回收：完全离开可视区再回收
         if (
-          rect.bottom <= 0 ||               // 上边界离开
-          rect.top >= screenHeight          // 下边界离开
+          rect.bottom <= 0 ||  // 上边离开
+          rect.top >= screenHeight  // 下边离开
         ) {
-          entry.target.classList.remove("visible");
+          entry.target.classList.remove('visible');
         }
       });
     }, {
       root: null,
-      threshold: 0
+      threshold: 0,
+      rootMargin: "-10% 0px 0px 0px"
     });
 
     items.forEach((item) => observer.observe(item));
 
-    // ✅ 解决刷新后首屏不显示问题
+    // ✅ 首屏补偿
     setTimeout(() => {
       window.scrollTo(window.scrollX, window.scrollY + 1);
       window.scrollTo(window.scrollX, window.scrollY - 1);
     }, 50);
   });
 </script>
-
-
 
 </body>
 </html>
