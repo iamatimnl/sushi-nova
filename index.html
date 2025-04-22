@@ -857,15 +857,16 @@
         }
         
 .readable-content.rubber-effect {
-  animation: soft-slide-in 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+  animation: soft-inertia-in 0.65s cubic-bezier(0.22, 1, 0.36, 1);
   transform-origin: center bottom;
+  will-change: transform, opacity;
 }
 
-@keyframes soft-slide-in {
-  0%   { transform: translateY(8px) scaleY(0.98); opacity: 0; }
-  30%  { transform: translateY(4px) scaleY(1.005); opacity: 0.6; }
-  60%  { transform: translateY(1px) scaleY(1.01); opacity: 0.9; }
-  100% { transform: translateY(0) scaleY(1); opacity: 1; }
+@keyframes soft-inertia-in {
+  0%   { transform: translateY(12px) scaleY(0.96); opacity: 0; }
+  40%  { transform: translateY(4px)  scaleY(1.015); opacity: 0.8; }
+  70%  { transform: translateY(0px)  scaleY(1.005); opacity: 1; }
+  100% { transform: translateY(0px)  scaleY(1);     opacity: 1; }
 }
   
 .close-btn {
