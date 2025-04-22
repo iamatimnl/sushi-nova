@@ -11,17 +11,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- ✅ PWA 支援 -->
-  <!-- 统一顶部颜色 -->
-<meta name="theme-color" content="#f5d4b6"> <!-- 改为主色 -->
+  <meta name="theme-color" content="#f5d4b6"> <!-- 改为主色 -->
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- 或使用 default 更一致 -->
-
+<meta name="apple-mobile-web-app-status-bar-style" content="default"> 
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- iOS顶部跟随背景色 -->
   <meta name="apple-mobile-web-app-title" content="Sushi Nova">
 
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="/icon-192.png">
+
 
  
   
@@ -470,6 +469,7 @@
             pointer-events: auto !important;
             transition: opacity 0.2s ease, transform 0.2s ease;
             transform: translateY(0);  /* 初始正常显示 */
+         
           }
         
           .navbar.hidden {
@@ -791,14 +791,12 @@
        @media (max-width: 768px) {
       .wrapper {
         padding: 0 !important;
+        margin-top: 40px;
       }
     
-      .readable-intro {
-        margin-top: 45px !important;
-      }
+      
     
-     .readable-content,
-    .readable-intro {
+     .readable-content {
       max-width: 93%;
       margin: 24px auto;
       padding: 16px 20px;
@@ -816,49 +814,39 @@
       font-size: 15px;
       line-height: 1.7;
       color: #3e2c1a;
-      transition: all 0.3s ease;
-    }
-      .readable-content p,
-      .readable-content h2,
-      .readable-content li {
-        position: relative;
-        z-index: 1;
+      opacity: 0;
+     transform: translateY(50px);
+     transition: opacity 1s ease, transform 1s ease;
+     will-change: opacity, transform;
+    }}
+   .readable-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+  .readable-content p,
+  .readable-content h2,
+  .readable-content li {
+    position: relative;
+    z-index: 1;
       }
     
       h1 {
         font-size: 19px !important;
-        font-weight: 950 !important;
+        font-weight: 800 !important;
 
       }
     
       h2 {
         font-size: 19px !important;
-        font-weight: 950 !important;
+        font-weight: 800 !important;
 
       }
     
       h3 {
         font-size: 18px !important;
-        font-weight: 750 !important;
+        font-weight: 650 !important;
 
       }
     }
-    
-    /* 其他样式... */
-
-.readable-content {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-}
-
-.readable-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-    
         
         /* keyframes 应该写在 media 查询外部！ */
         @keyframes pulseGlow {
@@ -895,6 +883,9 @@
   color: #f47c20;
 }
 
+
+
+
   
 .section-title {
   transition: color 0.3s ease;
@@ -914,6 +905,7 @@
   margin-bottom: -16px;
   filter: brightness(0) saturate(100%) invert(16%) sepia(28%) saturate(927%) hue-rotate(358deg) brightness(95%) contrast(90%);
 }
+
 
 #homeButtonFloating {
   display: flex;
@@ -950,6 +942,8 @@
   transition: all 0.3s ease;
 }
 
+
+
 #smartActionBtn {
   display: flex;
   position: fixed;
@@ -985,6 +979,7 @@
   }}
 
  
+
 
  #smartActionBtn.show {
   opacity: 1;
@@ -1077,6 +1072,7 @@
   height: 64px;
   background:transparent; /* 比主背景稍浅或更透明 */
 
+
   align-items: center;
   justify-content: center;
   border: none;
@@ -1119,12 +1115,15 @@
   z-index: 9999;
 }
 
+
+
     
 @media (min-width: 769px) {
   #bottomBar {
     display: none !important;
   }
 }
+
 
 .bar-text {
   font-size: 16px;
@@ -1144,6 +1143,9 @@
       right: 20px !important; /* 👈 保证在右下角 */
       left: auto !important;  /* ✅ 防止被移动到左边 */
     }}d
+
+
+
 
     #mapRouteButton {
       display: none;
@@ -1179,7 +1181,12 @@
       }
     }
     
-
+    @media (max-width: 768px) {
+      .navbar-spacer {
+        height: 20px;
+      }
+    }
+    
   
 
   </style>
@@ -1189,6 +1196,7 @@
  
 
   <div class="navbar" id="navbar">
+ 
   <div class="navbar-left">
   </div>
   
@@ -1239,6 +1247,7 @@
     <ul>
       <li><a href="#" onclick="document.getElementById('homeButtonFloating').click()">Home</a></li>
 
+
       <li><a href="#waarom">Waarom Sushi Nova</a></li>
 
       
@@ -1260,6 +1269,8 @@
 
   
 
+
+
   <div class="bg-badge"></div>
   <div class="wrapper" id="mainWrapper">
     
@@ -1270,8 +1281,12 @@
        <img src="https://i.postimg.cc/pLpNCdH9/mj.png" alt="Sushi Nova Logo" id="logoAnchor"  />
         </a>
     </div>
-    <div class="readable-intro">
-
+  
+   
+    <div class="navbar-spacer"></div>
+    
+   
+    <div class="readable-content">
     <div class="title-with-windmill">
 
      <h1 id="welkom" class="sushi-title">Welkom bij Sushi Nova</h1>
@@ -1293,6 +1308,7 @@
     <p class="tagline">Jouw smaak. Jouw stijl. Onze sushi – ambachtelijk en dagvers, voor afhalen of bezorging in Oegstgeest en omstreken.</p></div>
 
     <div class="dots-divider">• • •</div>
+
 
       <div class="readable-content">
         
@@ -1487,10 +1503,13 @@
     
  
 
+
+
     
     
     
     
+
 
     
     <div class="dots-divider">• • •</div>
@@ -1585,6 +1604,8 @@
   
   <div class="dots-divider">• • •</div>
 
+
+
   <div class="readable-content">
   <p style="font-size: 12px;  text-align: center;">
     Sushi Nova – premium sushi bezorgservice in Oegstgeest en Leiden. Bestel verse sushi, poke bowls en unieke boxen eenvoudig online.
@@ -1630,6 +1651,7 @@
   </button>
   
 
+
   
 
   <script>
@@ -1641,6 +1663,7 @@
   
   
   
+
 
   <script>
     function checkPostcode() {
@@ -1656,10 +1679,10 @@
   
       if (allowed.includes(input)) {
         result.style.color = "#00cc88";
-        result.innerText = ✅ Ja! Wij bezorgen in ${input}.;
+        result.innerText = `✅ Ja! Wij bezorgen in ${input}.`;
       } else {
         result.style.color = "#ff5555";
-        result.innerText = ❌ Sorry, wij bezorgen niet in ${input}.;
+        result.innerText = `❌ Sorry, wij bezorgen niet in ${input}.`;
       }
     }
   </script>
@@ -1770,7 +1793,7 @@
       };
   
       Object.entries(highlightMap).forEach(([key, selector]) => {
-        const link = document.querySelector(a[href="#${key}"]);
+        const link = document.querySelector(`a[href="#${key}"]`);
         const target = document.querySelector(selector);
   
         if (link && target) {
@@ -1796,13 +1819,13 @@
 
   // 只显示下单按钮
   function showOrderButton() {
-    icon.innerHTML = 
+    icon.innerHTML = `
       <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 
       0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.1 14h10.45c.75 0 
       1.41-.41 1.75-1.03l3.58-6.49a.996.996 0 00-.87-1.48H5.21L4.27 
       2.6a1 1 0 00-.98-.6H1v2h1.6l3.6 7.59-1.35 2.44c-.2.36-.31.77-.31 
       1.17 0 1.1.9 2 2 2z" fill="white"/>
-    ;
+    `;
     btn.onclick = () => window.open("https://www.sushinova.nl", "_blank");
     btn.title = "Bestel nu";
     btn.classList.add("show");
@@ -1834,6 +1857,8 @@
   // 初始显示
   showOrderButton();
 </script>
+
+
 
   
   
@@ -1873,6 +1898,7 @@
         // ✅ 👇 加上这两行来微调风叶的位置
         cloneBlades.style.top = '-208px';
         cloneBlades.style.left = '-64px';
+
 
   
         overlay.appendChild(clone);
@@ -1957,7 +1983,7 @@
         angle += speed * deltaTime;
         if (angle >= 360) angle -= 360;
     
-        blades.style.transform = rotate(${angle}deg);
+        blades.style.transform = `rotate(${angle}deg)`;
         requestAnimationFrame(animate);
       }
     
@@ -2062,6 +2088,7 @@
   // ✅ 初始启动时也调用一次
   showHomeBtn();
 </script>
+
 
 <script>
   document.getElementById('homeButton').addEventListener('click', function (e) {
@@ -2242,40 +2269,30 @@
     window.location.href = "/en/";
   });
 </script>
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll('.readable-content');
-  const dividers = document.querySelectorAll('.dots-divider');
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".readable-content");
 
-  // 初始添加折叠动画类
-  sections.forEach(section => {
-    section.classList.add('hidden-section');
-  });
-
-  dividers.forEach(divider => {
-    divider.classList.add('hidden-divider');
-  });
-
-  // 创建 Intersection Observer
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // 只触发一次
-      }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: "-20% 0px 0px 0px", // ✅ 屏幕顶部下方15%区域触发
+      threshold: 0
     });
-  }, {
-    threshold: 0, // 元素只要进入就触发
-    rootMargin: '0px 0px -10px 0px' // 底部提前10px触发
-  });
 
-  // 监听所有 readable-content 和 dots-divider
-  document.querySelectorAll('.readable-content, .dots-divider').forEach(el => {
-    observer.observe(el);
+    items.forEach((item) => observer.observe(item));
   });
-});
 </script>
+
+
+
 
 </body>
 </html>
