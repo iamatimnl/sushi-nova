@@ -2277,21 +2277,43 @@
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
 
+    const screenHeight = window.innerHeight;
+    const triggerTop = screenHeight * 0.0999;    // ≈ -9.99%
+    const tolerance = screenHeight * 0.02;       // ±2% 容差
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        const rect = entry.boundingClientRect;
+
+        // ✅ 展开条件：进入 9.99% ± 2% 区间
+        if (
+          entry.isIntersecting &&
+          rect.top >= (triggerTop - tolerance) &&
+          rect.top <= (triggerTop + tolerance)
+        ) {
           entry.target.classList.add("visible");
-        } else {
+        }
+
+        // ✅ 折叠条件：完全离开上下边界才回收
+        if (
+          rect.bottom <= 0 ||               // 上边界离开
+          rect.top >= screenHeight          // 下边界离开
+        ) {
           entry.target.classList.remove("visible");
         }
       });
     }, {
       root: null,
-      rootMargin: "-9.333333333333333333333333% 0px 0px 0px", // ✅ 屏幕顶部下方约 23% 区域触发
       threshold: 0
     });
 
     items.forEach((item) => observer.observe(item));
+
+    // ✅ 解决刷新后首屏不显示问题
+    setTimeout(() => {
+      window.scrollTo(window.scrollX, window.scrollY + 1);
+      window.scrollTo(window.scrollX, window.scrollY - 1);
+    }, 50);
   });
 </script>
 
