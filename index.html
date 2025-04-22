@@ -2280,10 +2280,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
 
-    const screenHeight = window.innerHeight;
-    const triggerTop = screenHeight * 0.09;  // 顶部下方 9%
-    const triggerTolerance = screenHeight * 0.03;  // 允许 ±3% 区间
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -2294,27 +2290,11 @@
       });
     }, {
       root: null,
-      rootMargin: "-9% 0px 0px 0px",
+      rootMargin: "0px 0px -15% 0px", // 屏幕底部上方15%区域触发
       threshold: 0
     });
 
     items.forEach((item) => observer.observe(item));
-
-    // ✅ 定时主动检测是否“卡住”
-    setInterval(() => {
-      items.forEach(item => {
-        const rect = item.getBoundingClientRect();
-
-        // 如果卡片在顶部 ±3% 之间 && 未显示
-        if (
-          rect.top > (triggerTop - triggerTolerance) &&
-          rect.top < (triggerTop + triggerTolerance) &&
-          !item.classList.contains('visible')
-        ) {
-          item.classList.add('visible');
-        }
-      });
-    }, 150); // 每 300ms 检查一次
   });
 </script>
 
