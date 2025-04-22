@@ -856,7 +856,17 @@
           50% { transform: scale(1.2); opacity: 0.3; }
         }
         
-   
+   .readable-content.bounce {
+  animation: bounce-in 0.6s ease-out;
+}
+
+@keyframes bounce-in {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-12px); }
+  50%  { transform: translateY(8px); }
+  70%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
   
 .close-btn {
   position: absolute;
@@ -2284,13 +2294,18 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
+
+          // 添加 bounce 弹跳效果（先移除再添加，确保重复触发）
+          entry.target.classList.remove("bounce");
+          void entry.target.offsetWidth; // 强制重绘，重启动画
+          entry.target.classList.add("bounce");
         } else {
           entry.target.classList.remove("visible");
         }
       });
     }, {
       root: null,
-      rootMargin: "0px 0px -20% 0px", // 屏幕底部上方15%区域触发
+      rootMargin: "0px 0px -15% 0px", // 从底部15%区域触发
       threshold: 0
     });
 
