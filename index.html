@@ -2286,26 +2286,29 @@
 
       cards.forEach(card => {
         const rect = card.getBoundingClientRect();
-        const centerY = rect.top + rect.height / 2;
-        const centerRatio = centerY / viewportHeight;
+        const cardHeight = rect.height;
 
-        // 0 ~ 1: 表示在视口中的垂直百分比
+        // 可见部分的高度（视口内的交叉区）
+        const visibleTop = Math.max(0, rect.top);
+        const visibleBottom = Math.min(viewportHeight, rect.bottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+        const visibleRatio = visibleHeight / cardHeight;
+
+        // ---- 模糊逻辑（只有“部分进入”时才模糊） ----
         let blur = 0;
-
-        if (centerRatio < 0.15) {
-          blur = (0.15 - centerRatio) * 20; // 顶部模糊区
-        } else if (centerRatio > 0.85) {
-          blur = (centerRatio - 0.85) * 20; // 底部模糊区
+        if (visibleRatio < 0.9) {
+          blur = (1 - visibleRatio) * 12;
         }
 
-        blur = Math.min(6, Math.max(0, blur)); // 限制最大模糊为 6px
+        blur = Math.min(6, Math.max(0, blur));
 
-        // 其他动画逻辑可选保留
-        const visibleAmount = Math.min(1, Math.max(0, 1 - rect.top / (viewportHeight * 0.6)));
-        const translateY = (1 - visibleAmount) * 40;
-        const scale = 0.98 + 0.02 * visibleAmount;
-        const stretch = 1 + (1 - visibleAmount) * 0.02;
-        const opacity = visibleAmount;
+        // ---- 基础动效 ----
+        const rawVisible = Math.min(1, Math.max(0, 1 - rect.top / (viewportHeight * 0.6)));
+        const translateY = (1 - rawVisible) * 40;
+        const scale = 0.98 + 0.02 * rawVisible;
+        const stretch = 1 + (1 - rawVisible) * 0.02;
+        const opacity = rawVisible;
 
         card.style.transform = `translateY(${translateY}px) scale(${scale}) scaleY(${stretch})`;
         card.style.opacity = opacity;
