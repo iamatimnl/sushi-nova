@@ -2277,8 +2277,8 @@
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
     const screenHeight = window.innerHeight;
-    const triggerTop = screenHeight * 0.09;  // 主触发点：屏幕顶部下方 9%
-    const tolerance = screenHeight * 0.02;   // 容忍偏差：±2%
+    const triggerTop = screenHeight * 0.11;   // 触发点：顶部下方 11%
+    const tolerance = screenHeight * 0.05;    // 允许 ±5%
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -2286,7 +2286,6 @@
 
         if (
           entry.isIntersecting &&
-          rect.top >= (triggerTop - tolerance) &&
           rect.top <= (triggerTop + tolerance)
         ) {
           entry.target.classList.add("visible");
@@ -2300,6 +2299,12 @@
     });
 
     items.forEach((item) => observer.observe(item));
+
+    // 防止刷新后首屏不触发
+    setTimeout(() => {
+      window.scrollTo(window.scrollX, window.scrollY + 1);
+      window.scrollTo(window.scrollX, window.scrollY - 1);
+    }, 50);
   });
 </script>
 
