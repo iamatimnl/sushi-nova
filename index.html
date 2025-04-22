@@ -2288,29 +2288,28 @@
         const rect = card.getBoundingClientRect();
         const cardHeight = rect.height;
 
-        // 可见部分的高度（视口内的交叉区）
         const visibleTop = Math.max(0, rect.top);
         const visibleBottom = Math.min(viewportHeight, rect.bottom);
         const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-
         const visibleRatio = visibleHeight / cardHeight;
 
-        // ---- 模糊逻辑（只有“部分进入”时才模糊） ----
+        // Apple式模糊逻辑：如果卡片只有部分可见，模糊；大部分可见就清晰
         let blur = 0;
-        if (visibleRatio < 0.9) {
-          blur = (1 - visibleRatio) * 12;
+        if (visibleRatio < 0.8) {
+          blur = (1 - visibleRatio) * 8;
         }
 
         blur = Math.min(6, Math.max(0, blur));
 
-        // ---- 基础动效 ----
-        const rawVisible = Math.min(1, Math.max(0, 1 - rect.top / (viewportHeight * 0.6)));
-        const translateY = (1 - rawVisible) * 40;
-        const scale = 0.98 + 0.02 * rawVisible;
-        const stretch = 1 + (1 - rawVisible) * 0.02;
-        const opacity = rawVisible;
+        // Apple式位移：越靠近中心越归位
+        const centerY = rect.top + cardHeight / 2;
+        const centerRatio = centerY / viewportHeight;
 
-        card.style.transform = `translateY(${translateY}px) scale(${scale}) scaleY(${stretch})`;
+        const translateY = (0.5 - centerRatio) * 60; // 卡片浮动方向
+        const scale = 0.98 + Math.max(0, 1 - Math.abs(0.5 - centerRatio)) * 0.02;
+        const opacity = Math.min(1, visibleRatio * 1.2);
+
+        card.style.transform = `translateY(${translateY}px) scale(${scale})`;
         card.style.opacity = opacity;
         card.style.filter = `blur(${blur}px)`;
       });
@@ -2321,7 +2320,5 @@
     requestAnimationFrame(updateCardTransforms);
   });
 </script>
-
-
 </body>
 </html>
