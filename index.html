@@ -313,21 +313,24 @@
       color: #5e4533;
     }
     p.subtitle {
-      font-size: 15px;
+      font-size: 16px;
       color: #5e4533;
       margin-bottom: 30px;
     }
    .orange-soft-button {
-      display: inline-block;
-      background-color:#3e2c1a;
-      color:#f5ecdd;
-      padding: 10px 24px;
-      font-size: 15px;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-    }
+  display: inline-block;
+  background-color: #3e2c1a;
+  color: #f5ecdd;
+  padding: 10px 24px;
+  font-size: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.08),
+    0 8px 20px rgba(0, 0, 0, 0.06);
+}
     .orange-soft-button:hover {
       background-color: #e86f1c;
       transform: translateY(-1px);
@@ -2270,59 +2273,62 @@
   </script>
 <script>
   document.getElementById("langSwitch").addEventListener("click", function () {
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const items = document.querySelectorAll(".readable-content");
-    const screenHeight = window.innerHeight;
-    const triggerTop = screenHeight * 0.0999; // ≈ 9.99%
-    const tolerance = screenHeight * 0.025;   // ±2.5%
-
-    let lastScrollY = window.scrollY;
-    let scrollDirection = 'down';
-
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-      scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-      lastScrollY = currentScrollY;
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const rect = entry.boundingClientRect;
-
-        // ✅ 展开：向下滑动时进入 trigger 区域 ±容差
-        if (
-          entry.isIntersecting &&
-          scrollDirection === 'down' &&
-          rect.top >= (triggerTop - tolerance) &&
-          rect.top <= (triggerTop + tolerance)
-        ) {
-          entry.target.classList.add('visible');
-        }
-
-        // ✅ 回收：完全离开可视区再回收
-        if (
-          rect.bottom <= 0 ||  // 上边离开
-          rect.top >= screenHeight  // 下边离开
-        ) {
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0,
-      rootMargin: "-10% 0px 0px 0px"
-    });
-
-    items.forEach((item) => observer.observe(item));
-
-    // ✅ 首屏补偿
-    setTimeout(() => {
-      window.scrollTo(window.scrollX, window.scrollY + 1);
-      window.scrollTo(window.scrollX, window.scrollY - 1);
-    }, 50);
+    window.location.href = "/en/";
   });
 </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".readable-content");
+      const screenHeight = window.innerHeight;
+      const triggerTop = screenHeight * 0.0999; // ≈9.99%
+      const tolerance = screenHeight * 0.025;   // ±2.5%
+
+      let lastScrollY = window.scrollY;
+      let scrollDirection = 'down';
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+        lastScrollY = currentScrollY;
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const rect = entry.boundingClientRect;
+
+          if (
+            entry.isIntersecting &&
+            scrollDirection === 'down' &&
+            rect.top >= (triggerTop - tolerance) &&
+            rect.top <= (triggerTop + tolerance)
+          ) {
+            entry.target.classList.add('visible');
+          }
+
+          if (
+            rect.bottom <= 0 ||
+            rect.top >= screenHeight
+          ) {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0,
+        rootMargin: "-10% 0px 0px 0px"
+      });
+
+      items.forEach((item) => observer.observe(item));
+
+      setTimeout(() => {
+        window.scrollTo(window.scrollX, window.scrollY + 1);
+        window.scrollTo(window.scrollX, window.scrollY - 1);
+      }, 50);
+    });
+  </script>
+
+
 
 </body>
 </html>
