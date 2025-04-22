@@ -2291,26 +2291,24 @@
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+    const animatedSet = new WeakSet(); // 记录已经动画过的元素，避免重复触发
 
-          // 添加 bounce 弹跳效果（先移除再添加，确保重复触发）
-          entry.target.classList.remove("bounce");
-          void entry.target.offsetWidth; // 强制重绘，重启动画
-          entry.target.classList.add("bounce");
-        } else {
-          entry.target.classList.remove("visible");
+    function checkVisibility() {
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+
+        if (isVisible && !animatedSet.has(item)) {
+          item.classList.add("visible");
+          item.classList.add("rubber-effect");
+          animatedSet.add(item); // 标记为已触发动画
         }
       });
-    }, {
-      root: null,
-      rootMargin: "0px 0px -15% 0px", // 从底部15%区域触发
-      threshold: 0
-    });
 
-    items.forEach((item) => observer.observe(item));
+      requestAnimationFrame(checkVisibility); // 循环检查
+    }
+
+    requestAnimationFrame(checkVisibility);
   });
 </script>
 
