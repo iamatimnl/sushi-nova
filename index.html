@@ -2276,57 +2276,28 @@
     window.location.href = "/en/";
   });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".readable-content");
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const items = document.querySelectorAll(".readable-content");
-      const screenHeight = window.innerHeight;
-      const triggerTop = screenHeight * 0.0999; // ≈9.99%
-      const tolerance = screenHeight * 0.025;   // ±2.5%
-
-      let lastScrollY = window.scrollY;
-      let scrollDirection = 'down';
-
-      window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-        lastScrollY = currentScrollY;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
       });
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const rect = entry.boundingClientRect;
-
-          if (
-            entry.isIntersecting &&
-            scrollDirection === 'down' &&
-            rect.top >= (triggerTop - tolerance) &&
-            rect.top <= (triggerTop + tolerance)
-          ) {
-            entry.target.classList.add('visible');
-          }
-
-          if (
-            rect.bottom <= 0 ||
-            rect.top >= screenHeight
-          ) {
-            entry.target.classList.remove('visible');
-          }
-        });
-      }, {
-        root: null,
-        threshold: 0,
-        rootMargin: "-10% 0px 0px 0px"
-      });
-
-      items.forEach((item) => observer.observe(item));
-
-      setTimeout(() => {
-        window.scrollTo(window.scrollX, window.scrollY + 1);
-        window.scrollTo(window.scrollX, window.scrollY - 1);
-      }, 50);
+    }, {
+      root: null,
+      rootMargin: "-9.000000003333333333333333333333333% 0px 0px 0px", // ✅ 屏幕顶部下方15%区域触发
+      threshold: 0
     });
-  </script>
+
+    items.forEach((item) => observer.observe(item));
+  });
+</script>
+
 
 
 
