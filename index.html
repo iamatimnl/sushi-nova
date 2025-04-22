@@ -2276,42 +2276,22 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
-    const screenHeight = window.innerHeight;
-    const triggerTop = screenHeight * 0.11;
-    const tolerance = screenHeight * 0.05;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const rect = entry.boundingClientRect;
-
-        // ✅ 滑入：当元素接近顶部下方 11%（±容差）就触发显示
-        if (
-          entry.isIntersecting &&
-          rect.top <= (triggerTop + tolerance)
-        ) {
+        if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-        }
-
-        // ✅ 仅当元素“完全离开屏幕”再隐藏，防止抖动/卡壳
-        if (
-          rect.bottom <= 0 ||                // 上面完全离开
-          rect.top >= screenHeight           // 下面完全离开
-        ) {
+        } else {
           entry.target.classList.remove("visible");
         }
       });
     }, {
       root: null,
+      rootMargin: "-9.333333333333333333333333% 0px 0px 0px", // ✅ 屏幕顶部下方约 23% 区域触发
       threshold: 0
     });
 
     items.forEach((item) => observer.observe(item));
-
-    // ✅ 刷新时强制触发一次判断
-    setTimeout(() => {
-      window.scrollTo(window.scrollX, window.scrollY + 1);
-      window.scrollTo(window.scrollX, window.scrollY - 1);
-    }, 50);
   });
 </script>
 
