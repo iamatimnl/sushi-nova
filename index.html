@@ -2272,11 +2272,6 @@
     });
   </script>
 <script>
-  document.getElementById("langSwitch").addEventListener("click", function () {
-    window.location.href = "/en/";
-  });
-</script>
-<script>
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
 
@@ -2290,11 +2285,17 @@
       });
     }, {
       root: null,
-      rootMargin: "-9.000000003333333333333333333333333% 0px 0px 0px", // ✅ 屏幕顶部下方15%区域触发
+      rootMargin: "-9.000000003333333333333333333333333% 0px 0px 0px", // 屏幕顶部下方精确触发
       threshold: 0
     });
 
     items.forEach((item) => observer.observe(item));
+
+    // ✅ 防止刷新后首屏卡片不出现
+    setTimeout(() => {
+      window.scrollTo(window.scrollX, window.scrollY + 1);
+      window.scrollTo(window.scrollX, window.scrollY - 1);
+    }, 50);
   });
 </script>
 
