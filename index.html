@@ -2274,37 +2274,27 @@
     window.location.href = "/en/";
   });
 </script>
- <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const items = document.querySelectorAll(".readable-content");
-      let lastScrollTop = window.scrollY;
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".readable-content");
 
-      const observer = new IntersectionObserver((entries) => {
-        const scrollTop = window.scrollY;
-        const scrollSpeed = Math.abs(scrollTop - lastScrollTop);
-        lastScrollTop = scrollTop;
-
-        entries.forEach((entry) => {
-          const target = entry.target;
-
-          if (entry.isIntersecting) {
-            target.classList.add("visible");
-          } else {
-            // 当滑动速度慢时才回收，快滚动时保持显示避免卡壳
-            if (scrollSpeed < 6) {
-              target.classList.remove("visible");
-            }
-          }
-        });
-      }, {
-        root: null,
-        rootMargin: "-20.11199999933333333333333333% 0px 0px 0px",
-        threshold: 0
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
       });
-
-      items.forEach((item) => observer.observe(item));
+    }, {
+      root: null,
+      rootMargin: "-13.333333333333333333333333% 0px 0px 0px", // ✅ 屏幕顶部下方15%区域触发
+      threshold: 0
     });
-  </script>
+
+    items.forEach((item) => observer.observe(item));
+  });
+</script>
 
 
 
