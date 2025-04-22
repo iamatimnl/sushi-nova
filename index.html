@@ -2276,25 +2276,32 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const items = document.querySelectorAll(".readable-content");
+    const screenHeight = window.innerHeight;
+    const triggerTop = screenHeight * 0.09;  // 主触发点：屏幕顶部下方 9%
+    const tolerance = screenHeight * 0.02;   // 容忍偏差：±2%
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        const rect = entry.boundingClientRect;
+
+        if (
+          entry.isIntersecting &&
+          rect.top >= (triggerTop - tolerance) &&
+          rect.top <= (triggerTop + tolerance)
+        ) {
           entry.target.classList.add("visible");
-        } else {
+        } else if (rect.bottom < 0 || rect.top > screenHeight) {
           entry.target.classList.remove("visible");
         }
       });
     }, {
       root: null,
-      rootMargin: "-9.000000003333333333333333333333333% 0px 0px 0px", // ✅ 屏幕顶部下方15%区域触发
       threshold: 0
     });
 
     items.forEach((item) => observer.observe(item));
   });
 </script>
-
 
 
 
