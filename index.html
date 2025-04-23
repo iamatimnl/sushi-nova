@@ -829,14 +829,7 @@
   transform: scale(1) translateY(0);
 }
 
-/* 卡壳时淡出动画 */
-.readable-content.fade-away {
-  opacity: 0;
-  transform: scale(0.95) translateY(40px);
-  transition: opacity 0.9s ease-in, transform 0.9s ease-in;
-  pointer-events: none;
-}
-    
+
   .readable-content p,
   .readable-content h2,
   .readable-content li {
@@ -2358,7 +2351,7 @@
         }
       });
     }, {
-      threshold: 0.15
+      threshold: 0.01
     });
   
     items.forEach(item => observer.observe(item));
