@@ -816,14 +816,20 @@
       font-size: 15px;
       line-height: 1.7;
       color: #3e2c1a;
+    
+    
+    
       opacity: 0;
-     transform: translateY(50px);
-     transition: opacity 1s ease, transform 1s ease;
-     will-change: opacity, transform;
-    }}
-   .readable-content.visible {
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+      will-change: opacity, transform;
+    }
+    
+    .readable-content.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    
   .readable-content p,
   .readable-content h2,
   .readable-content li {
@@ -856,7 +862,16 @@
           50% { transform: scale(1.2); opacity: 0.3; }
         }
         
-
+        p {
+          font-family: 'Playfair Display', serif;
+          font-size: 16px;
+          line-height: 1.8;
+          letter-spacing: 0.3px;
+          color: #3e2c1a;
+          margin-bottom: 16px;
+        }
+        
+  
 .close-btn {
   position: absolute;
   top: 14px;
@@ -1193,7 +1208,11 @@
       height: 18vh;
     }
   }
-
+  body {
+    overscroll-behavior: none;
+    scroll-behavior: auto;
+  }
+  
   </style>
 </head>
 <body>
@@ -1617,7 +1636,7 @@
   </p></div>
   
   <footer style="text-align: center; padding: 20px 0; font-size: 14px;">
-       © 2025 Sushi Nova
+       ©️ 2025 Sushi Nova
   </footer></div></div>
   <div class="scroll-buffer"></div>
  
@@ -2275,50 +2294,35 @@
     window.location.href = "/en/";
   });
 </script>
-
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".readable-content");
-
-    function updateCardTransforms() {
-      const viewportHeight = window.innerHeight;
-
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cardHeight = rect.height;
-
-        const visibleTop = Math.max(0, rect.top);
-        const visibleBottom = Math.min(viewportHeight, rect.bottom);
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        const visibleRatio = visibleHeight / cardHeight;
-
-        // Apple式模糊逻辑：如果卡片只有部分可见，模糊；大部分可见就清晰
-        let blur = 0;
-        if (visibleRatio < 0.8) {
-          blur = (1 - visibleRatio) * 8;
-        }
-
-        blur = Math.min(6, Math.max(0, blur));
-
-        // Apple式位移：越靠近中心越归位
-        const centerY = rect.top + cardHeight / 2;
-        const centerRatio = centerY / viewportHeight;
-
-        const translateY = (0.5 - centerRatio) * 60; // 卡片浮动方向
-        const scale = 0.98 + Math.max(0, 1 - Math.abs(0.5 - centerRatio)) * 0.02;
-        const opacity = Math.min(1, visibleRatio * 1.2);
-
-        card.style.transform = `translateY(${translateY}px) scale(${scale})`;
-        card.style.opacity = opacity;
-        card.style.filter = `blur(${blur}px)`;
-      });
-
-      requestAnimationFrame(updateCardTransforms);
-    }
-
-    requestAnimationFrame(updateCardTransforms);
-  });
-</script>
-</body>
-</html>
+    const items = document.querySelectorAll(".readable-content");
+  
+    const screenHeight = window.innerHeight;
+    const triggerTop = screenHeight * 0.1;
+    const triggerTolerance = screenHeight * 0.03;
+    let isUserScrolling = false;
+    let scrollTimer;
+  
+    // 检测用户是否主动滑动，暂停 ghost scroll
+    window.addEventListener('scroll', () => {
+      isUserScrolling = true;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        isUserScrolling = false;
+      }, 1200);
+    });
+  
+    // ghost scroll（缓慢自动上下移动，防止卡壳）
+    let direction = -1;
+    let offset = 0;
+    const step = 0.3;
+    const maxOffset = 2;
+  
+    function ghostScroll() {
+      if (isUserScrolling) return requestAnimationFrame(ghostScroll);
+      const y = window.scrollY;
+      const maxY = document.body.scrollHeight - window.innerHeight;
+      if (y <= 0 || y >= maxY) return requestAnimationFrame(ghostScroll);
+  
+      offset**
