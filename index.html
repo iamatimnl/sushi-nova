@@ -798,26 +798,26 @@
       }
     
       
-    
-   .readable-content {
+ .readable-content {
   max-width: 95%;
   margin: 24px auto;
   padding: 16px 20px;
   border-radius: 20px;
 
-  background: rgba(255, 245, 235, 0.55);  /* 奶橙半透明 */
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.12);  /* 更冷的玻璃感 */
+  backdrop-filter: saturate(180%) blur(20px);  /* 饱和度+模糊 */
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 
+  border: 1px solid rgba(255, 255, 255, 0.3); /* 轻边框 */
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    inset 0 1px 1px rgba(255, 255, 255, 0.35),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.25);
+    0 4px 30px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.15);
+
+  color: rgba(20, 20, 20, 0.8);  /* 柔和深色文字 */
 
   font-size: 15px;
   line-height: 1.7;
-  color: #3e2c1a;
-
   opacity: 0;
   transform: scale(0.85) translateY(30px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
