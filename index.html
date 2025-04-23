@@ -1636,7 +1636,7 @@
   </p></div>
   
   <footer style="text-align: center; padding: 20px 0; font-size: 14px;">
-       ©️ 2025 Sushi Nova
+       © 2025 Sushi Nova
   </footer></div></div>
   <div class="scroll-buffer"></div>
  
@@ -2325,4 +2325,97 @@
       const maxY = document.body.scrollHeight - window.innerHeight;
       if (y <= 0 || y >= maxY) return requestAnimationFrame(ghostScroll);
   
-      offset**
+      offset += step * direction;
+      window.scrollBy(0, step * direction);
+      if (Math.abs(offset) >= maxOffset) direction *= -1;
+  
+      requestAnimationFrame(ghostScroll);
+    }
+  
+    requestAnimationFrame(ghostScroll);
+  
+    // IntersectionObserver 延迟触发
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        const rect = el.getBoundingClientRect();
+        const distanceFromTop = Math.abs(rect.top);
+  
+        if (entry.isIntersecting && !el.classList.contains("visible")) {
+          const delay = Math.min(distanceFromTop * 0.35, 200); // 延迟更自然
+          setTimeout(() => {
+            el.classList.add("visible");
+          }, delay);
+        } else if (!entry.isIntersecting) {
+          el.classList.remove("visible");
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+  
+    items.forEach(item => observer.observe(item));
+  
+    // 兜底防止静止时不触发
+    setInterval(() => {
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if (
+          rect.top > (triggerTop - triggerTolerance) &&
+          rect.top < (triggerTop + triggerTolerance) &&
+          !item.classList.contains('visible')
+        ) {
+          item.classList.add('visible');
+        }
+      });
+    }, 200);
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".readable-content");
+    const flickerMap = new Map();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        const id = el.dataset.id || el.textContent.slice(0, 12);
+        const now = Date.now();
+
+        // 初始化追踪记录
+        if (!flickerMap.has(id)) flickerMap.set(id, []);
+        const logs = flickerMap.get(id);
+        logs.push(now);
+        if (logs.length > 6) logs.shift();
+
+        const flickerTimeWindow = 800; // 毫秒内频繁触发
+        const flickerCount = logs.length >= 4 && (logs[logs.length - 1] - logs[0] < flickerTimeWindow);
+
+        // 如果频繁闪烁则隐藏并停止观察
+        if (flickerCount) {
+          el.classList.remove("visible");
+          observer.unobserve(el);
+          return;
+        }
+
+        // 正常处理
+        if (entry.isIntersecting) {
+          el.classList.add("visible");
+        } else {
+          el.classList.remove("visible");
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.05
+    });
+
+    items.forEach(item => observer.observe(item));
+  });
+</script>
+
+
+
+</body>
+</html>
