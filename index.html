@@ -2294,88 +2294,87 @@
     window.location.href = "/en/";
   });
 </script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const items = document.querySelectorAll(".readable-content");
-  
-    const screenHeight = window.innerHeight;
-    const triggerTop = screenHeight * 0.1;
-    const triggerTolerance = screenHeight * 0.03;
-    let isUserScrolling = false;
-    let scrollTimer;
-  
-    // 检测用户是否主动滑动，暂停 ghost scroll
-    window.addEventListener('scroll', () => {
-      isUserScrolling = true;
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        isUserScrolling = false;
-      }, 1200);
-    });
-  
-    // ghost scroll（缓慢自动上下移动，防止卡壳）
-    let direction = -1;
-    let offset = 0;
-    const step = 0.3;
-    const maxOffset = 2;
-  
-    function ghostScroll() {
-      if (isUserScrolling) return requestAnimationFrame(ghostScroll);
-      const y = window.scrollY;
-      const maxY = document.body.scrollHeight - window.innerHeight;
-      if (y <= 0 || y >= maxY) return requestAnimationFrame(ghostScroll);
-  
-      offset += step * direction;
-      window.scrollBy(0, step * direction);
-      if (Math.abs(offset) >= maxOffset) direction *= -1;
-  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".readable-content");
+
+      const screenHeight = window.innerHeight;
+      const triggerTop = screenHeight * 0.1;
+      const triggerTolerance = screenHeight * 0.03;
+      let isUserScrolling = false;
+      let scrollTimer;
+
+      // 菜单按钮也会触发 isUserScrolling
+      document.addEventListener('click', () => {
+        isUserScrolling = true;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          isUserScrolling = false;
+        }, 1500);
+      });
+
+      // ghost scroll（缓慢自动上下移动，防止卡壳）
+      let direction = -1;
+      let offset = 0;
+      const step = 0.3;
+      const maxOffset = 2;
+
+      function ghostScroll() {
+        if (isUserScrolling) return requestAnimationFrame(ghostScroll);
+        const y = window.scrollY;
+        const maxY = document.body.scrollHeight - window.innerHeight;
+        if (y <= 0 || y >= maxY) return requestAnimationFrame(ghostScroll);
+
+        offset += step * direction;
+        window.scrollBy(0, step * direction);
+        if (Math.abs(offset) >= maxOffset) direction *= -1;
+
+        requestAnimationFrame(ghostScroll);
+      }
+
       requestAnimationFrame(ghostScroll);
-    }
-  
-    requestAnimationFrame(ghostScroll);
-  
-    // IntersectionObserver 延迟触发
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const el = entry.target;
-        const rect = el.getBoundingClientRect();
-        const distanceFromTop = Math.abs(rect.top);
-  
-        if (entry.isIntersecting && !el.classList.contains("visible")) {
-          const delay = Math.min(distanceFromTop * 0.3, 500); // 延迟更自然
-          setTimeout(() => {
-            el.classList.add("visible");
-          }, delay);
-        } else if (!entry.isIntersecting) {
-          el.classList.remove("visible");
-        }
+
+      // IntersectionObserver 延迟触发
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target;
+          const rect = el.getBoundingClientRect();
+          const distanceFromTop = Math.abs(rect.top);
+
+          if (entry.isIntersecting && !el.classList.contains("visible")) {
+            const delay = Math.min(distanceFromTop * 0.3, 500);
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, delay);
+          } else if (!entry.isIntersecting) {
+            el.classList.remove("visible");
+          }
+        });
+      }, {
+        threshold: 0.15
       });
-    }, {
-      threshold: 0.15
+
+      items.forEach(item => observer.observe(item));
+
+      // 兜底防止静止时不触发
+      setInterval(() => {
+        items.forEach(item => {
+          const rect = item.getBoundingClientRect();
+          if (
+            rect.top > (triggerTop - triggerTolerance) &&
+            rect.top < (triggerTop + triggerTolerance) &&
+            !item.classList.contains('visible')
+          ) {
+            item.classList.add('visible');
+          }
+        });
+      }, 200);
     });
-  
-    items.forEach(item => observer.observe(item));
-  
-    // 兜底防止静止时不触发
-    setInterval(() => {
-      items.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        if (
-          rect.top > (triggerTop - triggerTolerance) &&
-          rect.top < (triggerTop + triggerTolerance) &&
-          !item.classList.contains('visible')
-        ) {
-          item.classList.add('visible');
-        }
-      });
-    }, 200);
-  });
-</script>
-
-
-
-
-
-
+  </script>
 </body>
 </html>
+
+
+
+
+
