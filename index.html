@@ -1124,8 +1124,8 @@
   -webkit-backdrop-filter: blur(30px);
 
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 同卡片 */
+  border: 1px solid rgba(255, 255, 255, 0.83);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* 同卡片 */
 
   transition: opacity 0.2s ease, transform 0.3s ease;
   z-index: 9999;
@@ -2180,7 +2180,7 @@
 
   <script>
     let lastTouchY = 0;
-    let currentOpacity = 0.98; // 默认加载时为最大不透明
+    let currentOpacity = 0.99; // 默认加载时为最大不透明
     const minOpacity = 0.1;
     const maxOpacity = 0.98;
     
@@ -2263,8 +2263,7 @@
             currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
           } else if (deltaY < 0) {
             currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
-          }
-    
+          }ke    
           const opacityValue = currentOpacity.toFixed(2);
           updateOpacity(opacityValue);
     
