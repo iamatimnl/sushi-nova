@@ -820,14 +820,20 @@
     
     
       opacity: 0;
-      transform: translateY(40px);
+      opacity: 0;
+      transform: scale(0.8) translateY(60px);
       transition: opacity 0.9s ease, transform 0.9s ease;
-      will-change: opacity, transform;
     }
     
     .readable-content.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1) translateY(0);
+    }
+    .readable-content.fade-away {
+      opacity: 0;
+      transform: scale(0.95) translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      pointer-events: none;
     }
     
   .readable-content p,
@@ -2342,7 +2348,7 @@
         const distanceFromTop = Math.abs(rect.top);
   
         if (entry.isIntersecting && !el.classList.contains("visible")) {
-          const delay = Math.min(distanceFromTop * 0.35, 200); // 延迟更自然
+          const delay = Math.min(distanceFromTop * 0.3, 500); // 延迟更自然
           setTimeout(() => {
             el.classList.add("visible");
           }, delay);
@@ -2414,6 +2420,7 @@
     items.forEach(item => observer.observe(item));
   });
 </script>
+
 
 
 
