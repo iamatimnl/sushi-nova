@@ -103,7 +103,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    background-color: #f7dbc1;
+    background-color: #f5ecdd;
 
         
       
@@ -751,47 +751,42 @@
       
     
 
-          @media (max-width: 768px) {
-            .readable-content {
-              max-width: 90%;
-              margin: 36px auto;
-              padding: 18px 22px;
-              border-radius: 24px;
-              text-align: center;
-          
-              /* 背景颜色 + 半透明 + 奶茶色调 */
-              background: rgba(255, 255, 255, 0.45); /* 雾化白玻璃 */
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+@media (max-width: 768px) {
+            
+.readable-content {
+  max-width: 95%;
+  margin: 36px auto;
+  padding: 16px 20px;
+  border-radius: 20px;
+  text-align: center;
+  background: rgba(187, 127, 64, 0.55);
+  backdrop-filter: blur(39px);
+  -webkit-backdrop-filter: blur(39px);
 
+  /* 模拟柔边感，不是真正的 border */
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.1),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.35);
+    0 4px 20px rgba(0, 0, 0, 0.12),            /* 外部柔光阴影 */
+    inset 0 0 0.5px rgba(255, 255, 255, 0.35), /* 内光感边缘 */
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);  /* 下方柔光边 */
+
+  color: rgba(30, 30, 30, 0.85);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  font-size: 15px;
+  line-height: 1.7;
+
+  /* 动画 */
+  opacity: 0;
+  transform: scale(0.85) translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  will-change: opacity, transform;
 }
 
-          
-              color: rgba(30, 30, 30, 0.85);
-              font-size: 15px;
-              line-height: 1.65;
-              filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.08));
-          
-              /* 动画 */
-              opacity: 0;
-              transform: scale(0.95) translateY(20px);
-              transition: opacity 0.4s ease, transform 0.4s ease;
-              will-change: opacity, transform;
-            }
-          
-            .readable-content.visible {
-              opacity: 1;
-              transform: scale(1) translateY(0);
-            }
-          
-            body {
-              background-color: #f5ecdd; /* 主背景为温暖奶茶底色 */
-            }
-          }
-          
+.readable-content.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+
   .readable-content p,
   .readable-content h2,
   .readable-content li {
@@ -1071,7 +1066,7 @@
 #bottomBar {
   position: fixed;
   bottom: 10px;
-  width: 90%;
+  width: 95%;
   max-width: 640px;
   left: 50%;
   transform: translateX(-50%);
