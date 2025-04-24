@@ -54,7 +54,7 @@
       font-weight: 600;
       margin: 24px 0 16px;
     }
-
+    @media (min-width: 768px){
     .wrapper {
       width: 185vmin;
       height: 185vmin;
@@ -91,11 +91,11 @@
     
       color: #3e2c1a;
       position: relative;
-    }
+    } }
 
     
     
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
   
   html, body {
     min-height: 100vh;
@@ -103,26 +103,13 @@
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    background-color: #f5d4b6;
+    background-color: #f7dbc1;
 
         
       
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;}
 
-      .wrapper {
-        
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        padding: 0 !important;
-        margin: 0 auto !important;
-        background-color: transparent;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        overflow: visible !important;
-      }
+      
     }
 
     *, *::before, *::after {
@@ -297,15 +284,26 @@
       }
     
     
-    .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .logo img {
-      max-height: 160px;
-      margin-bottom: 10px !important
-    }
+      .mobile-logo-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:transparent;
+        margin-top: -10px;
+       transition: opacity 0.3s ease;
+      }
+  
+      .mobile-logo {
+        height: 42px;
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+      }
+  
     h1 {
       font-size: 15px;
       font-weight: 600;
@@ -460,46 +458,6 @@
          .navbar-logo-mobile {
           display: none;
         }
-        @media (max-width: 768px) {
-          .navbar {
-            position: fixed !important;
-            top: 0;
-            width: 100%;
-            z-index: 999;
-            background-color: transparent;
-            opacity: 1 !important;
-            pointer-events: auto !important;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            transform: translateY(0);  /* 初始正常显示 */
-         
-          }
-        
-          .navbar.hidden {
-            opacity: 0 !important;
-            pointer-events: none !important;
-            transform: translateY(-100%); /* 👈 滑动消失向上飞出 */
-          }
-        
-          .navbar-logo-mobile {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 40px;
-            margin: 0 auto;
-            transition: opacity 0.2s ease; /* 👈 如果你单独想控制 logo，也可以 */
-          }
-        
-          .navbar-logo-mobile img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-          }
-        } 
-          .navbar-logo-mobile img {
-           position: relative;  /* 防止脱离文档流 */
-           z-index: auto;        /* 不要设得太高 */
-           transition: opacity 0.3s ease;
-          }
         
         
         
@@ -790,22 +748,20 @@
         }
         @media (max-width: 768px){
           .tagline{font-size: 16px;}}
-       @media (max-width: 768px) {
-      .wrapper {
-        padding: 0 !important;
-        margin-top: 40px;
-      }
-    
       
+    
+
+@media (max-width: 768px) {
+            
 .readable-content {
   max-width: 95%;
-  margin: 24px auto;
+  margin: 36px auto;
   padding: 16px 20px;
   border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.1); /* 几乎纯透明奶白 */
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  text-align: center;
+  background: rgba(187, 127, 64, 0.55);
+  backdrop-filter: blur(39px);
+  -webkit-backdrop-filter: blur(39px);
 
   /* 模拟柔边感，不是真正的 border */
   box-shadow:
@@ -814,6 +770,7 @@
     inset 0 1px 2px rgba(255, 255, 255, 0.1);  /* 下方柔光边 */
 
   color: rgba(30, 30, 30, 0.85);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
   font-size: 15px;
   line-height: 1.7;
 
@@ -1119,15 +1076,17 @@
   align-items: center;
   justify-content: center;
 
-  background:  #f5d4b6;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
 
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.083);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 同卡片 */
-
-  transition: opacity 0.2s ease, transform 0.3s ease;
+  color: #3e2c1a;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 9999;
 }
 
@@ -1146,6 +1105,7 @@
   font-weight: 500;
   color: #3e2c1a; /* 深棕点缀字体 */
   font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+
 }
 
  /* ✅ 只在桌面端设置专属位置 */
@@ -1224,10 +1184,8 @@
   <div class="navbar-left">
   </div>
   
-  <div class="navbar-logo-mobile-wrapper">
-    <div class="navbar-logo-mobile">
-      <img src="https://i.postimg.cc/05fLqS5M/o.png" alt="Sushi Nova Logo" />
-    </div>
+  <div class="mobile-logo-header">
+    <img src="https://i.postimg.cc/05fLqS5M/o.png" alt="Sushi Nova Logo" class="mobile-logo" />
   </div>
   
     <ul class="nav-links">
@@ -2178,99 +2136,8 @@
   </script>
   
 
-  <script>
-    let lastTouchY = 0;
-    let currentOpacity = 0.99; // 默认加载时为最大不透明
-    const minOpacity = 0.1;
-    const maxOpacity = 0.98;
+  
     
-    // 获取元素
-    const bar = document.getElementById('bottomBar');
-    const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
-    
-    // 设置初始透明度（页面刚加载时）
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.scrollY <= 0) {
-        currentOpacity = maxOpacity;
-        if (bar) bar.style.opacity = currentOpacity;
-        if (logoBar) logoBar.style.opacity = currentOpacity;
-      }
-    });
-    
-    // 开始监听触摸
-    document.addEventListener('touchstart', (e) => {
-      lastTouchY = e.touches[0].clientY;
-    });
-    
-    document.addEventListener('touchmove', (e) => {
-      const touchY = e.touches[0].clientY;
-      const deltaY = touchY - lastTouchY;
-    
-      if (deltaY > 0) {
-        currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
-      } else if (deltaY < 0) {
-        currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
-      }
-    
-      const opacityValue = currentOpacity.toFixed(2);
-      if (bar) bar.style.opacity = opacityValue;
-      if (logoBar) logoBar.style.opacity = opacityValue;
-    
-      lastTouchY = touchY;
-    });
-    </script>
-    <script>
-      (function () {
-        let lastTouchY = 0;
-        let currentOpacity = 0.9; // 默认加载时设置为 0.9 不透明
-        const minOpacity = 0.1;
-        const maxOpacity = 0.9;
-    
-        const bar = document.getElementById('bottomBar');
-        const logoBar = document.querySelector('.navbar-logo-mobile-wrapper');
-    
-        function updateOpacity(opacity) {
-          if (bar) bar.style.opacity = opacity;
-          if (logoBar) logoBar.style.opacity = opacity;
-        }
-    
-        // ✅ 页面初始载入时设置为 maxOpacity
-        window.addEventListener('load', () => {
-          updateOpacity(maxOpacity);
-        });
-    
-        // ✅ Home 按钮点击时，也设置为 maxOpacity
-        const homeBtn = document.getElementById("homeButtonFloating");
-        const topNavHomeBtn = document.getElementById("homeButton");
-    
-        function handleHomeClickOpacityFix() {
-          updateOpacity(maxOpacity);
-        }
-    
-        homeBtn?.addEventListener("click", handleHomeClickOpacityFix);
-        topNavHomeBtn?.addEventListener("click", handleHomeClickOpacityFix);
-    
-        // ✅ 滑动触摸逻辑
-        document.addEventListener('touchstart', (e) => {
-          lastTouchY = e.touches[0].clientY;
-        });
-    
-        document.addEventListener('touchmove', (e) => {
-          const touchY = e.touches[0].clientY;
-          const deltaY = touchY - lastTouchY;
-    
-          if (deltaY > 0) {
-            currentOpacity = Math.min(currentOpacity + 0.05, maxOpacity);
-          } else if (deltaY < 0) {
-            currentOpacity = Math.max(currentOpacity - 0.05, minOpacity);
-          }ke    
-          const opacityValue = currentOpacity.toFixed(2);
-          updateOpacity(opacityValue);
-    
-          lastTouchY = touchY;
-        });
-      })();
-    </script>
       
   <!-- ✅ 插入这里 -->
   <script>
@@ -2370,10 +2237,49 @@
     }, 200);
   });
 </script>
+<script>
+  let lastScrollTop = 0;
+  const header = document.querySelector('.mobile-logo-header');
+  const bottomBar = document.querySelector('#bottomBar');
+
+  function showAll() {
+    if (header) header.style.opacity = "1";
+    if (bottomBar) bottomBar.style.opacity = "1";
+  }
+
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+    if (current <= 10 || current >= maxScroll - 10) {
+      // 触顶或触底：显示全部
+      showAll();
+    } else if (current > lastScrollTop) {
+      // 向下滚动
+      if (header) header.style.opacity = "0.25";
+      if (bottomBar) bottomBar.style.opacity = "0.1";
+    } else {
+      // 向上滚动
+      showAll();
+    }
+
+    lastScrollTop = current <= 0 ? 0 : current;
+  });
+
+  // 监听 Home 键（键盘快捷键）
+  window.addEventListener('keydown', (e) => {
+    if (e.key === "Home") {
+      showAll();
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // 可选：自动滚动到顶部
+    }
+  });
+</script>
+
+
+
 
 </body>
 </html>
-
 
 
 
