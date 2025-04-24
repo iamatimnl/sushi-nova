@@ -751,26 +751,47 @@
       
     
 
-@media (max-width: 768px) {
-            
-.readable-content {
-  margin: 20px;
-  padding: 16px 20px;
-  background: #1B1F1D; /* 深墨绿 */
-  color: #F5F2EB;       /* 和风米白 */
-  border-radius: 14px;
-  border: 1px solid #B38E5D; /* 暗金边 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  font-family: 'Noto Serif JP', serif;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-.readable-content.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+          @media (max-width: 768px) {
+            .readable-content {
+              max-width: 90%;
+              margin: 36px auto;
+              padding: 18px 22px;
+              border-radius: 24px;
+              text-align: center;
+          
+              /* 背景颜色 + 半透明 + 奶茶色调 */
+              background: rgba(245, 236, 221, 0.65); /* 柔和奶茶色 */
+              backdrop-filter: blur(25px);
+              -webkit-backdrop-filter: blur(25px);
+          
+              /* 柔和边缘阴影模拟浮动卡片感 */
+              box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.1),
+                inset 0 0 1px rgba(255, 255, 255, 0.4),
+                inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
+          
+              color: rgba(30, 30, 30, 0.85);
+              font-size: 15px;
+              line-height: 1.65;
+              filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.08));
+          
+              /* 动画 */
+              opacity: 0;
+              transform: scale(0.95) translateY(20px);
+              transition: opacity 0.4s ease, transform 0.4s ease;
+              will-change: opacity, transform;
+            }
+          
+            .readable-content.visible {
+              opacity: 1;
+              transform: scale(1) translateY(0);
+            }
+          
+            body {
+              background-color: #f5ecdd; /* 主背景为温暖奶茶底色 */
+            }
+          }
+          
   .readable-content p,
   .readable-content h2,
   .readable-content li {
