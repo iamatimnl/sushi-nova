@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+hhuCTYPE html>
 <html lang="nl">
   <head>
   <meta charset="UTF-8" />
@@ -799,20 +799,30 @@
     
       
 .readable-content {
-  background: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
-  /* 毛玻璃滤镜：模糊+饱和度提升 (含WebKit前缀兼容) */
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-radius: 16px;   /* 圆角边缘 */
-  padding: 16px;         /* 内边距 */
-  margin: 16px;          /* 外边距（确保卡片有呼吸空间） */
-  /* 边框与阴影营造层次 */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* 淡白色边框 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1),     /* 柔和投影 */
-              0 0 20px rgba(0,0,0,0.05);      /* 模糊散射阴影 */
-  color: #000; /* 文本颜色保持黑色，以确保在浅色背景上可读 */
-  /* 提示浏览器优化 */
-  will-change: transform, opacity;
+  max-width: 95%;
+  margin: 24px auto;
+  padding: 16px 20px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.1); /* 几乎纯透明奶白 */
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+  /* 模拟柔边感，不是真正的 border */
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.12),            /* 外部柔光阴影 */
+    inset 0 0 0.5px rgba(255, 255, 255, 0.35), /* 内光感边缘 */
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);  /* 下方柔光边 */
+
+  color: rgba(30, 30, 30, 0.85);
+  font-size: 15px;
+  line-height: 1.7;
+
+  /* 动画 */
+  opacity: 0;
+  transform: scale(0.85) translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  will-change: opacity, transform;
 }
 
 .readable-content.visible {
