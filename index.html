@@ -760,11 +760,14 @@
               text-align: center;
           
               /* 背景颜色 + 半透明 + 奶茶色调 */
-              background: rgba(250, 240, 224, 0.55); /* 奶茶色偏亮 */
-              backdrop-filter: blur(34px);
-              box-shadow:
-               0 6px 18px rgba(0, 0, 0, 0.1),
-               inset 0 0 1px rgba(255, 255, 255, 0.4);
+              background: rgba(255, 255, 255, 0.45); /* 雾化白玻璃 */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.35);
+}
 
           
               color: rgba(30, 30, 30, 0.85);
@@ -1068,7 +1071,7 @@
 #bottomBar {
   position: fixed;
   bottom: 10px;
-  width: 95%;
+  width: 90%;
   max-width: 640px;
   left: 50%;
   transform: translateX(-50%);
