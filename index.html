@@ -758,27 +758,23 @@
 .readable-content {
   max-width: 91%;
   margin: 36px auto;
-  padding: 16px 20px;
+  padding: 20px 24px;
   border-radius: 20px;
   text-align: center;
-  background:#b49b72;
-  backdrop-filter: blur(39px);
-  -webkit-backdrop-filter: blur(39px);
 
-  /* 模拟柔边感，不是真正的 border */
+  background-color: #f9f7f1; /* 象牙白卡片底色 */
+  border: 1px solid rgba(180, 155, 114, 0.35); /* 暗金边框 */
   box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.12),            /* 外部柔光阴影 */
-    inset 0 0 0.5px rgba(255, 255, 255, 0.35), /* 内光感边缘 */
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);  /* 下方柔光边 */
+    0 8px 24px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(180, 155, 114, 0.15); /* 柔金高贵感 */
 
-  color: rgba(30, 30, 30,ni.85);
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  color: #3e2c1a;
   font-size: 15px;
   line-height: 1.7;
+  font-family: 'Georgia', serif;
 
-  /* 动画 */
   opacity: 0;
-  transform: scale(0.85) translateY(20px);
+  transform: scale(0.96) translateY(18px);
   transition: opacity 0.4s ease, transform 0.4s ease;
   will-change: opacity, transform;
 }
