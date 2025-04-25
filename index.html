@@ -1188,6 +1188,43 @@
     scroll-behavior: auto;
   }
   
+  .coming-soon-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #f5ecdd; /* 奶茶色背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.coming-glass {
+  background: rgba(245, 236, 221, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 40px 60px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.083);
+  color: #3e2c1a;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.coming-glass h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.coming-glass p {
+  font-size: 18px;
+  opacity: 0.85;
+}
+  
+  
   </style>
 </head>
 <body>
@@ -1281,7 +1318,12 @@
   
    
     <div class="navbar-spacer"></div>
-    
+    <div class="coming-soon-page">
+  <div class="coming-glass">
+    <h1>Coming Soon</h1>
+    <p>Sushi Nova opent binnenkort haar deuren in Oegstgeest.</p>
+  </div>
+</div>
    
     <div class="readable-content">
     <div class="title-with-windmill">
