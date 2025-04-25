@@ -1051,7 +1051,7 @@
 #callButton {
   display: flex;
   position: fixed;
-  bottom: 2px;
+  bottom: 3px;
   left: 5px;
   width: 50px;
   height: 50px;
@@ -1088,19 +1088,22 @@
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.35);
+
+  background: rgba(245, 236, 221, 0.35); /* 模拟 #f5ecdd 的柔和透明 */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
+  border: 1px solid rgba(255, 255, 255, 0.08); /* 温和边框 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 柔和阴影 */
+  color: #3e2c1a; /* 咖啡棕文字，温暖但可读 */
 
-
-  border: 1px solid rgba(255, 255, 255, 0.083);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 同卡片 */
-  color: #3e2c1a;
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  border-radius: 16px;
+  padding: 20px;
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 9999;
 }
+
 
 
 
