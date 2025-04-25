@@ -758,24 +758,27 @@
 .readable-content {
   max-width: 91%;
   margin: 36px auto;
-  padding: 24px 28px;
+  padding: 16px 20px;
   border-radius: 20px;
   text-align: center;
+  background: rgba(187, 127, 64, 0.35);
+  backdrop-filter: blur(39px);
+  -webkit-backdrop-filter: blur(39px);
 
-  /* 背景模拟高档羊皮纸 */
-  background: linear-gradient(to bottom right, #f9f7f1, #f5ecdd);
-  border: 1px solid rgba(180, 155, 114, 0.3); /* 柔金边框 */
+  /* 模拟柔边感，不是真正的 border */
   box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.04),
-    0 0 0 1px rgba(180, 155, 114, 0.08); /* 模拟纸边发光 */
+    0 4px 20px rgba(0, 0, 0, 0.12),            /* 外部柔光阴影 */
+    inset 0 0 0.5px rgba(255, 255, 255, 0.35), /* 内光感边缘 */
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);  /* 下方柔光边 */
 
-  color: #3e2c1a;
+  color: rgba(30, 30, 30,ni.85);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
   font-size: 15px;
-  line-height: 1.75;
-  font-family: 'Georgia', serif;
+  line-height: 1.7;
 
+  /* 动画 */
   opacity: 0;
-  transform: scale(0.96) translateY(18px);
+  transform: scale(0.85) translateY(20px);
   transition: opacity 0.4s ease, transform 0.4s ease;
   will-change: opacity, transform;
 }
@@ -800,17 +803,11 @@
       }
     
       h2 {
-        
+        font-size: 19px !important;
         font-weight: 800 !important;
 
       }
-    .readable-content h2 {
-  font-family: 'Georgia', serif;
-  font-size: 19px;
-  color: #8c7442; /* 金棕色 */
-  margin-bottom: 12px;
-  letter-spacing: 0.3px;
-}
+    
       h3 {
         font-size: 18px !important;
         font-weight: 650 !important;
@@ -1093,10 +1090,11 @@
 
 
   background: rgba(245, 236, 221, 0.35); /* 模拟 #f5ecdd 的柔和透明 */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-  border: 1px solid rgba(255, 255, 255, 0.08); /* 温和边框 */
+  cdd);
+  border: 1px solid rgba(180, 155, 114, 0.3); 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 柔和阴影 */
   color: #3e2c1a; /* 咖啡棕文字，温暖但可读 */
 
@@ -1342,7 +1340,7 @@
       </div>
       
     </div>
-     <h1>Coming Soon</h1>
+     <h1>Coming Soon......</h1>
     <p>Sushi Nova opent binnenkort haar deuren in Oegstgeest.</p>
 
     <p class="tagline">Jouw smaak. Jouw stijl. Onze sushi – ambachtelijk en dagvers, voor afhalen of bezorging in Oegstgeest en omstreken.</p></div>
