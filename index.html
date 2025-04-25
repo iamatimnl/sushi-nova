@@ -758,19 +758,20 @@
 .readable-content {
   max-width: 91%;
   margin: 36px auto;
-  padding: 20px 24px;
+  padding: 24px 28px;
   border-radius: 20px;
   text-align: center;
 
-  background-color: #f9f7f1; /* 象牙白卡片底色 */
-  border: 1px solid rgba(180, 155, 114, 0.35); /* 暗金边框 */
+  /* 背景模拟高档羊皮纸 */
+  background: linear-gradient(to bottom right, #f9f7f1, #f5ecdd);
+  border: 1px solid rgba(180, 155, 114, 0.3); /* 柔金边框 */
   box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.05),
-    0 0 0 1px rgba(180, 155, 114, 0.15); /* 柔金高贵感 */
+    0 10px 28px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(180, 155, 114, 0.08); /* 模拟纸边发光 */
 
   color: #3e2c1a;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.75;
   font-family: 'Georgia', serif;
 
   opacity: 0;
@@ -799,11 +800,17 @@
       }
     
       h2 {
-        font-size: 19px !important;
+        
         font-weight: 800 !important;
 
       }
-    
+    .readable-content h2 {
+  font-family: 'Georgia', serif;
+  font-size: 19px;
+  color: #8c7442; /* 金棕色 */
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
       h3 {
         font-size: 18px !important;
         font-weight: 650 !important;
