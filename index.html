@@ -1978,7 +1978,7 @@ function submitToGoogle() {
   const data = new FormData(form);
   const query = new URLSearchParams(data).toString();
 
-  fetch("https://script.google.com/macros/s/AKfycbxhx7DETaJ-IHHibRYmhlYT8egSIZWUULkHd-THDT-Mvp3kP8jufYgmrrMs6xF9ZIASSw/exec?" + query, {
+  fetch("https://script.google.com/macros/s/AKfycbxyHBaAvUaicEpmVIpIiBF5ko_gfd37iRIgdeugPKNkBYfyTwU-Je_AC65wAeMnBSkO-w/exec" + query, {
     method: "GET"
   })
   .then(() => {
