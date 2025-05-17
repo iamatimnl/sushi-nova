@@ -1651,45 +1651,43 @@
   <div class="readable-content">
   <h2 id="reserveren" class="scroll-offset section-title">Reserveren</h2>
   <p style="text-align: center; font-size: 16px; opacity: 0.85; margin-bottom: 20px;">
-    Reserveer eenvoudig een plek met onderstaand formulier. Wij nemen zo spoedig mogelijk contact met u op om de reservering te bevestigen.
+    Reserveer eenvoudig een plek met onderstaand formulier. Wij nemen zo spoedig mogelijk contact met u op.
   </p>
 
   <form id="customForm" onsubmit="submitToGoogle(); return false;" style="max-width: 600px; margin: auto; font-size: 16px;">
     <label>Naam:</label><br>
-    <input name="entry.1121903138" type="text" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"><br><br>
+    <input name="naam" type="text" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"><br><br>
 
     <label>Telefoonnummer:</label><br>
-    <input name="entry.1800837607" type="tel" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"><br><br>
+    <input name="telefoon" type="tel" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"><br><br>
 
     <label>Datum:</label><br>
-    <input name="entry.1951085821" type="date" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"><br><br>
+    <input name="datum" type="date" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;"><br><br>
 
-<label>Tijd:</label><br>
-<select name="entry.1968737757" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
-  <option value="">Kies tijd</option>
-  <option value="12:00">12:00</option>
-  <option value="12:30">12:30</option>
-  <option value="13:00">13:00</option>
-  <option value="13:30">13:30</option>
-  <option value="14:00">14:00</option>
-  <option value="14:30">14:30</option>
-  <option value="15:00">15:00</option>
-  <option value="15:30">15:30</option>
-  <option value="16:00">16:00</option>
-  <option value="16:30">16:30</option>
-  <option value="17:00">17:00</option>
-  <option value="17:30">17:30</option>
-  <option value="18:00">18:00</option>
-  <option value="18:30">18:30</option>
-  <option value="19:00">19:00</option>
-  <option value="19:30">19:30</option>
-  <option value="20:00">20:00</option>
-</select><br><br>
-
-
+    <label>Tijd:</label><br>
+    <select name="tijd" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+      <option value="">Kies tijd</option>
+      <option value="12:00">12:00</option>
+      <option value="12:30">12:30</option>
+      <option value="13:00">13:00</option>
+      <option value="13:30">13:30</option>
+      <option value="14:00">14:00</option>
+      <option value="14:30">14:30</option>
+      <option value="15:00">15:00</option>
+      <option value="15:30">15:30</option>
+      <option value="16:00">16:00</option>
+      <option value="16:30">16:30</option>
+      <option value="17:00">17:00</option>
+      <option value="17:30">17:30</option>
+      <option value="18:00">18:00</option>
+      <option value="18:30">18:30</option>
+      <option value="19:00">19:00</option>
+      <option value="19:30">19:30</option>
+      <option value="20:00">20:00</option>
+    </select><br><br>
 
     <label>Aantal personen:</label><br>
-    <select name="entry.1148722859" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+    <select name="personen" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
       <option value="">Kies aantal</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -1710,6 +1708,8 @@
 
   <p id="responseMsg" style="text-align: center; margin-top: 20px; font-size: 16px; color: #3e2c1a;"></p>
 </div>
+
+
 
 
 
@@ -1973,19 +1973,22 @@
 </script>
 
 <script>
-  function submitToGoogle() {
-    const form = document.getElementById("customForm");
-    const data = new FormData(form);
+function submitToGoogle() {
+  const form = document.getElementById("customForm");
+  const data = new FormData(form);
+  const query = new URLSearchParams(data).toString();
 
-    fetch("https://docs.google.com/forms/d/e/1FAIpQLSdzV_cbPomDeHkIECRtnng1WweiUoof6wjplfxBEsk8Ic46lQ/formResponse", {
-      method: "POST",
-      mode: "no-cors",
-      body: data,
-    }).then(() => {
-      document.getElementById("responseMsg").innerText = "Bedankt! Uw reservering is verzonden.";
-      form.reset();
-    });
-  }
+  fetch("https://script.google.com/macros/s/AKfycbxhx7DETaJ-IHHibRYmhlYT8egSIZWUULkHd-THDT-Mvp3kP8jufYgmrrMs6xF9ZIASSw/exec?" + query, {
+    method: "GET"
+  })
+  .then(() => {
+    document.getElementById("responseMsg").innerText = "✅ Bedankt! Uw reservering is succesvol verzonden.";
+    form.reset();
+  })
+  .catch(() => {
+    document.getElementById("responseMsg").innerText = "❌ Er is iets misgegaan. Probeer het opnieuw.";
+  });
+}
 </script>
 
   
