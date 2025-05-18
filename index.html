@@ -1974,48 +1974,26 @@
   showOrderButton();
 </script>
 
+Je zei:
 <script>
 function submitToGoogle() {
   const form = document.getElementById("customForm");
-  const btn = document.getElementById("submitBtn");
-  const msgEl = document.getElementById("responseMsg");
+  const data = new FormData(form);
+  const query = new URLSearchParams(data).toString();
 
-  btn.disabled = true;
-  msgEl.innerText = "⏳ Bezig met verzenden...";
-
-  const params = new URLSearchParams({
-    naam: form.naam.value,
-    telefoon: form.telefoon.value,
-    datum: form.datum.value,
-    tijd: form.tijd.value,
-    personen: form.personen.value
-  }).toString();
-
-  fetch("https://script.google.com/macros/s/AKfycbz-cPXy-LOsof7qtvYJVMPjd8IXywOoW7S1YXqjMOoWiucmRMCxIjzpnwR1xhoZBjD-BA/exec?" + params, {
+  fetch("https://script.google.com/macros/s/AKfycbz-cPXy-LOsof7qtvYJVMPjd8IXywOoW7S1YXqjMOoWiucmRMCxIjzpnwR1xhoZBjD-BA/exec?" + query, {
     method: "GET"
   })
-  .then(res => res.text())
-  .then(response => {
-    const cleaned = response.trim().replace(/^"|"$/g, "");
-    if (cleaned === "OK") {
-      msgEl.innerText = "✅ Bedankt! Uw reservering is succesvol verzonden.";
-      msgEl.style.color = "#3e2c1a";
-      form.reset();
-    } else {
-      msgEl.innerText = "❌ Er is iets misgegaan. Probeer het opnieuw.";
-      msgEl.style.color = "red";
-    }
-    btn.disabled = false;
+  .then(() => {
+    document.getElementById("responseMsg").innerText = "✅ Bedankt! Uw reservering is succesvol verzonden.";
+    form.reset();
   })
-  .catch(error => {
-    msgEl.innerText = "❌ Serverfout. Probeer later opnieuw.";
-    msgEl.style.color = "red";
-    btn.disabled = false;
+  .catch((error) => {
+    document.getElementById("responseMsg").innerText = "❌ Er is iets misgegaan. Probeer het opnieuw.";
     console.error("FOUT:", error);
   });
 }
 </script>
-
 
 
 
