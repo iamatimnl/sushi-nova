@@ -1235,7 +1235,7 @@
     display: flex;
     position: fixed;
     bottom: -1px;
-    left: 140px; /* 避开 #mapRouteButton 的 left: 70px */
+    left: 140px; /* 避开地图按钮 */
     width: 60px;
     height: 60px;
     background: transparent;
@@ -1249,10 +1249,11 @@
     transition: opacity 0.4s ease, transform 0.2s ease;
   }
 
-  #reserveRouteButton img {
+  #reserveRouteButton svg {
     width: 28px;
     height: 28px;
     opacity: 0.9;
+    transition: transform 0.2s ease;
   }
 
   #reserveRouteButton:hover {
@@ -1805,8 +1806,13 @@
   </button>
   
 <button id="reserveRouteButton" onclick="scrollToReserveren()" aria-label="Reserveren">
-  <img src="https://i.postimg.cc/B6f4KR6P/calendar-icon-white.png" alt="Reserveer icon" />
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="#3e2c1a" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 
+             2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 
+             16H5V10h14v10zm0-12H5V6h14v2z"/>
+  </svg>
 </button>
+
 
 
 
@@ -2030,7 +2036,7 @@ function scrollToReserveren() {
   showOrderButton();
 </script>
 
-Je zei:
+
 <script>
 function submitToGoogle() {
   const form = document.getElementById("customForm");
