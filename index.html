@@ -1137,9 +1137,10 @@
 
 
 
-    #mapRouteButton {
-  display: none; /* 默认隐藏 */
+#mapRouteButton {
+  display: none !important;
 }
+
 
 @media (max-width: 768px) {
   #mapRouteButton {
@@ -2083,7 +2084,14 @@ function submitToGoogle() {
     });
   </script>
   
-  
+  <script>
+  if (window.innerWidth <= 768) {
+    document.getElementById('mapRouteButton').style.display = 'flex';
+  } else {
+    document.getElementById('mapRouteButton').style.display = 'none';
+  }
+</script>
+
   
   <script>
     (function () {
