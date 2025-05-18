@@ -1977,6 +1977,11 @@
 <script>
 function submitToGoogle() {
   const form = document.getElementById("customForm");
+  const btn = document.getElementById("submitBtn");
+  const msgEl = document.getElementById("responseMsg");
+
+  btn.disabled = true;
+  msgEl.innerText = "⏳ Bezig met verzenden...";
 
   const data = {
     naam: form.naam.value,
@@ -1988,15 +1993,13 @@ function submitToGoogle() {
 
   fetch("https://script.google.com/macros/s/AKfycbz-cPXy-LOsof7qtvYJVMPjd8IXywOoW7S1YXqjMOoWiucmRMCxIjzpnwR1xhoZBjD-BA/exec", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
   .then(res => res.text())
   .then(response => {
-    const msgEl = document.getElementById("responseMsg");
-    if (response === "OK") {
+    const cleaned = response.trim().replace(/^"|"$/g, "");
+    if (cleaned === "OK") {
       msgEl.innerText = "✅ Bedankt! Uw reservering is succesvol verzonden.";
       msgEl.style.color = "#3e2c1a";
       form.reset();
@@ -2004,9 +2007,12 @@ function submitToGoogle() {
       msgEl.innerText = "❌ Er is iets misgegaan. Probeer het opnieuw.";
       msgEl.style.color = "red";
     }
+    btn.disabled = false;
   })
   .catch(error => {
-    document.getElementById("responseMsg").innerText = "❌ Serverfout. Probeer later opnieuw.";
+    msgEl.innerText = "❌ Serverfout. Probeer later opnieuw.";
+    msgEl.style.color = "red";
+    btn.disabled = false;
     console.error("FOUT:", error);
   });
 }
