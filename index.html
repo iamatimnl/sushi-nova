@@ -1983,18 +1983,16 @@ function submitToGoogle() {
   btn.disabled = true;
   msgEl.innerText = "⏳ Bezig met verzenden...";
 
-  const data = {
+  const params = new URLSearchParams({
     naam: form.naam.value,
     telefoon: form.telefoon.value,
     datum: form.datum.value,
     tijd: form.tijd.value,
     personen: form.personen.value
-  };
+  }).toString();
 
-  fetch("https://script.google.com/macros/s/AKfycbz-cPXy-LOsof7qtvYJVMPjd8IXywOoW7S1YXqjMOoWiucmRMCxIjzpnwR1xhoZBjD-BA/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+  fetch("https://script.google.com/macros/s/AKfycbz-cPXy-LOsof7qtvYJVMPjd8IXywOoW7S1YXqjMOoWiucmRMCxIjzpnwR1xhoZBjD-BA/exec?" + params, {
+    method: "GET"
   })
   .then(res => res.text())
   .then(response => {
@@ -2017,6 +2015,7 @@ function submitToGoogle() {
   });
 }
 </script>
+
 
 
 
