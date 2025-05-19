@@ -1263,31 +1263,63 @@
   }
 }
 
-/* 初始导航栏透明 */
-.navbar {
-  background-color: transparent;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+/* 横滑导航栏样式 */
+.mobile-scroll-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  display: none;
+  align-items: center;
+  z-index: 9998;
+  padding: 0 10px;
 }
 
-/* 滚动后的导航栏样式 */
-.navbar.scrolled {
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+.mobile-scroll-navbar.show {
+  display: flex;
 }
 
-/* 导航链接样式：黑字 */
-.navbar.scrolled .nav-links a {
+/* 汉堡按钮样式 */
+.mobile-scroll-navbar .menu-btn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  margin-right: 12px;
+  cursor: pointer;
   color: #1a1a1a;
-  transition: color 0.3s ease, background 0.3s ease;
 }
 
-/* 当前激活项样式：黑底白字 */
-.navbar.scrolled .nav-links a.active {
-  background-color: #1a1a1a;
-  color: white;
-  padding: 4px 10px;
-  border-radius: 20px;
+/* 横滑菜单项容器 */
+.scroll-nav-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.scroll-nav-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* 菜单项样式 */
+.scroll-nav-wrapper a {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 15px;
+  color: #1a1a1a;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.scroll-nav-wrapper a.active {
+  background: #1a1a1a;
+  color: white;
+}
+
 
 
     
@@ -1339,6 +1371,18 @@
     </ul>
     <div class="navbar-lang-switch" id="langSwitch">
       <span>EN</span>
+      <div class="mobile-scroll-navbar" id="mobileScrollNavbar">
+  <button class="menu-btn" id="menuToggle">☰</button>
+  <div class="scroll-nav-wrapper">
+    <a href="#waarom">Waarom</a>
+    <a href="#aanraders">Menu</a>
+    <a href="#bubbletea">Bubble Tea</a>
+    <a href="#over">Over ons</a>
+    <a href="#contact">Contact</a>
+    <a href="#reserveren">Reserveren</a>
+  </div>
+</div>
+
     </div>
     
   
@@ -2527,24 +2571,21 @@ function submitToGoogle() {
   });
 </script>
 <script>
-  const navbar = document.getElementById('navbar');
-  const logoHeader = document.querySelector('.mobile-logo-header');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const scrollNav = document.getElementById('mobileScrollNavbar');
+  const scrollNavLinks = scrollNav.querySelectorAll('a');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-      logoHeader.classList.add('hidden');
+      scrollNav.classList.add('show');
     } else {
-      navbar.classList.remove('scrolled');
-      logoHeader.classList.remove('hidden');
+      scrollNav.classList.remove('show');
     }
 
-    // 当前激活项处理（基于滚动位置）
-    navLinks.forEach(link => {
+    // 设置当前激活项
+    scrollNavLinks.forEach(link => {
       const section = document.querySelector(link.getAttribute('href'));
       if (section) {
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = section.offsetTop - 80;
         const sectionBottom = sectionTop + section.offsetHeight;
         if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
           link.classList.add('active');
@@ -2555,14 +2596,12 @@ function submitToGoogle() {
     });
   });
 
-  // 页面加载时立即判断滚动状态
-  window.addEventListener('DOMContentLoaded', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-      logoHeader.classList.add('hidden');
-    }
+  // 汉堡按钮点击打开侧边栏
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sideMenu').classList.toggle('active');
   });
 </script>
+
 
 
 
