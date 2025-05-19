@@ -1263,6 +1263,31 @@
   }
 }
 
+/* 初始导航栏透明 */
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 滚动后的导航栏样式 */
+.navbar.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 导航链接样式：黑字 */
+.navbar.scrolled .nav-links a {
+  color: #1a1a1a;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+/* 当前激活项样式：黑底白字 */
+.navbar.scrolled .nav-links a.active {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
 
 
     
@@ -2498,6 +2523,43 @@ function submitToGoogle() {
     if (e.key === "Home") {
       showAll();
       window.scrollTo({ top: 0, behavior: 'smooth' }); // 可选：自动滚动到顶部
+    }
+  });
+</script>
+<script>
+  const navbar = document.getElementById('navbar');
+  const logoHeader = document.querySelector('.mobile-logo-header');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+      logoHeader.classList.add('hidden');
+    } else {
+      navbar.classList.remove('scrolled');
+      logoHeader.classList.remove('hidden');
+    }
+
+    // 当前激活项处理（基于滚动位置）
+    navLinks.forEach(link => {
+      const section = document.querySelector(link.getAttribute('href'));
+      if (section) {
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      }
+    });
+  });
+
+  // 页面加载时立即判断滚动状态
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+      logoHeader.classList.add('hidden');
     }
   });
 </script>
